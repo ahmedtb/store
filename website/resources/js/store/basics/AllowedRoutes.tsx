@@ -6,7 +6,8 @@ import { api } from './urls'
 import { refreshUser, setAllowedRoutes } from '../redux/stateActions';
 import { connect } from "react-redux"
 import { intersection } from 'lodash'
-import { stateType, userType, routeConfigsType } from './types'
+import { stateType, userType, routeConfigsType, allowedRoutesType } from './types'
+import { Dispatch } from 'redux';
 
 const calculateAllowedRoutes = (user: userType) => {
     const roles = user?.roles
@@ -77,10 +78,10 @@ const mapStateToProps = (state: { state: stateType }) => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        refreshUser: (user) => dispatch(refreshUser(user)),
-        setAllowedRoutes: (allowedRoutes) => dispatch(setAllowedRoutes(allowedRoutes)),
+        refreshUser: (user: userType) => dispatch(refreshUser(user)),
+        setAllowedRoutes: (allowedRoutes: allowedRoutesType) => dispatch(setAllowedRoutes(allowedRoutes)),
     }
 }
 

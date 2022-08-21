@@ -6,3 +6,7 @@ declare global {
 
 }
 window.localization = window.localization || {};
+window.user = window.user || {};
+window.Echo = window.Echo || {};
+
+

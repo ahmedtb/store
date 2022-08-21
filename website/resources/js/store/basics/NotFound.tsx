@@ -2,8 +2,10 @@ import React from 'react'
 import { Navigate } from 'react-router-dom'
 import { connect } from "react-redux"
 import LoginPage from './LoginPage'
+import { stateType } from './types'
+import { Dispatch } from 'redux'
 
-function NotFound(props){
+function NotFound(props) {
 
     if (!props.user) {
         return <LoginPage />
@@ -17,13 +19,13 @@ function NotFound(props){
 }
 
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: { state: stateType }) => {
     return {
         user: state.state.user,
     }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
     }
 }

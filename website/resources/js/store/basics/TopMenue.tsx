@@ -5,7 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 
 import { refreshUser } from '../redux/stateActions';
 import { connect } from "react-redux"
-import NotificationsBell from '../notification/NotificationsBell';
+import NotificationsBell from './NotificationsBell';
 import apiCallHandler from './apiCallHandler';
 import { userType } from './types';
 

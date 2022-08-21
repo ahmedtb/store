@@ -6,7 +6,7 @@ import axios from 'axios';
 const routesPrefix = '/'
 export const routes = {
     dashboard: () => routesPrefix,
-
+    
 }
 
 const apiPrefix = '/api'
