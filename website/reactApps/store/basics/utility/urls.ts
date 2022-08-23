@@ -6,10 +6,10 @@ import { identity } from 'lodash';
 
 const routesPrefix = '/'
 export const routes = {
-    loginPage: () => '/loginPage',
+    loginPage: () => routesPrefix + 'loginPage',
     home: () => routesPrefix,
-    phone: (id?: number) => id ? routesPrefix + '/phone/' + id : routesPrefix + '/phone/:id',
-    notifications: () => routesPrefix + '/notifications',
+    phone: (id?: number) => id ? (routesPrefix + 'phone/' + id) : routesPrefix + 'phone/:id',
+    notifications: () => routesPrefix + 'notifications',
 }
 
 const apiPrefix = '/api'

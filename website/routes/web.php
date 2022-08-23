@@ -12,10 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::view('/dashboard/{path}', 'dashboard')->where('path', '([A-z\d\-\/_.]+)?');
+Route::view('dashboard', 'dashboard');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/{path}', 'store')->where('path', '([A-z\d\-\/_.]+)?');
+Route::view('', 'store');
 
 
 Route::get('currentLanguage', function () {

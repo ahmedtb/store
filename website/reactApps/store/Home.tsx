@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import AllowedLink from './basics/components/AllowedLink';
+import { routes } from './basics/utility/urls';
 
 export default function Example() {
     return (
@@ -17,15 +19,15 @@ export default function Example() {
                         <div className="card-header">Phones</div>
 
                         <div className="card-body d-flex flex-wrap">
-                            <a className='m-5 d-flex '>
+                            <AllowedLink to={routes.phone(1)}>
                                 <img src='https://www.apple.com/newsroom/images/product/iphone/standard/iphonex_front_back_glass_big.jpg.large.jpg' width={816 / 10} height={1200 / 10} />
                                 <div>
                                     <div>IPhone X</div>
                                     <div>1000 dinar</div>
                                     <div>IPhone X descriptions and specs</div>
                                 </div>
-                            </a>
-                            <a className='m-5 d-flex '>
+                            </AllowedLink>
+                            <AllowedLink to={routes.phone(1)}>
                                 <img src='https://www.apple.com/newsroom/images/product/iphone/standard/iphonex_front_back_glass_big.jpg.large.jpg' width={816 / 10} height={1200 / 10} />
                                 <div>
 
@@ -34,8 +36,8 @@ export default function Example() {
                                     <div>IPhone 7 descriptions and specs</div>
                                 </div>
 
-                            </a>
-                            <a className='m-5 d-flex '>
+                            </AllowedLink>
+                            <AllowedLink to={routes.phone(1)}>
                                 <img src='https://www.apple.com/newsroom/images/product/iphone/standard/iphonex_front_back_glass_big.jpg.large.jpg' width={816 / 10} height={1200 / 10} />
                                 <div>
 
@@ -44,8 +46,8 @@ export default function Example() {
                                     <div>IPhone 10 descriptions and specs</div>
                                 </div>
 
-                            </a>
-                            <a className='m-5 d-flex '>
+                            </AllowedLink>
+                            <AllowedLink to={routes.phone(1)}>
                                 <img src='https://www.apple.com/newsroom/images/product/iphone/standard/iphonex_front_back_glass_big.jpg.large.jpg' width={816 / 10} height={1200 / 10} />
                                 <div>
 
@@ -54,8 +56,8 @@ export default function Example() {
                                     <div>IPhone 10 descriptions and specs</div>
                                 </div>
 
-                            </a>
-                            <a className='m-5 d-flex '>
+                            </AllowedLink>
+                            <AllowedLink to={routes.phone(1)}>
                                 <img src='https://www.apple.com/newsroom/images/product/iphone/standard/iphonex_front_back_glass_big.jpg.large.jpg' width={816 / 10} height={1200 / 10} />
                                 <div>
 
@@ -64,8 +66,8 @@ export default function Example() {
                                     <div>IPhone 10 descriptions and specs</div>
                                 </div>
 
-                            </a>
-                            <a className='m-5 d-flex '>
+                            </AllowedLink>
+                            <AllowedLink to={routes.phone(1)}>
                                 <img src='https://www.apple.com/newsroom/images/product/iphone/standard/iphonex_front_back_glass_big.jpg.large.jpg' width={816 / 10} height={1200 / 10} />
                                 <div>
 
@@ -74,7 +76,7 @@ export default function Example() {
                                     <div>IPhone 10 descriptions and specs</div>
                                 </div>
 
-                            </a>
+                            </AllowedLink>
                         </div>
                     </div>
                 </div>
