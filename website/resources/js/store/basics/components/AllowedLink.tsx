@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from "react-redux"
-import { allowedRoutesType, stateType, childrenType } from './types'
 import { LinkContainer } from 'react-router-bootstrap'
-import pathInRoutes from './pathInRoutes'
+import pathInRoutes from '../utility/pathInRoutes'
 import { Dispatch } from 'redux'
 
 function AllowedLink(props: { to: string, className?: string, target?: string, children: childrenType, container?: boolean, allowedRoutes: allowedRoutesType, displayChildrenOnly?: boolean }) {

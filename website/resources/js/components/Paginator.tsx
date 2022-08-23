@@ -16,7 +16,7 @@ export default function Paginator(props) {
     // const page_size = props.page_size
     const [page_size, setpage_size] = React.useState(props.page_size ?? 10)
 
-    const [customeSize, setcustomeSize] = React.useState(0)
+    const [customeSize, setcustomeSize] = React.useState<number>(0)
 
 
     const [randStr, setrandStr] = React.useState(Math.random().toString(36).slice(2, 7))
@@ -52,7 +52,7 @@ export default function Paginator(props) {
                     {
                         customeSize != 0 ? null :
                             <select value={page_size} onChange={e => {
-                                if (e.target.value != customeSize) {
+                                if (Number(e.target.value) != customeSize) {
                                     setcustomeSize(0)
                                     setpage_size(e.target.value)
                                 } else {
@@ -74,7 +74,7 @@ export default function Paginator(props) {
                     {
                         customeSize != 0 ? <div>
 
-                            <input type='number' value={customeSize} onChange={e => setcustomeSize(e.target.value)} />
+                            <input type='number' value={customeSize} onChange={e => setcustomeSize(Number(e.target.value))} />
                             <button className='btn btn-primary me-1' onClick={() => {
                                 setpage_size(customeSize)
                             }}>تحديد الحجم</button>

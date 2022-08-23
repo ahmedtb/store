@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <div id='example' />
+    <div id='store' />
 </body>
 
 </html>

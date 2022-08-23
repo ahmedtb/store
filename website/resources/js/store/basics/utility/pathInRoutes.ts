@@ -1,5 +1,4 @@
 import { matchPath } from 'react-router-dom'
-import { allowedRoutesType } from './types';
 
 export default function pathInRoutes(routes: allowedRoutesType, path: string) {
 

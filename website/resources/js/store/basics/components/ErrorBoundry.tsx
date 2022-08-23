@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class ErrorBoundary extends React.Component {
+export default class ErrorBoundary extends React.Component<{children: React.ReactNode}, { hasError: boolean }> {
     constructor(props) {
         super(props);
         this.state = { hasError: false };
@@ -28,7 +28,7 @@ export default class ErrorBoundary extends React.Component {
     render() {
         if (this.state.hasError) {
             // You can render any custom fallback UI
-            return <h1 className="text-center my-5">{localization.errorBoundaryMessage}</h1>;
+            return <h1 className="text-center my-5">{window.localization.errorBoundaryMessage}</h1>;
         }
 
         return this.props.children;

@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function Example() {
+export default function Example() {
     return (
         <div className="container">
-            <div className='d-flex justify-content-between m-2'>
+            {/* <div className='d-flex justify-content-between m-2'>
                 <h3>Phone Store</h3>
                 <div>
                     <div>log in</div>
                     <div>sign up</div>
                 </div>
-            </div>
+            </div> */}
             <div className="row justify-content-center">
                 <div className="col">
                     <div className="card">
@@ -83,8 +83,3 @@ function Example() {
     );
 }
 
-export default Example;
-
-if (document.getElementById('example')) {
-    ReactDOM.render(<Example />, document.getElementById('example'));
-}

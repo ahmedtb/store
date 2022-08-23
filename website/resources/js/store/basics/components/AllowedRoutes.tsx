@@ -1,12 +1,11 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import NotFound from './NotFound'
-import routesConfigs from './routesConfigs'
-import { api } from './urls'
-import { refreshUser, setAllowedRoutes } from '../redux/stateActions';
+import NotFound from '../NotFound'
+import routesConfigs from '../utility/routesConfigs'
+import { api } from '../utility/urls'
+import { refreshUser, setAllowedRoutes } from '../../redux/stateActions';
 import { connect } from "react-redux"
 import { intersection } from 'lodash'
-import { stateType, userType, routeConfigsType, allowedRoutesType } from './types'
 import { Dispatch } from 'redux';
 
 const calculateAllowedRoutes = (user: userType) => {
@@ -19,7 +18,7 @@ const calculateAllowedRoutes = (user: userType) => {
         })
 }
 
-function AllowedRoutes(props) {
+function AllowedRoutes(props: { user: userType, allowedRoutes: allowedRoutesType, refreshUser: typeof refreshUser, setAllowedRoutes: typeof setAllowedRoutes }) {
 
     async function isLoggedIn() {
         try {
@@ -46,15 +45,17 @@ function AllowedRoutes(props) {
         props.setAllowedRoutes(calculateAllowedRoutes(props.user))
     }, [props.user])
 
+    React.useEffect(() => {
+        console.log('allowedRoutes', props.allowedRoutes)
+    }, [props.allowedRoutes])
+
     return (
         <>
             <Routes>
                 {
-                    props.allowedRoutes.map((route, index) => {
+                    props.allowedRoutes.map((route: routeType, index: number) => {
                         return <Route
                             key={index}
-                            exact={route.exact}
-                            title={route.title}
                             path={route.path}
                             element={<route.component />}
                         />

@@ -1,11 +1,10 @@
 import React from 'react'
-import { routes, api } from './urls'
-import { refreshNotification } from '../redux/stateActions'
+import { routes, api } from '../utility/urls'
+import { refreshNotification } from '../../redux/stateActions'
 import { connect } from "react-redux"
 import AllowedLink from './AllowedLink';
 import { useLocation } from 'react-router-dom'
 import BellIcon from 'react-bell-icon';
-import { stateType } from './types';
 import { Dispatch } from 'redux';
 
 function NotificationsBell(props) {
@@ -19,7 +18,7 @@ function NotificationsBell(props) {
     React.useEffect(() => {
         if (props.admin) {
             window.Echo.private('App.Models.Admin.' + props.admin.id)
-                .notification((notification) => {
+                .notification((notification: notification) => {
                     props.refreshNotification(notification)
                 });
 
@@ -46,7 +45,7 @@ function NotificationsBell(props) {
         }
     }, [props.notification])
 
-    return <AllowedLink to={routes.adminNotifications()} className="text-decoration-none" >
+    return <AllowedLink to={routes.notifications()} className="text-decoration-none" >
         {/* <FaRegBell size={25} color={!newsign ? 'black' : 'yellow'} /> */}
         <BellIcon width='25' active={animate ? true : false} animate={animate} color={!newsign ? 'black' : 'yellow'} />
 
@@ -65,7 +64,7 @@ const mapStateToProps = (state: { state: stateType }) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        refreshNotification: (notification) => dispatch(refreshNotification(notification)),
+        refreshNotification: (notification: notification) => dispatch(refreshNotification(notification)),
     }
 }
 
