@@ -1,10 +1,10 @@
 import React from 'react'
-import { routes } from '../utility/urls'
+import { routes } from '../functions/urls'
 import { Col } from 'react-bootstrap';
 import { connect } from "react-redux"
 import AllowedLink from './AllowedLink';
-import localization from '../../../components/localization';
-import { refreshUser } from '../../redux/stateActions';
+import localization from '../../components/localization';
+import { refreshUser } from '../redux/stateActions';
 import { Dispatch } from 'redux';
 
 

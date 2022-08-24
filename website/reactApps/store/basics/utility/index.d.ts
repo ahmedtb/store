@@ -48,6 +48,21 @@ declare global {
         
     }
 
+    type pagination = {
+        data: array,
+        first_page_url: string,
+
+    }
+
+    type product = {
+        name: string,
+        id: number
+    }
+    type products = Array<product>
+    type addColumns = Array<{
+        title: string,
+        content: (item, index:number) => React.ReactNode
+    }>
 
 }
 window.localization = window.localization || {};

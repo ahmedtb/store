@@ -1,9 +1,9 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import NotFound from '../NotFound'
-import routesConfigs from '../utility/routesConfigs'
-import { api } from '../utility/urls'
-import { refreshUser, setAllowedRoutes } from '../../redux/stateActions';
+import routesConfigs from '../functions/routesConfigs'
+import { api } from '../functions/urls'
+import { refreshUser, setAllowedRoutes } from '../redux/stateActions';
 import { connect } from "react-redux"
 import { intersection } from 'lodash'
 import { Dispatch } from 'redux';

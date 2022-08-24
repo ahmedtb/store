@@ -1,6 +1,6 @@
 import React from 'react'
-import { routes, api } from '../utility/urls'
-import { refreshNotification } from '../../redux/stateActions'
+import { routes, api } from '../functions/urls'
+import { refreshNotification } from '../redux/stateActions'
 import { connect } from "react-redux"
 import AllowedLink from './AllowedLink';
 import { useLocation } from 'react-router-dom'
