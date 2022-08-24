@@ -4,6 +4,13 @@ import LoginPage from '../LoginPage'
 import ProductsIndex from '../product/ProductsIndex'
 import ProductShow from '../product/ProductShow';
 import ProductCreate from '../product/ProductCreate';
+import BrandShow from '../brand/BrandShow';
+import BrandsIndex from '../brand/BrandsIndex';
+import BrandCreate from '../brand/BrandCreate';
+import UserCreate from '../user/UserCreate';
+import UsersIndex from '../user/UsersIndex';
+import UserShow from '../user/UserShow';
+import Home from '../Home';
 
 
 const configs: routeConfigsType = [
@@ -14,8 +21,14 @@ const configs: routeConfigsType = [
         ],
     },
     {
+        component: Home,
+        path: routes.home(),
+        permissions: [
+        ],
+    },
+    {
         component: ProductsIndex,
-        path: routes.loginPage(),
+        path: routes.productsIndex(),
         permissions: [
         ],
     },
@@ -32,6 +45,44 @@ const configs: routeConfigsType = [
         ],
     },
 
+    
+    {
+        component: BrandsIndex,
+        path: routes.brandsIndex(),
+        permissions: [
+        ],
+    },
+    {
+        component: BrandShow,
+        path: routes.brandShow(),
+        permissions: [
+        ],
+    },
+    {
+        component: BrandCreate,
+        path: routes.brandCreate(),
+        permissions: [
+        ],
+    },
+
+    {
+        component: UsersIndex,
+        path: routes.usersIndex(),
+        permissions: [
+        ],
+    },
+    {
+        component: UserShow,
+        path: routes.userShow(),
+        permissions: [
+        ],
+    },
+    {
+        component: UserCreate,
+        path: routes.userCreate(),
+        permissions: [
+        ],
+    },
 ]
 
 export default configs

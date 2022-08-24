@@ -8,9 +8,9 @@ declare global {
 
     }
 
-    type userType = { 
+    type userType = {
         name: string,
-        roles: Array<string> 
+        roles: Array<string>
     } | null
 
     type routeType = {
@@ -45,7 +45,7 @@ declare global {
         | string[]
 
     type notification = {
-        
+
     }
 
     type pagination = {
@@ -61,9 +61,64 @@ declare global {
     type products = Array<product>
     type addColumns = Array<{
         title: string,
-        content: (item, index:number) => React.ReactNode
+        content: (item, index: number) => React.ReactNode
     }>
 
+    type orderItem = {
+        id: number
+    }
+
+    type user = {
+        id: number,
+        name: string,
+        email: string,
+        phone: string,
+
+    }
+
+    type users = Array<user>
+
+    type brand = {
+        id: number,
+        name: string,
+        image: string
+    }
+
+    type brands = Array<brand>
+
+    type admin = {
+        id: number,
+        name: string,
+        image: string
+    }
+
+    type admins = Array<admin>
+
+    
+    type orderItem = {
+        id: number,
+        name: string,
+        image: string
+    }
+
+    type orderItems = Array<orderItem>
+
+    type order = {
+        id: number,
+        user_id: number,
+        user: user
+    }
+
+    type orders = Array<order>
+    
+    type category = {
+        id: number,
+        name: string,
+        parent_id: number
+    }
+
+    type categories = Array<category>
+    
 }
 window.localization = window.localization || {};
 window.user = window.user || {};

@@ -5,7 +5,7 @@ import { Navigate } from 'react-router'
 import { Form, Card, Image } from 'react-bootstrap';
 import objectUseReducerFunction from '../../functions/objectUseReducerFunction'
 import apiCallHandler from '../functions/apiCallHandler'
-import SelectSearch from '../../components/SelectSearch'
+import SelectWithApiSearch from '../../components/SelectWithApiSearch'
 // import UploadMultipleProductsModal from './components/UploadMultipleProductsModal';
 import ImagePicker from '../../components/ImagePicker';
 import localization from '../../functions/localization';
@@ -55,9 +55,9 @@ export default function ProductCreate() {
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                    <Form.Label >{localization.categoryOfProduct}</Form.Label>
-                    <SelectSearch
-                        paginationEndpoint={api.productsIndex}
+                    <Form.Label >{localization.category}</Form.Label>
+                    <SelectWithApiSearch
+                        paginationEndpoint={api.categoriesIndex}
                         setSelectedValue={(value) => dispatchColumns({ actionType: 'change property', property: 'category_id', value: value })}
                         label={'تصنيف'}
                         valueKeyWord='id'

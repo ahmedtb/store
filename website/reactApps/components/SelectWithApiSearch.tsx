@@ -4,7 +4,7 @@ import LoadingIndicator from './LoadingIndicator'
 import { trackPromise } from "react-promise-tracker";
 import ClickAwayListener from 'react-click-away-listener';
 import axios from 'axios';
-export default function SelectSearch(props) {
+export default function SelectWithApiSearch(props) {
 
     const setSelectedValue = props.setSelectedValue
     const label = props.label
@@ -31,7 +31,7 @@ export default function SelectSearch(props) {
                     setendpointOptions(oldData => [...responsedata.data])
                     setnext_page_url(responsedata.next_page_url)
                 },
-                'SelectSearch useEffect',
+                'SelectWithApiSearch useEffect',
                 true
             )
             , randomStr)
@@ -46,7 +46,7 @@ export default function SelectSearch(props) {
                     setendpointOptions(oldData => [...responsedata.data])
                     setnext_page_url(responsedata.next_page_url)
                 },
-                'SelectSearch searchInputChange',
+                'SelectWithApiSearch searchInputChange',
                 true
             )
             , randomStr)
@@ -63,7 +63,7 @@ export default function SelectSearch(props) {
                         setendpointOptions(oldData => [...oldData, ...data.data])
                         setnext_page_url(data.next_page_url)
                     },
-                    'SelectSearch handleScroll',
+                    'SelectWithApiSearch handleScroll',
                     true
                 )
                 , randomStr)
@@ -71,7 +71,7 @@ export default function SelectSearch(props) {
     }
     React.useEffect(() => {
         // if (paginationEndpoint)
-        //     console.log('SelectSearch endpointOptions', endpointOptions)
+        //     console.log('SelectWithApiSearch endpointOptions', endpointOptions)
     }, [endpointOptions])
 
     function selectedOption() {

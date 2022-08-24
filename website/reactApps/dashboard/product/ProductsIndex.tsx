@@ -12,52 +12,49 @@ export default function ProductsIndex() {
     const [productsPagination, setproductsPagination] = React.useState<pagination>()
 
 
-    async function fetch(params) {
-        return await api.productsIndex({ ...getPaginationParams(productsPagination), ...params });
+    function fetch(params) {
+        return api.productsIndex({ ...getPaginationParams(productsPagination), ...params });
     }
 
-    return <Card className='my-2 shadow' >
-        <Card.Header>
-            <div className='d-flex justify-content-between'>
-                <div>
-                    قائمة المنتجات
-                </div>
-                <div>
-                    <AllowedLink to={routes.createProduct()}>تسجيل منتج</AllowedLink>
-                </div>
+    return <div className='p-3 bg-white'>
+        <div className='d-flex justify-content-between'>
+            <div className='fs-4'>
+                {window.localization.productsList}
             </div>
-        </Card.Header>
-        <Card.Body>
-            <Row className='align-items-center'>
-                <Col>
-                    <TextFilter
-                        apiCall={fetch} useState={[productsPagination, setproductsPagination]}
-                        property={'arabic_name'}
-                        label={window.localization.name}
-                    />
-
-                </Col>
-                <Col>
-                    <TextFilter
-                        property='sellable_category_name'
-                        label={window.localization.formatString(window.localization.categoryOf, window.localization.product)}
-                        apiCall={fetch}
-                        useState={[productsPagination, setproductsPagination]}
-                    />
-                    <TextFilter
-                        apiCall={fetch} useState={[productsPagination, setproductsPagination]}
-                        property={'details'}
-                        label={window.localization.formatString(window.localization.descriptionOf, window.localization.product)}
-                    />
-                </Col>
-            </Row>
-
             <div>
-                <ProductsTable products={productsPagination.data} />
-            </div >
-            <Paginator log={'ProductsIndex'} apiCall={fetch} useState={[productsPagination, setproductsPagination]} />
-        </Card.Body>
-    </Card>
+                <AllowedLink to={routes.createProduct()}>{window.localization.createProduct}</AllowedLink>
+            </div>
+        </div>
+
+        <div className='row align-items-center'>
+            <Col>
+                <TextFilter
+                    apiCall={fetch} useState={[productsPagination, setproductsPagination]}
+                    property={'arabic_name'}
+                    label={window.localization.name}
+                />
+
+            </Col>
+            <Col>
+                <TextFilter
+                    property='sellable_category_name'
+                    label={window.localization.category}
+                    apiCall={fetch}
+                    useState={[productsPagination, setproductsPagination]}
+                />
+                <TextFilter
+                    apiCall={fetch} useState={[productsPagination, setproductsPagination]}
+                    property={'details'}
+                    label={window.localization.description}
+                />
+            </Col>
+        </div>
+
+        <div>
+            <ProductsTable products={productsPagination?.data} />
+        </div >
+        <Paginator log={'ProductsIndex'} apiCall={fetch} useState={[productsPagination, setproductsPagination]} />
+    </div>
 
 }
 

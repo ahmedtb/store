@@ -23,7 +23,7 @@ function TopMenue(props: { refreshUser: typeof refreshUser, user: userType }) {
     }
 
     return (
-        <Navbar bg="green" expand="lg" className='py-0 px-0'>
+        <Navbar bg="secondary" expand="lg" className='py-0 px-0'>
             <Container fluid>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse className="row align-items-center" id="basic-navbar-nav">

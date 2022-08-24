@@ -11,22 +11,21 @@ import { Dispatch } from 'redux';
 function SideMenue(props) {
 
 
-    if (props.hideSideMenue)
-        return null
-    else
-        return <Col xs={2} className='bg-dark text-white p-2 min-vh-100' >
-            <AllowedLink className='text-white text-decoration-none' to={routes.home()}>
-                <h5 className='text-center'> {localization.controlPanel} </h5>
+    return <Col xs={2} className='bg-dark text-white p-2 min-vh-100' >
+
+        <AllowedLink className='text-white text-decoration-none' to={routes.home()}>
+            <h5 className='text-center'> {localization.controlPanel} </h5>
+        </AllowedLink>
+        <div className='p-1'>
+
+            <AllowedLink className='text-white text-decoration-none' to={routes.productsIndex()}>
+                <h5 className='text-center'> {localization.products} </h5>
             </AllowedLink>
 
-            <div className='p-1'>
-
-              
-
-            </div>
+        </div>
 
 
-        </Col>
+    </Col>
 
 
 }

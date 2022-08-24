@@ -4,7 +4,7 @@ import { Navigate } from 'react-router'
 import { Form, Card, Image } from 'react-bootstrap';
 import objectUseReducerFunction from '../../../functions/objectUseReducerFunction'
 import apiCallHandler from '../../functions/apiCallHandler'
-import SelectSearch from '../../../components/SelectSearch'
+import SelectWithApiSearch from '../../../components/SelectWithApiSearch'
 import ImagePicker from '../../../components/ImagePicker';
 import localization from '../../../functions/localization';
 import CustomModal from '../../../components/CustomModal';
@@ -53,8 +53,8 @@ export default function EditProductModal(props: { product: product, change: () =
                     </Form.Group>
 
                     <Form.Group className="mb-3">
-                        <Form.Label >{localization.categoryOfProduct}</Form.Label>
-                        <SelectSearch
+                        <Form.Label >{localization.category}</Form.Label>
+                        <SelectWithApiSearch
                             paginationEndpoint={api.categoriesIndex}
                             setSelectedValue={(value) => dispatchColumns({ actionType: 'change property', property: 'category_id', value: value })}
                             label={'تصنيف'}
