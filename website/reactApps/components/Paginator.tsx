@@ -3,7 +3,7 @@ import { Pagination } from 'react-bootstrap'
 import apiCallHandler from '../functions/apiCallHandler'
 import { trackPromise } from "react-promise-tracker";
 import LoadingIndicator from './LoadingIndicator';
-import localization from './localization';
+import localization from '../functions/localization';
 
 export default function Paginator(props) {
     const apiCall = props.apiCall

@@ -6,7 +6,7 @@ import objectUseReducerFunction from '../../../functions/objectUseReducerFunctio
 import apiCallHandler from '../../functions/apiCallHandler'
 import SelectSearch from '../../../components/SelectSearch'
 import ImagePicker from '../../../components/ImagePicker';
-import localization from '../../../components/localization';
+import localization from '../../../functions/localization';
 import CustomModal from '../../../components/CustomModal';
 
 export default function EditProductModal(props: { product: product, change: () => void }) {

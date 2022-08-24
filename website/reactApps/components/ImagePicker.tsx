@@ -3,7 +3,7 @@ import convertFileToBase64  from '../functions/convertFileToBase64'
 import api from '../functions/api'
 import logError from '../functions/logError'
 import { Form } from 'react-bootstrap'
-import localization from './localization'
+import localization from '../functions/localization'
 
 export const getBase64FromUrl = async (url) => {
 

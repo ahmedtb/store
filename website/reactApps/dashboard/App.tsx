@@ -8,7 +8,7 @@ import AllowedRoutes from './components/AllowedRoutes'
 import SideMenue from './components/SideMenue';
 import { Container, Col, Row } from 'react-bootstrap';
 import Footer from '../components/Footer'
-import localization from '../components/localization';
+import localization from '../functions/localization';
 import ErrorBoundary from './components/ErrorBoundry';
 import { api } from './functions/urls';
 import apiCallHandler from './functions/apiCallHandler';
