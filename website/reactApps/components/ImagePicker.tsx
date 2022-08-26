@@ -1,5 +1,5 @@
 import React from 'react'
-import convertFileToBase64  from '../functions/convertFileToBase64'
+import convertFileToBase64 from '../functions/convertFileToBase64'
 import api from '../functions/api'
 import logError from '../functions/logError'
 import { Form } from 'react-bootstrap'
@@ -15,7 +15,7 @@ export const getBase64FromUrl = async (url) => {
 
 }
 
-export default function ImagePicker(props) {
+export default function ImagePicker(props: { setImage: (base64: string) => void, maxSize?: number }) {
     const setImage = props.setImage
     const maxSize = props.maxSize
 
@@ -41,8 +41,8 @@ export default function ImagePicker(props) {
                         const file = e.target.files[0]
 
                         convertFileToBase64(file).then((base64) => {
-                            if (base64 instanceof String && base64.length > maxSize)
-                                alert(localization.imagePickerMaxSizeMessage + maxSize/1024 + ' Kb')
+                            if (base64.length > maxSize)
+                                alert(localization.imagePickerMaxSizeMessage + maxSize / 1024 + ' Kb')
                             else
                                 setImage(base64)
                         })
@@ -54,7 +54,7 @@ export default function ImagePicker(props) {
                     <button onClick={() => {
                         getBase64FromUrl(url).then((base64) => {
                             if (base64.length > maxSize)
-                                alert(localization.imagePickerMaxSizeMessage + maxSize/1024 + ' Kb')
+                                alert(localization.imagePickerMaxSizeMessage + maxSize / 1024 + ' Kb')
                             else
                                 setImage(base64)
                         })

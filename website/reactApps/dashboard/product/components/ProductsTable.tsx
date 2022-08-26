@@ -16,10 +16,11 @@ export default function ProductsTable(props: { products: products, addColumns?: 
                 <tr>
                     <th>#</th>
                     <th>{window.localization.name}</th>
-                    <th>{window.localization.productPrice}</th>
-                    <th>{window.localization.categoryOfProduct}</th>
+                    <th>{window.localization.price}</th>
                     <th>{window.localization.description}</th>
-                    <th>{window.localization.creator}</th>
+                    <th>{window.localization.category}</th>
+                    <th>{window.localization.quantity}</th>
+                    <th>{window.localization.image}</th>
 
                     {
                         addColumns?.map((column, index2) => (
@@ -39,13 +40,25 @@ export default function ProductsTable(props: { products: products, addColumns?: 
 
                             <td>
                                 <AllowedLink to={routes.productShow(product.id)}>
-
                                     {product.name}
                                 </AllowedLink>
-
+                            </td>
+                            <td>
+                                {product.price}
                             </td>
 
-
+                            <td>
+                                {product.description}
+                            </td>
+                            <td>
+                                {product.category?.name}
+                            </td>
+                            <td>
+                                {product.quantity}
+                            </td>
+                            <td>
+                            <img src={api.productImage(product.id)} width='100px' />
+                            </td>
 
                             {
                                 addColumns?.map((column, index2) => (

@@ -56,7 +56,13 @@ declare global {
 
     type product = {
         name: string,
-        id: number
+        id: number,
+        price: number,
+        description: string,
+        category_id: number,
+        category: category,
+        quantity: string,
+        image: string,
     }
     type products = Array<product>
     type addColumns = Array<{
@@ -94,7 +100,7 @@ declare global {
 
     type admins = Array<admin>
 
-    
+
     type orderItem = {
         id: number,
         name: string,
@@ -110,7 +116,7 @@ declare global {
     }
 
     type orders = Array<order>
-    
+
     type category = {
         id: number,
         name: string,
@@ -118,7 +124,7 @@ declare global {
     }
 
     type categories = Array<category>
-    
+
 }
 window.localization = window.localization || {};
 window.user = window.user || {};

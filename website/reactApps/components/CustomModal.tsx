@@ -27,7 +27,7 @@ export default function CustomModal(props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <button className='btn btn-secondary' onClick={handleClose}>
-                        اغلاق
+                        {window.localization['close']}
                     </button>
                 </Modal.Footer>
             </Modal>

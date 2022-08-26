@@ -13,7 +13,7 @@ export default function ProductsIndex() {
 
 
     function fetch(params) {
-        return api.productsIndex({ ...getPaginationParams(productsPagination), ...params });
+        return api.productsIndex({ ...getPaginationParams(productsPagination), ...params, with: 'category' });
     }
 
     return <div className='p-3 bg-white'>

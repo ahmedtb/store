@@ -22,7 +22,7 @@ export default function ProductCreate() {
 
     async function submit() {
         apiCallHandler(
-            async () => await api.createProduct(columns),
+            () => api.createProduct(columns),
             (data) => setredirect(true),
             'CreateProduct',
             true
@@ -34,55 +34,63 @@ export default function ProductCreate() {
         return <Navigate to={routes.productsIndex()} />;
     }
     return (
-        <div className="card">
-            <Card.Header className='d-flex justify-content-between'>
-                <div>تسجيل منتج</div>
-                <div>
-                    {/* <UploadMultipleProductsModal  /> */}
-                </div>
-            </Card.Header>
-            <div className="card-body">
+        <div className='p-4 bg-white'>
+            <div className='fs-5 fw-bold'>create product</div>
 
 
-                <Form.Group className="mb-3">
-                    <Form.Label >اسم المنتج</Form.Label>
-                    <Form.Control type="text" value={columns?.name ?? ''} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'name', value: e.target.value })} />
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                    <Form.Label >{localization.price}</Form.Label>
-                    <Form.Control type='number' step='0.01' value={columns?.price ?? ''} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'price', value: e.target.value })} />
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                    <Form.Label >{localization.category}</Form.Label>
-                    <SelectWithApiSearch
-                        paginationEndpoint={api.categoriesIndex}
-                        setSelectedValue={(value) => dispatchColumns({ actionType: 'change property', property: 'category_id', value: value })}
-                        label={'تصنيف'}
-                        valueKeyWord='id'
-                        nameKeyWord='name'
-                        value={columns?.category_id ?? ''}
-                    />
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                    <Form.Label >صورة للمنتج</Form.Label>
-                    <Image className='col-2' onClick={() => { }} src={columns?.image} />
-                    <ImagePicker
-                        maxSize={200 * 1024}
-                        setImage={(base64) => {
-                            dispatchColumns({ actionType: 'change property', property: 'image', value: base64 })
-                        }}
-                    />
-                </Form.Group>
+            <Form.Group className="mb-3">
+                <Form.Label >product image</Form.Label>
+                <Image className='w-25 d-block mx-auto' onClick={() => { }} src={columns?.image} />
+                <ImagePicker
+                    maxSize={200 * 1024}
+                    setImage={(base64) => {
+                        dispatchColumns({ actionType: 'change property', property: 'image', value: base64 })
+                    }}
+                />
+            </Form.Group>
 
 
-                <div className=" p-2 m-2 d-flex justify-content-center">
-                    <input onClick={submit} type="button" className='btn btn-success' value="تسجيل" />
-                </div>
 
+
+            <Form.Group className="mb-3">
+                <Form.Label >product name</Form.Label>
+                <Form.Control type="text" value={columns?.name ?? ''} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'name', value: e.target.value })} />
+            </Form.Group>
+
+
+
+            <Form.Group className="mb-3">
+                <Form.Label >product price</Form.Label>
+                <Form.Control type="number" value={columns?.price ?? ''} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'price', value: e.target.value })} />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+                <Form.Label >product quantity</Form.Label>
+                <Form.Control type="number" value={columns?.quantity ?? ''} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'quantity', value: e.target.value })} />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+                <Form.Label >category</Form.Label>
+                <SelectWithApiSearch
+                    paginationEndpoint={api.categoriesIndex}
+                    setSelectedValue={(value) => dispatchColumns({ actionType: 'change property', property: 'category_id', value: value })}
+                    label={localization.category}
+                    valueKeyWord='id'
+                    nameKeyWord='name'
+                    value={columns?.category_id}
+                />
+            </Form.Group>
+
+
+            <Form.Group className="mb-3">
+                <Form.Label >product description</Form.Label>
+                <textarea className='form-control' value={columns?.description ?? ''} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'description', value: e.target.value })} />
+            </Form.Group>
+
+            <div className=" p-2 m-2 d-flex justify-content-center">
+                <input onClick={submit} type="button" className='btn btn-success' value="create" />
             </div>
+
         </div>
     )
 }

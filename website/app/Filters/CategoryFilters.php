@@ -2,7 +2,7 @@
 
 namespace App\Filters;
 
-class ProductFilters extends Filters
+class CategoryFilters extends Filters
 {
     /**
      * Registered filters to operate upon.

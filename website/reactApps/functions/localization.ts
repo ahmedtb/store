@@ -12,11 +12,23 @@ export default new LocalizedStrings({
         imagePickerMaxSizeMessage: 'image Picker Max Size Message',
         fromTheLink: 'from the link',
         products: 'products',
+        product: 'product',
         productsList: 'products list',
         createProduct: 'create product',
         search: 'search',
         category: 'category',
         description: 'description',
+        name: 'name',
+        quantity: 'quantity',
+        image: 'image',
+        delete: 'delete',
+        edit: 'edit',
+        number: 'number',
+        id: 'id',
+        doYouWantToDelete: 'Do you really want to permanently delete {0} from history?',
+        yes: 'yes',
+        no: 'no',
+        close: 'close'
     },
     ar: {
         totalCount: 'العدد الكلي',
@@ -26,6 +38,8 @@ export default new LocalizedStrings({
         page_size: 'حجم الصفحة',
         logout: 'تسجيل الخروج',
         login: 'تسجيل الدخول',
+        doYouWantToDelete: 'هل تود فعلا حدف {0} من السجل بشكل دائما؟',
+
     },
 
 

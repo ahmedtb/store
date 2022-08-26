@@ -48,8 +48,8 @@ export const api = {
 
     productShow: (id: number) => axios.get(apiPrefix + '/productShow/' + id),
     productsIndex: (params) => axios.get(apiPrefix + '/productsIndex/', { params: params }),
-    createProduct: (params) => axios.post(apiPrefix + '/createProduct/', params),
-    editProduct: (id: number, params: object) => axios.put(apiPrefix + '/editProduct/' + id, params),
+    createProduct: (params: product) => axios.post(apiPrefix + '/productCreate', params),
+    productEdit: (id: number, params: object) => axios.put(apiPrefix + '/productEdit/' + id, params),
     productDelete: (id: number) => axios.delete(apiPrefix + '/productDelete/' + id),
     productImage: (id: number) => apiPrefix + '/productImage/' + id,
 

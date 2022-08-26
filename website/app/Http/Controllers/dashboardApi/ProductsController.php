@@ -20,7 +20,11 @@ class ProductsController extends Controller
         // return $request->all();
         $data = $request->validate([
             'name' => 'required|string',
-            'type' => 'required|string',
+            'price' => 'required|numeric',
+            'image' => 'sometimes|nullable|string',
+            'quantity' => 'required|numeric',
+            'category_id' => 'required|exists:categories,id',
+            'description' => 'required|string',
           
         ]);
         if (!$data['image'])
@@ -30,7 +34,7 @@ class ProductsController extends Controller
 
         // return response(['success' => "product {$product->id} created"]);
         return __('CRUD.created', [
-            'name' => trans_choice('service_provider', 1),
+            'name' => trans_choice('product', 1),
             'id' => $product->id
         ]);
     }
@@ -43,13 +47,18 @@ class ProductsController extends Controller
 
         $data = $request->validate([
             'name' => 'sometimes|string',
-            'type' => 'sometimes|string',
+            'price' => 'sometimes|numeric',
+            'image' => 'sometimes|string',
+            'quantity' => 'sometimes|numeric',
+            'category_id' => 'sometimes|exists:categories,id',
+            'description' => 'sometimes|string',
+
         ]);
 
         $product->update($data);
 
         return __('CRUD.updated', [
-            'name' => trans_choice('models.service_provider', 1),
+            'name' => trans_choice('models.product', 1),
             'id' => $product->id
         ]);
     }
@@ -72,36 +81,22 @@ class ProductsController extends Controller
         $product = Product::where('id', $id)->first();
         
         if (!$product)
-            throw ValidationException::withMessages(['id' => "you do not have service provider with id {$id}"]);
+            throw ValidationException::withMessages(['id' => "you do not have service product with id {$id}"]);
 
-        if ($product->claims()->count() > 0)
-            throw ValidationException::withMessages(['id' => "you can not delete this service provider: {$id}, it has " . $product->claims()->count() . " claim linked to it"]);
-
-        $product->documents()->delete();
-        $product->comments()->delete();
         $product->delete();
 
         return __('CRUD.deleted', [
-            'name' => trans_choice('models.service_provider', 1),
+            'name' => trans_choice('models.product', 1),
             'id' => $id
         ]);
-    }
-
-    public function providerTopServices($id)
-    {
-        $product = Product::where('id', $id)->first();
-        return [
-            'topUsed' => $product->topUsedServices()->get(),
-            'topBillsTotalValue' => $product->topBillsTotalValueServices()->get(),
-        ];
     }
 
 
     public function image($id)
     {
-        $provider =  Product::find($id);
-        if (!$provider)
-            throw ValidationException::withMessages(['id' => 'no such provider ' . $id . ' exists']);
-        return $provider->image();
+        $product =  Product::find($id);
+        if (!$product)
+            throw ValidationException::withMessages(['id' => 'no such product ' . $id . ' exists']);
+        return $product->image();
     }
 }
