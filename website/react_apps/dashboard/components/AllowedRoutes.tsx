@@ -45,9 +45,9 @@ function AllowedRoutes(props: { user: userType, allowedRoutes: allowedRoutesType
         props.setAllowedRoutes(calculateAllowedRoutes(props.user))
     }, [props.user])
 
-    React.useEffect(() => {
-        console.log('allowedRoutes', props.allowedRoutes)
-    }, [props.allowedRoutes])
+    // React.useEffect(() => {
+    //     console.log('allowedRoutes', props.allowedRoutes)
+    // }, [props.allowedRoutes])
 
     return (
         <>

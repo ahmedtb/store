@@ -16,10 +16,7 @@ export default function CategoriesTable(props: { categories: categories, addColu
                 <tr>
                     <th>#</th>
                     <th>{window.localization.name}</th>
-                    <th>{window.localization.categoryPrice}</th>
-                    <th>{window.localization.categoryOfCategory}</th>
-                    <th>{window.localization.description}</th>
-                    <th>{window.localization.creator}</th>
+                    <th>{window.localization.parent}</th>
 
                     {
                         addColumns?.map((column, index2) => (
@@ -42,9 +39,12 @@ export default function CategoriesTable(props: { categories: categories, addColu
 
                                     {category.name}
                                 </AllowedLink>
-
                             </td>
-
+                            <td>
+                                <AllowedLink to={routes.categoryShow(category.parent_id)}>
+                                    {category.parent?.name}
+                                </AllowedLink>
+                            </td>
 
 
                             {

@@ -86,9 +86,9 @@ export const api = {
     adminDelete: (id: number) => axios.delete(apiPrefix + '/adminDelete/' + id),
 
     
-    categoryShow: (id: number) => axios.get(apiPrefix + '/categoryShow/' + id),
-    categoriesIndex: (params) => axios.get(apiPrefix + '/categoriesIndex/', { params: params }),
-    categoryCreate: (params) => axios.post(apiPrefix + '/categoryCreate/', params),
-    categoryEdit: (id: number, params: object) => axios.put(apiPrefix + 'categoryEdit/' + id, params),
+    categoryShow: (id: number) => axios.get(apiPrefix + '/categoryShow' + id),
+    categoriesIndex: (params) => axios.get(apiPrefix + '/categoriesIndex', { params: params }),
+    categoryCreate: (params) => axios.post(apiPrefix + '/categoryCreate', params),
+    categoryEdit: (id: number, params: object) => axios.put(apiPrefix + '/categoryEdit/' + id, params),
     categoryDelete: (id: number) => axios.delete(apiPrefix + '/categoryDelete/' + id),
 }

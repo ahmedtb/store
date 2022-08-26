@@ -12,4 +12,4 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('../../reactApps/store/App.tsx');
+require('../../react_apps/store/App.tsx');

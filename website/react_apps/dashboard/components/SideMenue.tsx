@@ -22,6 +22,9 @@ function SideMenue(props) {
                 <h5 className='text-center'> {localization.products} </h5>
             </AllowedLink>
 
+            <AllowedLink className='text-white text-decoration-none' to={routes.categoriesIndex()}>
+                <h5 className='text-center'> {localization.categories} </h5>
+            </AllowedLink>
         </div>
 
 

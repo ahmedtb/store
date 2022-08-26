@@ -28,7 +28,10 @@ export default new LocalizedStrings({
         doYouWantToDelete: 'Do you really want to permanently delete {0} from history?',
         yes: 'yes',
         no: 'no',
-        close: 'close'
+        close: 'close',
+        categories: 'categories',
+        parent: 'parent',
+        create: 'create',
     },
     ar: {
         totalCount: 'العدد الكلي',

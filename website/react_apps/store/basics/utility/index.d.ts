@@ -120,7 +120,8 @@ declare global {
     type category = {
         id: number,
         name: string,
-        parent_id: number
+        parent_id: number,
+        parent: category
     }
 
     type categories = Array<category>

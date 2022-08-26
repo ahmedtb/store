@@ -11,6 +11,9 @@ import UserCreate from '../user/UserCreate';
 import UsersIndex from '../user/UsersIndex';
 import UserShow from '../user/UserShow';
 import Home from '../Home';
+import CategoriesIndex from '../category/CategoriesIndex';
+import CategoryShow from '../category/CategoryShow';
+import CategoryCreate from '../category/CategoryCreate';
 
 
 const configs: routeConfigsType = [
@@ -26,6 +29,7 @@ const configs: routeConfigsType = [
         permissions: [
         ],
     },
+
     {
         component: ProductsIndex,
         path: routes.productsIndex(),
@@ -80,6 +84,25 @@ const configs: routeConfigsType = [
     {
         component: UserCreate,
         path: routes.userCreate(),
+        permissions: [
+        ],
+    },
+    
+    {
+        component: CategoriesIndex,
+        path: routes.categoriesIndex(),
+        permissions: [
+        ],
+    },
+    {
+        component: CategoryShow,
+        path: routes.categoryShow(),
+        permissions: [
+        ],
+    },
+    {
+        component: CategoryCreate,
+        path: routes.categoryCreate(),
         permissions: [
         ],
     },

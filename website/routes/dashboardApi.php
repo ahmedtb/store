@@ -32,3 +32,4 @@ Route::get('/categoryShow/{id}', [CategoriesController::class, 'show']);
 Route::delete('/categoryDelete/{id}', [CategoriesController::class, 'delete']);
 Route::get('/categoryImage/{id}', [CategoriesController::class, 'image']);
 Route::put('/categoryEdit/{id}', [CategoriesController::class, 'update']);
+Route::post('/categoryCreate', [CategoriesController::class, 'create']);

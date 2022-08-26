@@ -17,17 +17,13 @@ class CategoriesController extends Controller
     //
     public function create(Request $request)
     {
-        // return $request->all();
         $data = $request->validate([
             'name' => 'required|string',
-          
+            'parent_id' => 'required|exists:categories,id',
         ]);
-        if (!$data['image'])
-            $data['image'] = Category::defaultImage();
 
         $category = Category::create($data);
 
-        // return response(['success' => "category {$category->id} created"]);
         return __('CRUD.created', [
             'name' => trans_choice('category', 1),
             'id' => $category->id
@@ -42,10 +38,7 @@ class CategoriesController extends Controller
 
         $data = $request->validate([
             'name' => 'sometimes|string',
-            'price' => 'sometimes|numeric',
-            'image' => 'sometimes|string',
-            'category_id' => 'sometimes|exists:categories,id',
-
+            'parent_id' => 'sometimes|exists:categories,id',
         ]);
 
         $category->update($data);
