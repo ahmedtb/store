@@ -41,6 +41,10 @@ export default new LocalizedStrings({
         orderItems: 'order items',
         orderItem: 'order item',
         value: 'value',
+        username: 'username',
+        admins: 'admins',
+        admin: 'admin',
+
     },
     ar: {
         totalCount: 'العدد الكلي',

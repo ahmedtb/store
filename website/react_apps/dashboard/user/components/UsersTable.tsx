@@ -16,10 +16,8 @@ export default function UsersTable(props: { users: users, addColumns?: addColumn
                 <tr>
                     <th>#</th>
                     <th>{window.localization.name}</th>
-                    <th>{window.localization.userPrice}</th>
-                    <th>{window.localization.categoryOfUser}</th>
-                    <th>{window.localization.description}</th>
-                    <th>{window.localization.creator}</th>
+                    <th>{window.localization.email}</th>
+                    <th>{window.localization.phone}</th>
 
                     {
                         addColumns?.map((column, index2) => (
@@ -44,7 +42,12 @@ export default function UsersTable(props: { users: users, addColumns?: addColumn
                                 </AllowedLink>
 
                             </td>
-
+                            <td>
+                                {user.email}
+                            </td>
+                            <td>
+                                {user.phone}
+                            </td>
 
 
                             {

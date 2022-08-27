@@ -93,7 +93,7 @@ declare global {
     type admin = {
         id: number,
         name: string,
-        image: string
+        username: string,
     }
 
     type admins = Array<admin>

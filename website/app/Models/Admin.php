@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Filters\AdminFilters;
+use Database\Factories\AdminFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -32,5 +34,10 @@ class Admin extends Authenticatable
         'password',
         'remember_token',
     ];
+    protected $guarded = [];
 
+    public function scopeFilter($query, AdminFilters $filters)
+    {
+        return $filters->apply($query);
+    }
 }

@@ -1,19 +1,15 @@
 import React from 'react'
 import { api, routes } from '../functions/urls'
-
 import { Navigate } from 'react-router'
 import { Form, Card, Image } from 'react-bootstrap';
 import objectUseReducerFunction from '../../functions/objectUseReducerFunction'
 import apiCallHandler from '../functions/apiCallHandler'
-import SelectWithApiSearch from '../../components/SelectWithApiSearch'
-// import UploadMultipleAdminsModal from './components/UploadMultipleAdminsModal';
-import ImagePicker from '../../components/ImagePicker';
-import localization from '../../functions/localization';
+
 
 export default function AdminCreate() {
 
 
-    const [columns, dispatchColumns] = React.useReducer(objectUseReducerFunction, { image: null })
+    const [columns, dispatchColumns] = React.useReducer(objectUseReducerFunction, { })
 
     React.useEffect(() => {
         // console.log('columns', columns)
@@ -36,16 +32,27 @@ export default function AdminCreate() {
     return (
         <div className="card">
             <Card.Header className='d-flex justify-content-between'>
-                <div>تسجيل منتج</div>
-                <div>
-                    {/* <UploadMultipleAdminsModal  /> */}
-                </div>
+                <div>create admin</div>
             </Card.Header>
             <div className="card-body">
 
+                <Form.Group className="mb-3">
+                    <Form.Label >admin name</Form.Label>
+                    <Form.Control type="text" value={columns?.name ?? ''} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'name', value: e.target.value })} />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <Form.Label >admin username</Form.Label>
+                    <Form.Control type="text" value={columns?.username ?? ''} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'username', value: e.target.value })} />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <Form.Label >admin password</Form.Label>
+                    <Form.Control type="text" value={columns?.password ?? ''} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'password', value: e.target.value })} />
+                </Form.Group>
 
                 <div className=" p-2 m-2 d-flex justify-content-center">
-                    <input onClick={submit} type="button" className='btn btn-success' value="تسجيل" />
+                    <input onClick={submit} type="button" className='btn btn-success' value="create" />
                 </div>
 
             </div>

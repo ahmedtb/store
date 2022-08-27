@@ -63,7 +63,7 @@ export default function AdminShow(props) {
                             </div>
 
                         </CustomModal>
-                        <EditAdminModal admin={admin} change={getAdminInfo} />
+                        {/* <EditAdminModal admin={admin} change={getAdminInfo} /> */}
                     </div>
 
                 </div>
@@ -76,9 +76,7 @@ export default function AdminShow(props) {
 
                     <Col xs={9}>
                         <div className='fs-4'>{window.localization.name} {admin?.name}</div>
-                        <div className='fs-4'>{window.localization.price} {admin?.price}</div>
-                        <div className='fs-4'>  {window.localization.category} {admin?.category?.name}</div>
-                        <div className='fs-4'>  {window.localization.description} {admin?.description}</div>
+                        <div className='fs-4'>{window.localization.username} {admin?.username}</div>
 
                     </Col>
                 </Row>

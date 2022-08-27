@@ -16,10 +16,8 @@ export default function AdminsTable(props: { admins: admins, addColumns?: addCol
                 <tr>
                     <th>#</th>
                     <th>{window.localization.name}</th>
-                    <th>{window.localization.adminPrice}</th>
-                    <th>{window.localization.categoryOfAdmin}</th>
-                    <th>{window.localization.description}</th>
-                    <th>{window.localization.creator}</th>
+                    <th>{window.localization.username}</th>
+
 
                     {
                         addColumns?.map((column, index2) => (
@@ -45,6 +43,9 @@ export default function AdminsTable(props: { admins: admins, addColumns?: addCol
 
                             </td>
 
+                            <td>
+                                {admin.username}
+                            </td>
 
 
                             {

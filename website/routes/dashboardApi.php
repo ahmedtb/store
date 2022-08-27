@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardAPI\AdminsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardAPI\BrandsController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\DashboardAPI\OrdersController;
 use App\Http\Controllers\DashboardAPI\ProductsController;
 use App\Http\Controllers\DashboardAPI\CategoriesController;
 use App\Http\Controllers\DashboardAPI\OrderItemsController;
+use App\Http\Controllers\DashboardAPI\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,3 +57,15 @@ Route::get('/orderItemShow/{id}', [OrderItemsController::class, 'show']);
 Route::delete('/orderItemDelete/{id}', [OrderItemsController::class, 'delete']);
 Route::put('/orderItemEdit/{id}', [OrderItemsController::class, 'update']);
 Route::post('/orderItemCreate', [OrderItemsController::class, 'create']);
+
+Route::get('/adminsIndex', [AdminsController::class, 'index']);
+Route::get('/adminShow/{id}', [AdminsController::class, 'show']);
+Route::delete('/adminDelete/{id}', [AdminsController::class, 'delete']);
+Route::put('/adminEdit/{id}', [AdminsController::class, 'update']);
+Route::post('/adminCreate', [AdminsController::class, 'create']);
+
+Route::get('/usersIndex', [UsersController::class, 'index']);
+Route::get('/userShow/{id}', [UsersController::class, 'show']);
+Route::delete('/userDelete/{id}', [UsersController::class, 'delete']);
+Route::put('/userEdit/{id}', [UsersController::class, 'update']);
+Route::post('/userCreate', [UsersController::class, 'create']);

@@ -20,10 +20,10 @@ export default function UsersIndex() {
         <Card.Header>
             <div className='d-flex justify-content-between'>
                 <div>
-                    قائمة المنتجات
+                    users
                 </div>
                 <div>
-                    <AllowedLink to={routes.userCreate()}>تسجيل منتج</AllowedLink>
+                    <AllowedLink to={routes.userCreate()}>create user</AllowedLink>
                 </div>
             </div>
         </Card.Header>
@@ -37,23 +37,10 @@ export default function UsersIndex() {
                     />
 
                 </Col>
-                <Col>
-                    <TextFilter
-                        property='sellable_category_name'
-                        label={window.localization.formatString(window.localization.categoryOf, window.localization.user)}
-                        apiCall={fetch}
-                        useState={[usersPagination, setusersPagination]}
-                    />
-                    <TextFilter
-                        apiCall={fetch} useState={[usersPagination, setusersPagination]}
-                        property={'details'}
-                        label={window.localization.formatString(window.localization.descriptionOf, window.localization.user)}
-                    />
-                </Col>
             </Row>
 
             <div>
-                <UsersTable users={usersPagination.data} />
+                <UsersTable users={usersPagination?.data} />
             </div >
             <Paginator log={'UsersIndex'} apiCall={fetch} useState={[usersPagination, setusersPagination]} />
         </Card.Body>

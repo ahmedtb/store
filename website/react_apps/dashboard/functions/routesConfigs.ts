@@ -20,6 +20,9 @@ import OrderShow from '../order/OrderShow';
 import OrderItemCreate from '../orderItem/OrderItemCreate';
 import OrderItemsIndex from '../orderItem/OrderItemsIndex';
 import OrderItemShow from '../orderItem/OrderItemShow';
+import AdminsIndex from '../admin/AdminsIndex';
+import AdminShow from '../admin/AdminShow';
+import AdminCreate from '../admin/AdminCreate';
 
 const configs: routeConfigsType = [
     {
@@ -146,6 +149,25 @@ const configs: routeConfigsType = [
     {
         component: OrderItemCreate,
         path: routes.orderItemCreate(),
+        permissions: [
+        ],
+    },
+    
+    {
+        component: AdminsIndex,
+        path: routes.adminsIndex(),
+        permissions: [
+        ],
+    },
+    {
+        component: AdminShow,
+        path: routes.adminShow(),
+        permissions: [
+        ],
+    },
+    {
+        component: AdminCreate,
+        path: routes.adminCreate(),
         permissions: [
         ],
     },
