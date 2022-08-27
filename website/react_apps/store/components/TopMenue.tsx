@@ -1,11 +1,11 @@
 import React from 'react'
-import { routes, api } from '../utility/urls'
+import { routes, api } from '../functions/urls'
 import { Navbar, Nav, NavDropdown, Container, Col } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
-import { refreshUser } from '../../redux/stateActions';
+import { refreshUser } from '../redux/stateActions';
 import { connect } from "react-redux"
 import NotificationsBell from './NotificationsBell';
-import apiCallHandler from '../utility/apiCallHandler';
+import apiCallHandler from '../functions/apiCallHandler';
 import { Dispatch } from 'redux';
 
 

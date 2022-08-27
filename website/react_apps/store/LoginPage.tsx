@@ -1,8 +1,8 @@
 import React from 'react'
-import { api, routes } from './utility/urls'
+import { api, routes } from './functions/urls'
 import { Navigate } from 'react-router-dom'
-import apiCallHandler from './utility/apiCallHandler';
-import { refreshUser } from '../redux/stateActions'
+import apiCallHandler from './functions/apiCallHandler';
+import { refreshUser } from './redux/stateActions'
 import { connect } from "react-redux"
 import { Dispatch } from 'redux';
 

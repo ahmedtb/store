@@ -1,7 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import AllowedLink from './basics/components/AllowedLink';
-import { routes } from './basics/utility/urls';
+import AllowedLink from './components/AllowedLink';
+import { routes } from './functions/urls';
 
 export default function Example() {
     return (

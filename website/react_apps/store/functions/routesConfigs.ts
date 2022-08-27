@@ -1,8 +1,8 @@
 import { routes } from './urls'
 import roles from './roles'
 import LoginPage from '../LoginPage'
-import Home from '../../Home'
-import Phone from '../../Phone'
+import Home from '../Home'
+import Phone from '../Phone'
 
 const configs: routeConfigsType = [
     {

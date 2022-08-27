@@ -42,51 +42,42 @@ export default function BrandShow(props) {
         return <Navigate to={routes.brandsIndex()} />;
     }
 
-    return <div className='p-2'>
+    return <div className='p-4 bg-white'>
 
-        <Card className='my-2'>
 
-            <Card.Header>
-                <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-between">
+            <div>
+                منتج رقم {brand?.id}
+            </div>
+
+            <div>
+                <CustomModal buttonClass="btn btn-info mx-2" label={window.localization.delete} >
                     <div>
-                        منتج رقم {brand?.id}
+                        {window.localization.formatString(window.localization.doYouWantToDelete, window.localization.brand)}
+                    </div>
+                    <div className='d-flex justify-content-around my-2'>
+                        <button className="btn btn-secondary" onClick={deleteBrand} data-dismiss="modal">{window.localization.yes}</button>
+                        <button className='btn btn-success' data-dismiss="modal">لا</button>
                     </div>
 
-                    <div>
-                        <CustomModal buttonClass="btn btn-info mx-2" label={window.localization.delete} >
-                            <div>
-                                {window.localization.formatString(window.localization.doYouWantToDelete, window.localization.brand)}
-                            </div>
-                            <div className='d-flex justify-content-around my-2'>
-                                <button className="btn btn-secondary" onClick={deleteBrand} data-dismiss="modal">{window.localization.yes}</button>
-                                <button className='btn btn-success' data-dismiss="modal">لا</button>
-                            </div>
+                </CustomModal>
+                <EditBrandModal brand={brand} change={getBrandInfo} />
+            </div>
 
-                        </CustomModal>
-                        <EditBrandModal brand={brand} change={getBrandInfo} />
-                    </div>
+        </div>
 
-                </div>
 
-            </Card.Header>
 
-            <Card.Body>
+        <Row>
+            <Col xs={3}>
+                <img src={api.brandImage(+id)} className='w-100' />
+            </Col>
 
-                <Row>
-                    <Col xs={3}>
-                        <img src={api.brandImage(+id)} className='w-100' />
-                    </Col>
+            <Col xs={9}>
+                <div className='fs-4'>{window.localization.name} {brand?.name}</div>
 
-                    <Col xs={9}>
-                        <div className='fs-4'>{window.localization.name} {brand?.name}</div>
-                        <div className='fs-4'>{window.localization.price} {brand?.price}</div>
-                        <div className='fs-4'>  {window.localization.category} {brand?.category?.name}</div>
-                        <div className='fs-4'>  {window.localization.description} {brand?.description}</div>
-
-                    </Col>
-                </Row>
-            </Card.Body>
-        </Card>
+            </Col>
+        </Row>
 
 
     </div>
