@@ -34,7 +34,13 @@ export default new LocalizedStrings({
         create: 'create',
         brands: 'brands',
         brand: 'brand',
-
+        user: 'user',
+        users: 'users',
+        order: 'order',
+        orders: 'orders',
+        orderItems: 'order items',
+        orderItem: 'order item',
+        value: 'value',
     },
     ar: {
         totalCount: 'العدد الكلي',

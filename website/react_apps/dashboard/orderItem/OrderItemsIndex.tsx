@@ -20,10 +20,10 @@ export default function OrderItemsIndex() {
         <Card.Header>
             <div className='d-flex justify-content-between'>
                 <div>
-                    قائمة المنتجات
+                    order items
                 </div>
                 <div>
-                    <AllowedLink to={routes.orderItemCreate()}>تسجيل منتج</AllowedLink>
+                    <AllowedLink to={routes.orderItemCreate()}>create order item</AllowedLink>
                 </div>
             </div>
         </Card.Header>
@@ -32,28 +32,23 @@ export default function OrderItemsIndex() {
                 <Col>
                     <TextFilter
                         apiCall={fetch} useState={[orderItemsPagination, setorderItemsPagination]}
-                        property={'arabic_name'}
+                        property={'product_name'}
                         label={window.localization.name}
                     />
 
                 </Col>
                 <Col>
                     <TextFilter
-                        property='sellable_category_name'
-                        label={window.localization.formatString(window.localization.categoryOf, window.localization.orderItem)}
+                        property='user_name'
+                        label={window.localization.user_name}
                         apiCall={fetch}
                         useState={[orderItemsPagination, setorderItemsPagination]}
-                    />
-                    <TextFilter
-                        apiCall={fetch} useState={[orderItemsPagination, setorderItemsPagination]}
-                        property={'details'}
-                        label={window.localization.formatString(window.localization.descriptionOf, window.localization.orderItem)}
                     />
                 </Col>
             </Row>
 
             <div>
-                <OrderItemsTable orderItems={orderItemsPagination.data} />
+                <OrderItemsTable orderItems={orderItemsPagination?.data} />
             </div >
             <Paginator log={'OrderItemsIndex'} apiCall={fetch} useState={[orderItemsPagination, setorderItemsPagination]} />
         </Card.Body>

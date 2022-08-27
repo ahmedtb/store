@@ -1,10 +1,12 @@
 <?php
 
-use App\Http\Controllers\DashboardAPI\BrandsController;
-use App\Http\Controllers\DashboardAPI\CategoriesController;
-use App\Http\Controllers\DashboardAPI\ProductsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardAPI\BrandsController;
+use App\Http\Controllers\DashboardAPI\OrdersController;
+use App\Http\Controllers\DashboardAPI\ProductsController;
+use App\Http\Controllers\DashboardAPI\CategoriesController;
+use App\Http\Controllers\DashboardAPI\OrderItemsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +42,16 @@ Route::delete('/brandDelete/{id}', [BrandsController::class, 'delete']);
 Route::get('/brandImage/{id}', [BrandsController::class, 'image']);
 Route::put('/brandEdit/{id}', [BrandsController::class, 'update']);
 Route::post('/brandCreate', [BrandsController::class, 'create']);
+
+Route::get('/ordersIndex', [OrdersController::class, 'index']);
+Route::get('/orderShow/{id}', [OrdersController::class, 'show']);
+Route::delete('/orderDelete/{id}', [OrdersController::class, 'delete']);
+Route::put('/orderEdit/{id}', [OrdersController::class, 'update']);
+Route::post('/orderCreate', [OrdersController::class, 'create']);
+
+
+Route::get('/orderItemsIndex', [OrderItemsController::class, 'index']);
+Route::get('/orderItemShow/{id}', [OrderItemsController::class, 'show']);
+Route::delete('/orderItemDelete/{id}', [OrderItemsController::class, 'delete']);
+Route::put('/orderItemEdit/{id}', [OrderItemsController::class, 'update']);
+Route::post('/orderItemCreate', [OrderItemsController::class, 'create']);

@@ -49,7 +49,7 @@ export default function OrderItemShow(props) {
             <Card.Header>
                 <div className="d-flex justify-content-between">
                     <div>
-                        منتج رقم {orderItem?.id}
+                        order item {orderItem?.id}
                     </div>
 
                     <div>
@@ -63,7 +63,7 @@ export default function OrderItemShow(props) {
                             </div>
 
                         </CustomModal>
-                        <EditOrderItemModal orderItem={orderItem} change={getOrderItemInfo} />
+                        {/* <EditOrderItemModal orderItem={orderItem} change={getOrderItemInfo} /> */}
                     </div>
 
                 </div>
@@ -77,9 +77,10 @@ export default function OrderItemShow(props) {
 
                     <Col xs={9}>
                         <div className='fs-4'>{window.localization.name} {orderItem?.name}</div>
-                        <div className='fs-4'>{window.localization.price} {orderItem?.price}</div>
-                        <div className='fs-4'>  {window.localization.category} {orderItem?.category?.name}</div>
-                        <div className='fs-4'>  {window.localization.description} {orderItem?.description}</div>
+                        <div className='fs-4'>  {window.localization.product} {orderItem?.product?.name}</div>
+                        <div className='fs-4'>  {window.localization.user} {orderItem?.user?.name}</div>
+                        <div className='fs-4'>  {window.localization.quantity} {orderItem?.quantity}</div>
+                        <div className='fs-4'>  {window.localization.value} {orderItem?.value}</div>
 
                     </Col>
                 </Row>

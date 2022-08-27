@@ -15,6 +15,7 @@ export default function OrdersTable(props: { orders: orders, addColumns?: addCol
             <thead>
                 <tr>
                     <th>#</th>
+                    <th>user</th>
 
 
                     {
@@ -30,9 +31,15 @@ export default function OrdersTable(props: { orders: orders, addColumns?: addCol
                         <tr key={index}>
 
                             <td>
-                                {order.id}
+                                <AllowedLink to={routes.orderShow(order.id)}>
+                                    {order.id}
+                                </AllowedLink>
                             </td>
 
+
+                            <td>
+                                {order.user?.name}
+                            </td>
 
 
 

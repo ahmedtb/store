@@ -49,7 +49,7 @@ export default function OrderShow(props) {
             <Card.Header>
                 <div className="d-flex justify-content-between">
                     <div>
-                        منتج رقم {order?.id}
+                        user {order?.id}
                     </div>
 
                     <div>
@@ -63,7 +63,7 @@ export default function OrderShow(props) {
                             </div>
 
                         </CustomModal>
-                        <EditOrderModal order={order} change={getOrderInfo} />
+                        {/* <EditOrderModal order={order} change={getOrderInfo} /> */}
                     </div>
 
                 </div>
@@ -75,10 +75,7 @@ export default function OrderShow(props) {
                 <Row>
 
                     <Col xs={9}>
-                        <div className='fs-4'>{window.localization.name} {order?.name}</div>
-                        <div className='fs-4'>{window.localization.price} {order?.price}</div>
-                        <div className='fs-4'>  {window.localization.category} {order?.category?.name}</div>
-                        <div className='fs-4'>  {window.localization.description} {order?.description}</div>
+                        <div className='fs-4'>{window.localization.user} {order?.user?.name}</div>
 
                     </Col>
                 </Row>

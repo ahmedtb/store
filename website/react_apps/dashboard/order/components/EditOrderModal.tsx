@@ -41,8 +41,20 @@ export default function EditOrderModal(props: { order: order, change: () => void
                 <div className="card-body">
 
 
+                <Form.Group className="mb-3">
+                    <Form.Label >user</Form.Label>
+                    <SelectWithApiSearch
+                        paginationEndpoint={api.usersIndex}
+                        setSelectedValue={(value) => dispatchColumns({ actionType: 'change property', property: 'user_id', value: value })}
+                        label={localization.user}
+                        valueKeyWord='id'
+                        nameKeyWord='name'
+                        value={columns?.user_id}
+                    />
+                </Form.Group>
+
                     <div className=" p-2 m-2 d-flex justify-content-center">
-                        <input onClick={submit} type="button" className='btn btn-success' value="تعديل" />
+                        <input onClick={submit} type="button" className='btn btn-success' value="edit" />
                     </div>
 
                 </div>

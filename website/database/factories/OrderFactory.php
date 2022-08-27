@@ -15,7 +15,7 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory()->create()->id,
+            'user_id' => rand(0, 5) == 1 || User::count() == 0 ? User::factory()->create()->id : User::inRandomOrder()->first()->id,
         ];
     }
 }

@@ -14,7 +14,12 @@ import Home from '../Home';
 import CategoriesIndex from '../category/CategoriesIndex';
 import CategoryShow from '../category/CategoryShow';
 import CategoryCreate from '../category/CategoryCreate';
-
+import OrderCreate from '../order/OrderCreate';
+import OrdersIndex from '../order/OrdersIndex';
+import OrderShow from '../order/OrderShow';
+import OrderItemCreate from '../orderItem/OrderItemCreate';
+import OrderItemsIndex from '../orderItem/OrderItemsIndex';
+import OrderItemShow from '../orderItem/OrderItemShow';
 
 const configs: routeConfigsType = [
     {
@@ -103,6 +108,44 @@ const configs: routeConfigsType = [
     {
         component: CategoryCreate,
         path: routes.categoryCreate(),
+        permissions: [
+        ],
+    },
+
+    {
+        component: OrdersIndex,
+        path: routes.ordersIndex(),
+        permissions: [
+        ],
+    },
+    {
+        component: OrderShow,
+        path: routes.orderShow(),
+        permissions: [
+        ],
+    },
+    {
+        component: OrderCreate,
+        path: routes.orderCreate(),
+        permissions: [
+        ],
+    },
+    
+    {
+        component: OrderItemsIndex,
+        path: routes.orderItemsIndex(),
+        permissions: [
+        ],
+    },
+    {
+        component: OrderItemShow,
+        path: routes.orderItemShow(),
+        permissions: [
+        ],
+    },
+    {
+        component: OrderItemCreate,
+        path: routes.orderItemCreate(),
         permissions: [
         ],
     },

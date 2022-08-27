@@ -15,8 +15,12 @@ export default function OrderItemsTable(props: { orderItems: orderItems, addColu
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>{window.localization.name}</th>
-                    <th>{window.localization.orderItemPrice}</th>
+                    <th>{window.localization.product}</th>
+                    <th>{window.localization.order}</th>
+
+                    <th>{window.localization.user}</th>
+                    <th>{window.localization.quantity}</th>
+                    <th>{window.localization.value}</th>
 
 
                     {
@@ -34,10 +38,25 @@ export default function OrderItemsTable(props: { orderItems: orderItems, addColu
                             <td>
                                 {orderItem.id}
                             </td>
-
-
-
-
+                            <td>
+                                <AllowedLink to={routes.productShow(orderItem.product_id)}>
+                                    {orderItem.product?.name}
+                                </AllowedLink>
+                            </td>
+                            <td>
+                                {orderItem.order_id}
+                            </td>
+                            <td>
+                                <AllowedLink to={routes.orderShow(orderItem.order_id)}>
+                                    {orderItem.order?.user?.name}
+                                </AllowedLink>
+                            </td>
+                            <td>
+                                {orderItem.quantity}
+                            </td>
+                            <td>
+                                {orderItem.value}
+                            </td>
                             {
                                 addColumns?.map((column, index2) => (
                                     <td key={index2}>{column.content(orderItem, index)}</td>

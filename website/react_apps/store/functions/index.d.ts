@@ -43,6 +43,7 @@ declare global {
         | JSX.Element[]
         | string
         | string[]
+        | number
 
     type notification = {
 
@@ -70,9 +71,6 @@ declare global {
         content: (item, index: number) => React.ReactNode
     }>
 
-    type orderItem = {
-        id: number
-    }
 
     type user = {
         id: number,
@@ -104,7 +102,13 @@ declare global {
     type orderItem = {
         id: number,
         name: string,
-        image: string
+        product: product,
+        product_id: number,
+        order: order,
+        order_id: number,
+        quantity: number,
+        value: number,
+
     }
 
     type orderItems = Array<orderItem>
