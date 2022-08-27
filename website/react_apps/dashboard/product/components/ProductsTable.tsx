@@ -57,7 +57,7 @@ export default function ProductsTable(props: { products: products, addColumns?: 
                                 {product.quantity}
                             </td>
                             <td>
-                            <img src={api.productImage(product.id)} width='100px' />
+                                <img src={api.productImage(product.id)} width='100px' />
                             </td>
 
                             {

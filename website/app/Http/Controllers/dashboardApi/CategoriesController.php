@@ -77,12 +77,4 @@ class CategoriesController extends Controller
         ]);
     }
 
-
-    public function image($id)
-    {
-        $category =  Category::find($id);
-        if (!$category)
-            throw ValidationException::withMessages(['id' => 'no such category ' . $id . ' exists']);
-        return $category->image();
-    }
 }

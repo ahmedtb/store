@@ -69,19 +69,19 @@ export const api = {
     userShow: (id: number) => axios.get(apiPrefix + '/userShow/' + id),
     usersIndex: (params) => axios.get(apiPrefix + '/usersIndex/', { params: params }),
     userCreate: (params) => axios.post(apiPrefix + '/userCreate/', params),
-    userEdit: (id: number, params: object) => axios.put(apiPrefix + 'userEdit/' + id, params),
+    userEdit: (id: number, params: object) => axios.put(apiPrefix + '/userEdit/' + id, params),
     userDelete: (id: number) => axios.delete(apiPrefix + '/userDelete/' + id),
 
     brandShow: (id: number) => axios.get(apiPrefix + '/brandShow/' + id),
     brandsIndex: (params) => axios.get(apiPrefix + '/brandsIndex/', { params: params }),
-    brandCreate: (params) => axios.post(apiPrefix + '/brandCreate/', params),
-    brandEdit: (id: number, params: object) => axios.put(apiPrefix + 'brandEdit/' + id, params),
+    brandCreate: (params) => axios.post(apiPrefix + '/brandCreate', params),
+    brandEdit: (id: number, params: object) => axios.put(apiPrefix + '/brandEdit/' + id, params),
     brandDelete: (id: number) => axios.delete(apiPrefix + '/brandDelete/' + id),
     brandImage: (id: number) => apiPrefix + '/brandImage/' + id,
 
     adminShow: (id: number) => axios.get(apiPrefix + '/adminShow/' + id),
     adminsIndex: (params) => axios.get(apiPrefix + '/adminsIndex/', { params: params }),
-    adminCreate: (params) => axios.post(apiPrefix + '/adminCreate/', params),
+    adminCreate: (params) => axios.post(apiPrefix + '/adminCreate', params),
     adminEdit: (id: number, params: object) => axios.put(apiPrefix + 'adminEdit/' + id, params),
     adminDelete: (id: number) => axios.delete(apiPrefix + '/adminDelete/' + id),
 

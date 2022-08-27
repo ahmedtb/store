@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardAPI\BrandsController;
 use App\Http\Controllers\DashboardAPI\CategoriesController;
 use App\Http\Controllers\DashboardAPI\ProductsController;
 use Illuminate\Http\Request;
@@ -30,6 +31,12 @@ Route::post('/productCreate', [ProductsController::class, 'create']);
 Route::get('/categoriesIndex', [CategoriesController::class, 'index']);
 Route::get('/categoryShow/{id}', [CategoriesController::class, 'show']);
 Route::delete('/categoryDelete/{id}', [CategoriesController::class, 'delete']);
-Route::get('/categoryImage/{id}', [CategoriesController::class, 'image']);
 Route::put('/categoryEdit/{id}', [CategoriesController::class, 'update']);
 Route::post('/categoryCreate', [CategoriesController::class, 'create']);
+
+Route::get('/brandsIndex', [BrandsController::class, 'index']);
+Route::get('/brandShow/{id}', [BrandsController::class, 'show']);
+Route::delete('/brandDelete/{id}', [BrandsController::class, 'delete']);
+Route::get('/brandImage/{id}', [BrandsController::class, 'image']);
+Route::put('/brandEdit/{id}', [BrandsController::class, 'update']);
+Route::post('/brandCreate', [BrandsController::class, 'create']);

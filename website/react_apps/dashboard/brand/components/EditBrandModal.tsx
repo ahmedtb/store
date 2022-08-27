@@ -35,10 +35,26 @@ export default function EditBrandModal(props: { brand: brand, change: () => void
         return <Navigate to={routes.brandsIndex()} />;
     }
     return (
-        <CustomModal buttonClass="btn btn-secondary" label={'تعديل منتج'} >
+        <CustomModal buttonClass="btn btn-secondary" label={'تعديل'} >
 
             <div className="card">
                 <div className="card-body">
+
+                    <Form.Group className="mb-3">
+                        <Form.Label >brand image</Form.Label>
+                        <Image className='w-25 d-block mx-auto' onClick={() => { }} src={columns?.image} />
+                        <ImagePicker
+                            maxSize={200 * 1024}
+                            setImage={(base64) => {
+                                dispatchColumns({ actionType: 'change property', property: 'image', value: base64 })
+                            }}
+                        />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3">
+                        <Form.Label >brand name</Form.Label>
+                        <Form.Control type="text" value={columns?.name ?? ''} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'name', value: e.target.value })} />
+                    </Form.Group>
 
                     <div className=" p-2 m-2 d-flex justify-content-center">
                         <input onClick={submit} type="button" className='btn btn-success' value="تعديل" />

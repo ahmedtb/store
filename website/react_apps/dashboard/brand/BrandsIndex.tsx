@@ -20,10 +20,10 @@ export default function BrandsIndex() {
         <Card.Header>
             <div className='d-flex justify-content-between'>
                 <div>
-                    قائمة المنتجات
+                    {window.localization.brands}
                 </div>
                 <div>
-                    <AllowedLink to={routes.brandCreate()}>تسجيل منتج</AllowedLink>
+                    <AllowedLink to={routes.brandCreate()}>create brand</AllowedLink>
                 </div>
             </div>
         </Card.Header>
@@ -32,28 +32,18 @@ export default function BrandsIndex() {
                 <Col>
                     <TextFilter
                         apiCall={fetch} useState={[brandsPagination, setbrandsPagination]}
-                        property={'arabic_name'}
+                        property={'name'}
                         label={window.localization.name}
                     />
 
                 </Col>
                 <Col>
-                    <TextFilter
-                        property='sellable_category_name'
-                        label={window.localization.formatString(window.localization.categoryOf, window.localization.brand)}
-                        apiCall={fetch}
-                        useState={[brandsPagination, setbrandsPagination]}
-                    />
-                    <TextFilter
-                        apiCall={fetch} useState={[brandsPagination, setbrandsPagination]}
-                        property={'details'}
-                        label={window.localization.formatString(window.localization.descriptionOf, window.localization.brand)}
-                    />
+
                 </Col>
             </Row>
 
             <div>
-                <BrandsTable brands={brandsPagination.data} />
+                <BrandsTable brands={brandsPagination?.data} />
             </div >
             <Paginator log={'BrandsIndex'} apiCall={fetch} useState={[brandsPagination, setbrandsPagination]} />
         </Card.Body>

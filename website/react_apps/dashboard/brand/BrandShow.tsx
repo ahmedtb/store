@@ -47,7 +47,7 @@ export default function BrandShow(props) {
 
         <div className="d-flex justify-content-between">
             <div>
-                منتج رقم {brand?.id}
+                brand: {brand?.id}
             </div>
 
             <div>

@@ -32,6 +32,9 @@ export default new LocalizedStrings({
         categories: 'categories',
         parent: 'parent',
         create: 'create',
+        brands: 'brands',
+        brand: 'brand',
+
     },
     ar: {
         totalCount: 'العدد الكلي',

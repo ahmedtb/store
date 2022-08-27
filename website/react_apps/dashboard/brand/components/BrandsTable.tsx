@@ -16,6 +16,7 @@ export default function BrandsTable(props: { brands: brands, addColumns?: addCol
                 <tr>
                     <th>#</th>
                     <th>{window.localization.name}</th>
+                    <th>{window.localization.image}</th>
 
 
                     {
@@ -40,6 +41,10 @@ export default function BrandsTable(props: { brands: brands, addColumns?: addCol
                                     {brand.name}
                                 </AllowedLink>
 
+                            </td>
+
+                            <td>
+                                <img src={api.brandImage(brand.id)} width='100px' />
                             </td>
 
 
