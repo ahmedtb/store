@@ -1,5 +1,5 @@
 
-// import logError from "./logError"
+import logError from "./logError"
 
 import { AxiosResponse } from "axios"
 
@@ -12,7 +12,7 @@ export default async function apiCallHandler(ApiEndpoint: () => Promise<AxiosRes
             console.log(Identifier + ':', response.data)
         return response
     } catch (error) {
-        // logError(error, Identifier)
+        logError(error, Identifier)
         throw error
     }
 }

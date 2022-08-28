@@ -2,10 +2,12 @@ import React from 'react';
 import { api } from './functions/urls';
 import { useParams } from 'react-router'
 import apiCallHandler from './functions/apiCallHandler';
+import VarInput from '../components/VarInput';
 
 function ProductShow() {
     const { id } = useParams();
     const [product, setproduct] = React.useState<product>(null)
+    const [quantity, setquantity] = React.useState<number>(1)
 
     function getProduct() {
         apiCallHandler(
@@ -19,7 +21,16 @@ function ProductShow() {
     React.useEffect(() => {
         getProduct()
     }, [])
-    
+
+    const addToCart = () => {
+        apiCallHandler(
+            () => api.addToCart(+id, quantity),
+            (data) => { alert(data); },
+            'ProductShow addToCart',
+            true
+        )
+    }
+
     return (
         <div className="container">
 
@@ -41,7 +52,9 @@ function ProductShow() {
                                 </div>
 
                             </div>
-                            <button onClick={null} className='btn btn-success'>add to the cart</button>
+
+                            <VarInput className='form-control m-2' variable={quantity} setvariable={setquantity} />
+                            <button onClick={addToCart} className='btn btn-success'>add to the cart</button>
                         </div>
 
 

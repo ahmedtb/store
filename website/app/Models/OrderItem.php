@@ -11,6 +11,7 @@ class OrderItem extends Model
     use HasFactory;
 
     protected $with = ['order', 'product'];
+    protected $guarded = [];
 
         
     public function order()

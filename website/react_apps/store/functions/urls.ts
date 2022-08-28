@@ -24,4 +24,6 @@ export const api = {
     productShow: (id: number) => axios.get(apiPrefix + '/productShow/' + id),
     productImage: (id: number) => apiPrefix + '/productImage/' + id,
 
+    addToCart: (id: number, quantity: number) => axios.post(apiPrefix + '/addToCart', { product_id: id, quantity: quantity }),
+
 }

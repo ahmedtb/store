@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\CartsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\ProductsController;
@@ -23,3 +24,4 @@ Route::get('/productsIndex', [ProductsController::class, 'index']);
 Route::get('/productShow/{id}', [ProductsController::class, 'show']);
 Route::get('/productImage/{id}', [ProductsController::class, 'image']);
 
+Route::post('/addToCart', [CartsController::class, 'addToCart']);
