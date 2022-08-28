@@ -9,7 +9,7 @@ import { Card, Col, Row } from 'react-bootstrap';
 export default function UsersIndex() {
 
 
-    const [usersPagination, setusersPagination] = React.useState<pagination>()
+    const [usersPagination, setusersPagination] = React.useState<pagination<users>>()
 
 
     async function fetch(params) {

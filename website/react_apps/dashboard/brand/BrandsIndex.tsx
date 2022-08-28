@@ -9,7 +9,7 @@ import { Card, Col, Row } from 'react-bootstrap';
 export default function BrandsIndex() {
 
 
-    const [brandsPagination, setbrandsPagination] = React.useState<pagination>()
+    const [brandsPagination, setbrandsPagination] = React.useState<pagination<brands>>()
 
 
     async function fetch(params) {

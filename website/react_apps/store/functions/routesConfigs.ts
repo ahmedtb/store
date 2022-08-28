@@ -2,7 +2,7 @@ import { routes } from './urls'
 import roles from './roles'
 import LoginPage from '../LoginPage'
 import Home from '../Home'
-import Phone from '../Phone'
+import ProductShow from '../ProductShow'
 
 const configs: routeConfigsType = [
     {
@@ -19,8 +19,8 @@ const configs: routeConfigsType = [
         ],
     },
     {
-        component: Phone,
-        path: routes.phone(),
+        component: ProductShow,
+        path: routes.productShow(),
         permissions: [
         ],
     }

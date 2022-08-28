@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, Button } from 'react-bootstrap'
 import apiCallHandler from '../functions/apiCallHandler';
 
-export function getPaginationParams(pagination: pagination) {
+export function getPaginationParams(pagination: pagination<any>) {
     let params = {}
     if (pagination?.first_page_url) {
         let url = pagination.first_page_url

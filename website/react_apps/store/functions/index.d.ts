@@ -49,8 +49,8 @@ declare global {
 
     }
 
-    type pagination = {
-        data: array,
+    type pagination<T> = {
+        data: T,
         first_page_url: string,
 
     }

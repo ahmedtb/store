@@ -9,7 +9,7 @@ import { Card, Col, Row } from 'react-bootstrap';
 export default function AdminsIndex() {
 
 
-    const [adminsPagination, setadminsPagination] = React.useState<pagination>()
+    const [adminsPagination, setadminsPagination] = React.useState<pagination<admins>>()
 
 
     function fetch(params) {

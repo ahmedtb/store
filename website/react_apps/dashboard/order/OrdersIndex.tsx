@@ -9,7 +9,7 @@ import { Card, Col, Row } from 'react-bootstrap';
 export default function OrdersIndex() {
 
 
-    const [ordersPagination, setordersPagination] = React.useState<pagination>()
+    const [ordersPagination, setordersPagination] = React.useState<pagination<orders>>()
 
 
     function fetch(params) {
