@@ -12,6 +12,7 @@ class OrderFilters extends Filters
     protected $filters = [
         'name',
         'with',
+        'status',
 
     ];
 
@@ -20,9 +21,13 @@ class OrderFilters extends Filters
         return $this->builder->where('name', 'LIKE', "%{$name}%");
     }
 
+    protected function status($status)
+    {
+        return $this->builder->where('status', $status);
+    }
+
     protected function with($with)
     {
         return $this->builder->with($with);
     }
-
 }

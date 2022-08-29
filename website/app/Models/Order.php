@@ -11,7 +11,9 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $with = ['user'];
+    protected $guarded = [];
+
+    protected $with = ['user','orderItems'];
 
     public static $statuses = ['new', 'ordered', 'accepted', 'rejected', 'paid'];
 

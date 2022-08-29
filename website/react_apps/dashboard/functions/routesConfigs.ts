@@ -23,6 +23,8 @@ import OrderItemShow from '../orderItem/OrderItemShow';
 import AdminsIndex from '../admin/AdminsIndex';
 import AdminShow from '../admin/AdminShow';
 import AdminCreate from '../admin/AdminCreate';
+import OrderedOrdersIndex from '../order/OrderedOrdersIndex';
+import CartsIndex from '../order/CartsIndex';
 
 const configs: routeConfigsType = [
     {
@@ -118,6 +120,18 @@ const configs: routeConfigsType = [
     {
         component: OrdersIndex,
         path: routes.ordersIndex(),
+        permissions: [
+        ],
+    },
+    {
+        component: OrderedOrdersIndex,
+        path: routes.orderedOrdersIndex(),
+        permissions: [
+        ],
+    },
+    {
+        component: CartsIndex,
+        path: routes.cartsIndex(),
         permissions: [
         ],
     },

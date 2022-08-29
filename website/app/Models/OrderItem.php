@@ -10,7 +10,7 @@ class OrderItem extends Model
 {
     use HasFactory;
 
-    protected $with = ['order', 'product'];
+    protected $with = ['product'];
     protected $guarded = [];
 
         

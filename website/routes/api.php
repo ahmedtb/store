@@ -25,12 +25,14 @@ Route::get('/productsIndex', [ProductsController::class, 'index']);
 Route::get('/productShow/{id}', [ProductsController::class, 'show']);
 Route::get('/productImage/{id}', [ProductsController::class, 'image']);
 
-Route::post('/addToCart', [CartsController::class, 'addToCart']);
-Route::post('/getCart', [CartsController::class, 'getCart']);
 
 Route::post('/login', [UsersLoginController::class, 'login']);
 
 Route::middleware('auth:user')->group(function () {
     Route::delete('/logout', [UsersLoginController::class, 'logout']);
     Route::get('/user', [UsersLoginController::class, 'user']);
+    Route::get('/getCart', [CartsController::class, 'getCart']);
+    Route::post('/addToCart', [CartsController::class, 'addToCart']);
+    Route::post('/cartToOrdered', [CartsController::class, 'cartToOrdered']);
+   
 });

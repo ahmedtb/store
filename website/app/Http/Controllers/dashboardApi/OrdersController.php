@@ -20,7 +20,7 @@ class OrdersController extends Controller
         // return $request->all();
         $data = $request->validate([
             'user_id' => 'required|exists:users,id',
-          
+
         ]);
 
         $order = Order::create($data);
@@ -67,9 +67,9 @@ class OrdersController extends Controller
     public function delete($id)
     {
         $order = Order::where('id', $id)->first();
-        
+
         if (!$order)
-            throw ValidationException::withMessages(['id' => "you do not have order with id {$id}"]);
+            throw ValidationException::withMessages(['id' => "there is no order with id {$id}"]);
 
         $order->delete();
 
@@ -79,4 +79,26 @@ class OrdersController extends Controller
         ]);
     }
 
+    public function accept($id)
+    {
+        $order = Order::where('id', $id)->first();
+        if (!$order)
+            throw ValidationException::withMessages(['id' => "there is no order with id {$id}"]);
+        if ($order->status != 'ordered')
+            throw ValidationException::withMessages(['id' => "this is not ordered order {$id}"]);
+        $order->status = 'accepted';
+        $order->save();
+        return 'order ' . $id . ' is accepted';
+    }
+    public function reject($id)
+    {
+        $order = Order::where('id', $id)->first();
+        if (!$order)
+            throw ValidationException::withMessages(['id' => "there is no order with id {$id}"]);
+        if ($order->status != 'ordered')
+            throw ValidationException::withMessages(['id' => "this is not ordered order {$id}"]);
+        $order->status = 'rejected';
+        $order->save();
+        return 'order ' . $id . ' is rejected';
+    }
 }

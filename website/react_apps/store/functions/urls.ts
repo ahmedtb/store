@@ -27,4 +27,5 @@ export const api = {
 
     addToCart: (id: number, quantity: number) => axios.post(apiPrefix + '/addToCart', { product_id: id, quantity: quantity }),
     getCart: () => axios.get(apiPrefix + '/getCart'),
+    cartToOrdered: () => axios.post(apiPrefix + '/cartToOrdered'),
 }

@@ -18,10 +18,11 @@ class CartsController extends Controller
             'product_id' => 'required|exists:products,id',
             'quantity' => 'required|numeric'
         ]);
-
-        $newOrder = Order::where('status', 'new')->first();
+        
+        $newOrder = $request->user()->cart();
+        // return;
         if (!$newOrder)
-            $newOrder = Order::create([
+            $newOrder = $request->user()->orders()->create([
                 'user_id' => $request->user()->id,
                 'status' => 'new'
             ]);
@@ -37,7 +38,7 @@ class CartsController extends Controller
             'order_item_id' => 'required|exists:order_items,id',
         ]);
 
-        $newOrder = Order::where('status', 'new')->first();
+        $newOrder = $request->user()->cart();
         if (!$newOrder)
             throw ValidationException::withMessages(['id' => "you do not have new order"]);
 
@@ -48,21 +49,9 @@ class CartsController extends Controller
     }
 
 
-    public function index(OrderFilters $filters, Request $request)
+    public function delete(Request $request, $id)
     {
-        return Order::filter($filters)
-            ->paginate($request->withoutPagination ? Order::count() : $request->input('page_size') ?? 10)
-            ->appends(request()->except('page'));
-    }
-
-    public function show(Request $request, $id)
-    {
-        return Order::where('id', $id)->with($request->with ?? [])->first();
-    }
-
-    public function delete($id)
-    {
-        $order = Order::where('id', $id)->first();
+        $order = $request->user()->orders()->where('id', $id)->first();
 
 
 
@@ -84,5 +73,12 @@ class CartsController extends Controller
     public function getCart(Request $request)
     {
         return $request->user()->cart();
+    }
+
+    public function cartToOrdered(Request $request){
+        $cart = $request->user()->cart();
+        $cart->status = 'ordered';
+        $cart->save();
+        return 'cart ' . $cart->id . ' is ordered';
     }
 }

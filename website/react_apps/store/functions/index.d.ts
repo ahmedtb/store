@@ -123,7 +123,8 @@ declare global {
         id: number,
         user_id: number,
         user: user,
-        order_items: Array<orderItem>
+        order_items: Array<orderItem>,
+        status: string
     }
 
     type orders = Array<order>

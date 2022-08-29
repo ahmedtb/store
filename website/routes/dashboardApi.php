@@ -50,13 +50,15 @@ Route::get('/orderShow/{id}', [OrdersController::class, 'show']);
 Route::delete('/orderDelete/{id}', [OrdersController::class, 'delete']);
 Route::put('/orderEdit/{id}', [OrdersController::class, 'update']);
 Route::post('/orderCreate', [OrdersController::class, 'create']);
-
+Route::put('/orderAccept/{id}', [OrdersController::class, 'accept']);
+Route::put('/orderReject/{id}', [OrdersController::class, 'reject']);
 
 Route::get('/orderItemsIndex', [OrderItemsController::class, 'index']);
 Route::get('/orderItemShow/{id}', [OrderItemsController::class, 'show']);
 Route::delete('/orderItemDelete/{id}', [OrderItemsController::class, 'delete']);
 Route::put('/orderItemEdit/{id}', [OrderItemsController::class, 'update']);
 Route::post('/orderItemCreate', [OrderItemsController::class, 'create']);
+
 
 Route::get('/adminsIndex', [AdminsController::class, 'index']);
 Route::get('/adminShow/{id}', [AdminsController::class, 'show']);

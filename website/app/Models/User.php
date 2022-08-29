@@ -61,10 +61,9 @@ class User extends Authenticatable
     {
         $count = $this->orders()->where('status', 'new')->count();
         if ($count > 1 && $count != 0) {
-            $this->orders()->where('status', 'new')->latests()->limit($count - 1)->delete();
+            $this->orders()->where('status', 'new')->latest()->limit($count - 1)->delete();
         }
-
+        // return null;
         return $this->orders()->where('status', 'new')->first();
-
     }
 }

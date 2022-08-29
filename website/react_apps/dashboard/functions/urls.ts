@@ -17,6 +17,8 @@ export const routes = {
     orderShow: (id?: number) => id ? (routesPrefix + '/orderShow/' + id) : routesPrefix + '/orderShow/:id',
     ordersIndex: () => routesPrefix + '/ordersIndex/',
     orderCreate: () => routesPrefix + '/orderCreate/',
+    orderedOrdersIndex: () => routesPrefix + '/orderedOrdersIndex/',
+    cartsIndex: () => routesPrefix + '/cartsIndex/',
         
     orderItemShow: (id?: number) => id ? (routesPrefix + '/orderItemShow/' + id) : routesPrefix + '/orderItemShow/:id',
     orderItemsIndex: () => routesPrefix + '/orderItemsIndex/',
@@ -58,6 +60,8 @@ export const api = {
     orderCreate: (params) => axios.post(apiPrefix + '/orderCreate/', params),
     editOrder: (id: number, params: object) => axios.put(apiPrefix + 'editOrder/' + id, params),
     orderDelete: (id: number) => axios.delete(apiPrefix + '/orderDelete/' + id),
+    orderAccept: (id: number) => axios.put(apiPrefix + '/orderAccept/' + id),
+    orderReject: (id: number) => axios.put(apiPrefix + '/orderReject/' + id),
 
     
     orderItemShow: (id: number) => axios.get(apiPrefix + '/orderItemShow/' + id),

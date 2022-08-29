@@ -9,7 +9,7 @@ import { intersection } from 'lodash'
 import { Dispatch } from 'redux';
 
 const calculateAllowedRoutes = (user: user) => {
-    const roles = user?.roles
+    const roles = user != null ? ['customer'] : []
     return routesConfigs.filter(
         ({ permissions }) => {
             if (!permissions) return true;

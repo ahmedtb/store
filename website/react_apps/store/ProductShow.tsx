@@ -3,6 +3,7 @@ import { api } from './functions/urls';
 import { useParams } from 'react-router'
 import apiCallHandler from './functions/apiCallHandler';
 import VarInput from '../components/VarInput';
+import { updateCart } from './redux/stateFunctions';
 
 function ProductShow() {
     const { id } = useParams();
@@ -25,7 +26,7 @@ function ProductShow() {
     const addToCart = () => {
         apiCallHandler(
             () => api.addToCart(+id, quantity),
-            (data) => { alert(data); },
+            (data) => { alert(data); updateCart() },
             'ProductShow addToCart',
             true
         )
