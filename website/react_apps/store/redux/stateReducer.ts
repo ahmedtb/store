@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 
-const INITIAL_STATE: stateType = {
+const INITIAL_STATE: storeState = {
     user: null,
     allowedRoutes: [],
     notification: null,
+    cart: null
 };
 
 const stateReducer = (state = INITIAL_STATE, action: action) => {
@@ -24,7 +25,11 @@ const stateReducer = (state = INITIAL_STATE, action: action) => {
                 ...state,
                 notification: action.notification,
             };
-
+        case 'refresh-cart':
+            return {
+                ...state,
+                cart: action.cart,
+            };
 
 
         default:

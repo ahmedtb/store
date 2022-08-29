@@ -53,7 +53,7 @@ function SideMenue(props) {
 
 }
 
-const mapStateToProps = (state: { state: stateType }) => {
+const mapStateToProps = (state: { state: dashboardState }) => {
     return {
         user: state.state.user,
         allowedRoutes: state.state.allowedRoutes,
@@ -63,7 +63,7 @@ const mapStateToProps = (state: { state: stateType }) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        refreshUser: (user: userType) => dispatch(refreshUser(user)),
+        refreshUser: (user: user) => dispatch(refreshUser(user)),
     }
 }
 

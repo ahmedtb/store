@@ -7,9 +7,9 @@ import { connect } from "react-redux"
 import NotificationsBell from './NotificationsBell';
 import apiCallHandler from '../functions/apiCallHandler';
 import { Dispatch } from 'redux';
+import CartBell from './CartBell';
 
-
-function TopMenue(props: { refreshUser: typeof refreshUser, user: userType }) {
+function TopMenue(props: { refreshUser: typeof refreshUser, user: user }) {
 
 
 
@@ -33,7 +33,7 @@ function TopMenue(props: { refreshUser: typeof refreshUser, user: userType }) {
 
                         <div className='me-auto'>
                             <Nav className='fw-bold align-items-center'>
-
+                                <CartBell />
                                 <NotificationsBell />
                                 {
                                     props.user ? (
@@ -58,7 +58,7 @@ function TopMenue(props: { refreshUser: typeof refreshUser, user: userType }) {
 }
 
 
-const mapStateToProps = (state: { state: stateType }) => {
+const mapStateToProps = (state: { state: storeState }) => {
     return {
         user: state.state.user,
         allowedRoutes: state.state.allowedRoutes,
@@ -68,7 +68,7 @@ const mapStateToProps = (state: { state: stateType }) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        refreshUser: (user: userType) => dispatch(refreshUser(user)),
+        refreshUser: (user: user) => dispatch(refreshUser(user)),
     }
 }
 

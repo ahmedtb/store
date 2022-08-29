@@ -3,15 +3,10 @@ export { };
 declare global {
     interface Window {
         localization: any;
-        user: userType;
+        user: user;
         Echo: any;
 
     }
-
-    type userType = {
-        name: string,
-        roles: Array<string>
-    } | null
 
     type routeType = {
         path: string,
@@ -20,17 +15,27 @@ declare global {
     type allowedRoutesType = Array<routeType>
     type notificationType = object | null
 
-    type stateType = {
-        user: userType,
+    type storeState = {
+        user: user,
         allowedRoutes: allowedRoutesType,
-        notification: notificationType
+        notification: notificationType,
+        cart: order
+    }
+
+    
+    type dashboardState = {
+        user: user,
+        allowedRoutes: allowedRoutesType,
+        notification: notificationType,
     }
 
     type action = {
         type: string,
-        user: userType,
+        user: user,
         allowedRoutes: allowedRoutesType,
-        notification: notificationType
+        notification: notificationType,
+        cart: order
+
     }
     type routeConfigType = {
         component: React.ReactNode | ConnectedComponent
@@ -77,6 +82,7 @@ declare global {
         name: string,
         email: string,
         phone: string,
+        roles: Array<string>
 
     }
 
@@ -116,7 +122,8 @@ declare global {
     type order = {
         id: number,
         user_id: number,
-        user: user
+        user: user,
+        order_items: Array<orderItem>
     }
 
     type orders = Array<order>

@@ -55,7 +55,7 @@ function NotificationsBell(props) {
 
 
 
-const mapStateToProps = (state: { state: stateType }) => {
+const mapStateToProps = (state: { state: storeState }) => {
     return {
         user: state.state.user,
         notification: state.state.notification,

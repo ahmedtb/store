@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import LoginPage from './LoginPage'
 import { Dispatch } from 'redux'
 
-function NotFound(props: { user: userType }) {
+function NotFound(props: { user: user }) {
 
     if (!props.user) {
         return <LoginPage />
@@ -17,7 +17,7 @@ function NotFound(props: { user: userType }) {
 }
 
 
-const mapStateToProps = (state: { state: stateType }) => {
+const mapStateToProps = (state: { state: dashboardState }) => {
     return {
         user: state.state.user,
     }

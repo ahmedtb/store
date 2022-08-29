@@ -1,5 +1,5 @@
 
-export const refreshUser = (user: userType) => {
+export const refreshUser = (user: user) => {
     return {
         type: 'refresh-user',
         user: user

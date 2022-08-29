@@ -79,4 +79,10 @@ class CartsController extends Controller
             'id' => $id
         ]);
     }
+
+    
+    public function getCart(Request $request)
+    {
+        return $request->user()->cart();
+    }
 }

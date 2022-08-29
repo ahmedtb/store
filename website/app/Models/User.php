@@ -51,4 +51,20 @@ class User extends Authenticatable
     {
         return $filters->apply($query);
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function cart()
+    {
+        $count = $this->orders()->where('status', 'new')->count();
+        if ($count > 1 && $count != 0) {
+            $this->orders()->where('status', 'new')->latests()->limit($count - 1)->delete();
+        }
+
+        return $this->orders()->where('status', 'new')->first();
+
+    }
 }

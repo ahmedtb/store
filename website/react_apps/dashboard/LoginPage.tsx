@@ -6,7 +6,7 @@ import { refreshUser } from './redux/stateActions'
 import { connect } from "react-redux"
 import { Dispatch } from 'redux';
 
-function LoginPage(props: { user: userType, refreshUser: typeof refreshUser }) {
+function LoginPage(props: { user: user, refreshUser: typeof refreshUser }) {
     const [username, setusername] = React.useState('')
     const [password, setpassword] = React.useState('')
 
@@ -54,7 +54,7 @@ function LoginPage(props: { user: userType, refreshUser: typeof refreshUser }) {
 
 
 
-const mapStateToProps = (state: { state: stateType }) => {
+const mapStateToProps = (state: { state: dashboardState }) => {
     return {
         user: state.state.user,
     }
@@ -62,7 +62,7 @@ const mapStateToProps = (state: { state: stateType }) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        refreshUser: (user: userType) => dispatch(refreshUser(user)),
+        refreshUser: (user: user) => dispatch(refreshUser(user)),
     }
 }
 

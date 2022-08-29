@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-const INITIAL_STATE: stateType = {
+const INITIAL_STATE: dashboardState = {
     user: null,
     allowedRoutes: [],
     notification: null,

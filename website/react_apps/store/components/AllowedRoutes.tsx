@@ -8,7 +8,7 @@ import { connect } from "react-redux"
 import { intersection } from 'lodash'
 import { Dispatch } from 'redux';
 
-const calculateAllowedRoutes = (user: userType) => {
+const calculateAllowedRoutes = (user: user) => {
     const roles = user?.roles
     return routesConfigs.filter(
         ({ permissions }) => {
@@ -18,7 +18,7 @@ const calculateAllowedRoutes = (user: userType) => {
         })
 }
 
-function AllowedRoutes(props: { user: userType, allowedRoutes: allowedRoutesType, refreshUser: typeof refreshUser, setAllowedRoutes: typeof setAllowedRoutes }) {
+function AllowedRoutes(props: { user: user, allowedRoutes: allowedRoutesType, refreshUser: typeof refreshUser, setAllowedRoutes: typeof setAllowedRoutes }) {
 
     async function isLoggedIn() {
         try {
@@ -71,7 +71,7 @@ function AllowedRoutes(props: { user: userType, allowedRoutes: allowedRoutesType
 
 
 
-const mapStateToProps = (state: { state: stateType }) => {
+const mapStateToProps = (state: { state: storeState }) => {
     return {
         user: state.state.user,
         allowedRoutes: state.state.allowedRoutes,
@@ -81,7 +81,7 @@ const mapStateToProps = (state: { state: stateType }) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        refreshUser: (user: userType) => dispatch(refreshUser(user)),
+        refreshUser: (user: user) => dispatch(refreshUser(user)),
         setAllowedRoutes: (allowedRoutes: allowedRoutesType) => dispatch(setAllowedRoutes(allowedRoutes)),
     }
 }

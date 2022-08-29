@@ -6,13 +6,13 @@ import { refreshUser } from './redux/stateActions'
 import { connect } from "react-redux"
 import { Dispatch } from 'redux';
 
-function LoginPage(props: { user: userType, refreshUser: typeof refreshUser }) {
-    const [username, setusername] = React.useState('')
+function LoginPage(props: { user: user, refreshUser: typeof refreshUser }) {
+    const [phone, setphone] = React.useState('')
     const [password, setpassword] = React.useState('')
 
-    async function handleLogin(username: string, password: string) {
+    async function handleLogin(phone: string, password: string) {
         apiCallHandler(
-            async () => await api.login(username, password),
+            async () => await api.login(phone, password),
             (response) => { props.refreshUser(response.data); },
             'dashboard login page',
             true
@@ -31,9 +31,9 @@ function LoginPage(props: { user: userType, refreshUser: typeof refreshUser }) {
                     <input
                         type='username'
                         className='form-control my-2'
-                        placeholder={window.localization.username}
-                        onChange={e => setusername(e.target.value)}
-                        onKeyPress={e => e.key === 'Enter' && handleLogin(username, password)}
+                        placeholder={window.localization.phone}
+                        onChange={e => setphone(e.target.value)}
+                        onKeyPress={e => e.key === 'Enter' && handleLogin(phone, password)}
                     />
 
                     <input
@@ -41,9 +41,9 @@ function LoginPage(props: { user: userType, refreshUser: typeof refreshUser }) {
                         className='form-control my-2'
                         onChange={e => setpassword(e.target.value)}
                         placeholder={window.localization.password}
-                        onKeyPress={e => e.key === 'Enter' && handleLogin(username, password)}
+                        onKeyPress={e => e.key === 'Enter' && handleLogin(phone, password)}
                     />
-                    <button type="button" className="btn btn-success w-100 my-1" onClick={() => handleLogin(username, password)}>{window.localization.login}</button>
+                    <button type="button" className="btn btn-success w-100 my-1" onClick={() => handleLogin(phone, password)}>{window.localization.login}</button>
 
                 </div>
             </div>
@@ -54,7 +54,7 @@ function LoginPage(props: { user: userType, refreshUser: typeof refreshUser }) {
 
 
 
-const mapStateToProps = (state: { state: stateType }) => {
+const mapStateToProps = (state: { state: storeState }) => {
     return {
         user: state.state.user,
     }
@@ -62,7 +62,7 @@ const mapStateToProps = (state: { state: stateType }) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        refreshUser: (user: userType) => dispatch(refreshUser(user)),
+        refreshUser: (user: user) => dispatch(refreshUser(user)),
     }
 }
 

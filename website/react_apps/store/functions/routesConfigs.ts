@@ -3,6 +3,7 @@ import roles from './roles'
 import LoginPage from '../LoginPage'
 import Home from '../Home'
 import ProductShow from '../ProductShow'
+import CartItems from '../cart/CartItems'
 
 const configs: routeConfigsType = [
     {
@@ -22,6 +23,14 @@ const configs: routeConfigsType = [
         component: ProductShow,
         path: routes.productShow(),
         permissions: [
+        ],
+    },
+    
+    {
+        component: CartItems,
+        path: routes.cartItems(),
+        permissions: [
+            roles.customer
         ],
     }
 ]
