@@ -12,6 +12,7 @@ export const routes = {
 
     notifications: () => routesPrefix + '/notifications',
     cartItems: () => routesPrefix + '/cartItems',
+    productsFiltering: () => routesPrefix + '/productsFiltering',
 }
 
 const apiPrefix = '/api'
@@ -19,7 +20,7 @@ export const api = {
     currentLanguage: () => axios.get('/currentLanguage'),
     getUser: () => axios.get(apiPrefix + '/user'),
     logout: () => axios.get(apiPrefix + '/logout'),
-    login: (phone: string, password: string) => axios.post(apiPrefix + '/login', {  phone: phone, password: password }),
+    login: (phone: string, password: string) => axios.post(apiPrefix + '/login', { phone: phone, password: password }),
 
     productsIndex: (params?) => axios.get(apiPrefix + '/productsIndex/', { params: params }),
     productShow: (id: number) => axios.get(apiPrefix + '/productShow/' + id),

@@ -8,8 +8,10 @@ import NotificationsBell from './NotificationsBell';
 import apiCallHandler from '../functions/apiCallHandler';
 import { Dispatch } from 'redux';
 import CartBell from './CartBell';
+import { Link } from 'react-router-dom'
 
 function TopMenue(props: { refreshUser: typeof refreshUser, user: user }) {
+    const [q, setq] = React.useState<string>()
 
 
 
@@ -25,12 +27,14 @@ function TopMenue(props: { refreshUser: typeof refreshUser, user: user }) {
     return (
         <Navbar bg="light" expand="md" className='py-0 px-0'>
             <Container>
-                <Navbar.Brand className='d-flex align-items-center'>
-                    <img src='https://previews.123rf.com/images/distrologo/distrologo1902/distrologo190200712/117609654-phone-shop-logo-design-template-gadget-shop-logo-design.jpg' width={'10%'} />
-                    <div className='fs-2 ms-3'>
-                        Phone Store
-                    </div>
-                </Navbar.Brand>
+                <LinkContainer to={routes.home()}>
+                    <Navbar.Brand className='d-flex align-items-center'>
+                        <img src='https://previews.123rf.com/images/distrologo/distrologo1902/distrologo190200712/117609654-phone-shop-logo-design-template-gadget-shop-logo-design.jpg' width={'10%'} />
+                        <div className='fs-2 ms-3'>
+                            Phone Store
+                        </div>
+                    </Navbar.Brand>
+                </LinkContainer>
 
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse className="" id="basic-navbar-nav">
@@ -41,15 +45,16 @@ function TopMenue(props: { refreshUser: typeof refreshUser, user: user }) {
                     <Nav className="me-auto my-2 my-lg-0"
                         style={{ maxHeight: '100px' }}
                         navbarScroll>
-                        <Form className="col d-flex">
+                        <div className="col d-flex">
                             <Form.Control
                                 type="search"
                                 placeholder="Search"
                                 className="me-2"
                                 aria-label="Search"
+                                onChange={e => setq(e.target.value)}
                             />
-                            <Button variant="outline-success">Search</Button>
-                        </Form>
+                            <Link className="btn btn-outline-success" to={routes.productsFiltering() + '?q=' + q} >Search</Link>
+                        </div>
                         <CartBell />
                         {/* <NotificationsBell /> */}
                         {

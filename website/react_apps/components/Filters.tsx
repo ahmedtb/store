@@ -1,6 +1,7 @@
 import React from 'react'
 import { Form, Button } from 'react-bootstrap'
 import apiCallHandler from '../functions/apiCallHandler';
+import { AxiosResponse } from "axios"
 
 export function getPaginationParams(pagination: pagination<any>) {
     let params = {}
@@ -168,13 +169,13 @@ export function DateFilter(props) {
     )
 }
 
-export function TextFilter(props) {
+export function TextFilter(props: { property: string, label: string, apiCall: (params) => Promise<AxiosResponse>, useState: Array<any>, initValue?: string }) {
     const property = props.property
     const label = props.label
     const apiCall = props.apiCall
     const [data, setdata] = props.useState
 
-    const [text, settext] = React.useState(null)
+    const [text, settext] = React.useState(props.initValue ?? null)
 
     function fetchData(params = null) {
 

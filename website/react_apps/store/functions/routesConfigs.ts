@@ -4,6 +4,7 @@ import LoginPage from '../LoginPage'
 import Home from '../Home'
 import ProductShow from '../ProductShow'
 import CartItems from '../cart/CartItems'
+import ProductsFiltering from '../ProductsFiltering';
 
 const configs: routeConfigsType = [
     {
@@ -31,6 +32,14 @@ const configs: routeConfigsType = [
         path: routes.cartItems(),
         permissions: [
             roles.customer
+        ],
+    },
+    
+    {
+        component: ProductsFiltering,
+        path: routes.productsFiltering(),
+        permissions: [
+            
         ],
     }
 ]

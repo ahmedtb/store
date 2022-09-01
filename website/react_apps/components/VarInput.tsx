@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default function VarInput(props: { variable?: any, setvariable: (t: any) => void, className: string }) {
+export default function VarInput(props: { variable?: any, setvariable: (t: any) => void, className?: string }) {
     
     const variable = props.variable
     const setvariable = props.setvariable

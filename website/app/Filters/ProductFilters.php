@@ -13,6 +13,9 @@ class ProductFilters extends Filters
         'name',
         'with',
         'inRandomOrder',
+        'q',
+        'priceFrom',
+        'priceTo',
 
     ];
 
@@ -29,6 +32,21 @@ class ProductFilters extends Filters
     protected function inRandomOrder()
     {
         return $this->builder->inRandomOrder();
+    }
+    
+    protected function q($q)
+    {
+        return $this->builder->where('name', 'LIKE', "%{$q}%");
+    }
+        
+    protected function priceFrom($priceFrom)
+    {
+        return $this->builder->where('price', '>=', $priceFrom);
+    }
+        
+    protected function priceTo($priceTo)
+    {
+        return $this->builder->where('price', '<=', $priceTo);
     }
 
 }
