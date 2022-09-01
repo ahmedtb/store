@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from "react-redux"
-import LoginPage from './LoginPage'
+import LoginPage from './user/LoginPage'
 import { Dispatch } from 'redux'
 
 function NotFound(props: { user: user }) {

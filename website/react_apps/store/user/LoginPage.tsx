@@ -1,33 +1,30 @@
 import React from 'react'
-import { api, routes } from './functions/urls'
+import { api, routes } from '../functions/urls'
 import { Navigate } from 'react-router-dom'
-import apiCallHandler from './functions/apiCallHandler';
-import { refreshUser } from './redux/stateActions'
+import apiCallHandler from '../functions/apiCallHandler';
+import { refreshUser } from '../redux/stateActions'
 import { connect } from "react-redux"
 import { Dispatch } from 'redux';
+import { useNavigate } from "react-router-dom"
 
 function LoginPage(props: { user: user, refreshUser: typeof refreshUser }) {
     const [phone, setphone] = React.useState('')
     const [password, setpassword] = React.useState('')
+    const navigate = useNavigate()
 
     async function handleLogin(phone: string, password: string) {
         apiCallHandler(
             async () => await api.login(phone, password),
-            (response) => { props.refreshUser(response.data); },
+            (response) => { props.refreshUser(response.data); navigate(routes.home()); },
             'dashboard login page',
             true
         )
     }
 
-    if (props.user) {
-        return <Navigate to={routes.home()} />
-    }
-
     return (
         <div className='col-5 mx-auto p-3'>
-            <div className='card'>
-                <div className='card-header text-center fs-5'>{window.localization.controlPanel}</div>
-                <div className='card-body'>
+            <div className=''>
+
                     <input
                         type='username'
                         className='form-control my-2'
@@ -45,7 +42,6 @@ function LoginPage(props: { user: user, refreshUser: typeof refreshUser }) {
                     />
                     <button type="button" className="btn btn-success w-100 my-1" onClick={() => handleLogin(phone, password)}>{window.localization.login}</button>
 
-                </div>
             </div>
 
         </div>

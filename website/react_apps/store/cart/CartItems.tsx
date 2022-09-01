@@ -22,11 +22,12 @@ function CartItems(props: { cart: order }) {
         )
     }
 
-    return <div>
+    return <div className='bg-white'>
         {
             props.cart?.order_items?.map((item, index) => {
-                return <div key={index}>
+                return <div key={index} className='d-flex border p-2 m-2 rounded'>
                     <img src={api.productImage(item.product_id)} className='w-25' />
+                    <div>
                     <div>
                         product name {item?.product?.name}
                     </div>
@@ -39,6 +40,8 @@ function CartItems(props: { cart: order }) {
                     <div>
                         item value {item?.value}
                     </div>
+                    </div>
+
                 </div>
             })
         }

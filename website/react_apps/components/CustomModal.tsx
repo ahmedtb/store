@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Modal } from 'react-bootstrap'
 
 
-export default function CustomModal(props) {
+export default function CustomModal(props: { label: string, children: childrenType, buttonClass?: string }) {
     const label = props.label
     const children = props.children
     const buttonClass = props.buttonClass

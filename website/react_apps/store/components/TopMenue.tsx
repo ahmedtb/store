@@ -2,7 +2,7 @@ import React from 'react'
 import { routes, api } from '../functions/urls'
 import { Navbar, Nav, NavDropdown, Container, Button, Form } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
-import { refreshUser } from '../redux/stateActions';
+import { refreshUser, refreshCart } from '../redux/stateActions';
 import { connect } from "react-redux"
 import NotificationsBell from './NotificationsBell';
 import apiCallHandler from '../functions/apiCallHandler';
@@ -10,7 +10,7 @@ import { Dispatch } from 'redux';
 import CartBell from './CartBell';
 import { Link } from 'react-router-dom'
 
-function TopMenue(props: { refreshUser: typeof refreshUser, user: user }) {
+function TopMenue(props: { refreshUser: typeof refreshUser, user: user, refreshCart: typeof refreshCart }) {
     const [q, setq] = React.useState<string>()
 
 
@@ -18,9 +18,9 @@ function TopMenue(props: { refreshUser: typeof refreshUser, user: user }) {
     async function logout() {
         apiCallHandler(
             api.logout,
-            (data) => props.refreshUser(null),
+            (data) => { props.refreshUser(null); props.refreshCart(null) },
             'TopMenue logout',
-            false
+            true
         )
     }
 
@@ -45,7 +45,7 @@ function TopMenue(props: { refreshUser: typeof refreshUser, user: user }) {
                     <Nav className="me-auto my-2 my-lg-0"
                         style={{ maxHeight: '100px' }}
                         navbarScroll>
-                        <div className="col d-flex">
+                        <div className="d-flex">
                             <Form.Control
                                 type="search"
                                 placeholder="Search"
@@ -60,6 +60,10 @@ function TopMenue(props: { refreshUser: typeof refreshUser, user: user }) {
                         {
                             props.user ? (
                                 <NavDropdown title={props.user.name}>
+                                    <LinkContainer to={routes.myOrders()}>
+                                        <NavDropdown.Item  >{window.localization.orders}</NavDropdown.Item>
+                                    </LinkContainer>
+
                                     <NavDropdown.Item onClick={logout} >{window.localization.logout}</NavDropdown.Item>
                                 </NavDropdown>
                             ) : (
@@ -89,6 +93,8 @@ const mapStateToProps = (state: { state: storeState }) => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         refreshUser: (user: user) => dispatch(refreshUser(user)),
+        refreshCart: (cart: cart) => dispatch(refreshCart(cart)),
+
     }
 }
 

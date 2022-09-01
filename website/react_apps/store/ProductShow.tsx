@@ -4,6 +4,7 @@ import { useParams } from 'react-router'
 import apiCallHandler from './functions/apiCallHandler';
 import VarInput from '../components/VarInput';
 import { updateCart } from './redux/stateFunctions';
+import LoginPageModal from './user/LoginPageModal';
 
 function ProductShow() {
     const { id } = useParams();
@@ -55,7 +56,9 @@ function ProductShow() {
                             </div>
 
                             <VarInput className='form-control m-2' variable={quantity} setvariable={setquantity} />
-                            <button onClick={addToCart} className='btn btn-success'>add to the cart</button>
+                            <LoginPageModal label='add to the cart'>
+                                <button onClick={addToCart} className='btn btn-success'>add to the cart</button>
+                            </LoginPageModal>
                         </div>
 
 

@@ -1,10 +1,11 @@
 import { routes } from './urls'
 import roles from './roles'
-import LoginPage from '../LoginPage'
+import LoginPage from '../user/LoginPage'
 import Home from '../Home'
 import ProductShow from '../ProductShow'
 import CartItems from '../cart/CartItems'
 import ProductsFiltering from '../ProductsFiltering';
+import MyOrders from '../order/MyOrders'
 
 const configs: routeConfigsType = [
     {
@@ -41,7 +42,18 @@ const configs: routeConfigsType = [
         permissions: [
             
         ],
+    },
+    
+    {
+        component: MyOrders,
+        path: routes.myOrders(),
+        permissions: [
+            roles.customer
+            
+        ],
     }
+
+    
 ]
 
 export default configs

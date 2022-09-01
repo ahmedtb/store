@@ -22,7 +22,7 @@ declare global {
         cart: order
     }
 
-    
+
     type dashboardState = {
         user: user,
         allowedRoutes: allowedRoutesType,
@@ -49,6 +49,7 @@ declare global {
         | string
         | string[]
         | number
+        | ComponentType<never>
 
     type notification = {
 
@@ -126,6 +127,7 @@ declare global {
         order_items: Array<orderItem>,
         status: string
     }
+    type cart = order
 
     type orders = Array<order>
 

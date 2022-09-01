@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\CartsController;
+use App\Http\Controllers\api\OrdersController;
 use App\Http\Controllers\api\ProductsController;
 use App\Http\Controllers\api\UsersLoginController;
 
@@ -34,5 +35,7 @@ Route::middleware('auth:user')->group(function () {
     Route::get('/getCart', [CartsController::class, 'getCart']);
     Route::post('/addToCart', [CartsController::class, 'addToCart']);
     Route::post('/cartToOrdered', [CartsController::class, 'cartToOrdered']);
-   
+    
+    Route::get('/myOrders', [OrdersController::class, 'index']);
+
 });

@@ -45,6 +45,8 @@ export default new LocalizedStrings({
         admins: 'admins',
         admin: 'admin',
         password: 'password',
+        phone:'phone',
+        phones:'phones',
 
     },
     ar: {
