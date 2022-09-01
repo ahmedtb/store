@@ -1,6 +1,6 @@
 import React from 'react'
 import { routes, api } from '../functions/urls'
-import { Navbar, Nav, NavDropdown, Container, Col } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, Container, Button, Form } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
 import { refreshUser } from '../redux/stateActions';
 import { connect } from "react-redux"
@@ -23,33 +23,48 @@ function TopMenue(props: { refreshUser: typeof refreshUser, user: user }) {
     }
 
     return (
-        <Navbar bg="green" expand="lg" className='py-0 px-0'>
-            <Container fluid>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse className="row align-items-center" id="basic-navbar-nav">
-
-
-                    <div className="col d-flex justify-content-between align-items-center">
-
-                        <div className='me-auto'>
-                            <Nav className='fw-bold align-items-center'>
-                                <CartBell />
-                                <NotificationsBell />
-                                {
-                                    props.user ? (
-                                        <NavDropdown title={props.user.name}>
-                                            <NavDropdown.Item onClick={logout} >{window.localization.logout}</NavDropdown.Item>
-                                        </NavDropdown>
-                                    ) : (
-                                        <LinkContainer to={routes.loginPage()}>
-                                            <Nav.Link >{window.localization.login}</Nav.Link>
-                                        </LinkContainer>
-                                    )
-                                }
-
-                            </Nav>
-                        </div>
+        <Navbar bg="light" expand="md" className='py-0 px-0'>
+            <Container>
+                <Navbar.Brand className='d-flex align-items-center'>
+                    <img src='https://previews.123rf.com/images/distrologo/distrologo1902/distrologo190200712/117609654-phone-shop-logo-design-template-gadget-shop-logo-design.jpg' width={'10%'} />
+                    <div className='fs-2 ms-3'>
+                        Phone Store
                     </div>
+                </Navbar.Brand>
+
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse className="" id="basic-navbar-nav">
+
+
+
+
+                    <Nav className="me-auto my-2 my-lg-0"
+                        style={{ maxHeight: '100px' }}
+                        navbarScroll>
+                        <Form className="col d-flex">
+                            <Form.Control
+                                type="search"
+                                placeholder="Search"
+                                className="me-2"
+                                aria-label="Search"
+                            />
+                            <Button variant="outline-success">Search</Button>
+                        </Form>
+                        <CartBell />
+                        {/* <NotificationsBell /> */}
+                        {
+                            props.user ? (
+                                <NavDropdown title={props.user.name}>
+                                    <NavDropdown.Item onClick={logout} >{window.localization.logout}</NavDropdown.Item>
+                                </NavDropdown>
+                            ) : (
+                                <LinkContainer to={routes.loginPage()}>
+                                    <Nav.Link >{window.localization.login}</Nav.Link>
+                                </LinkContainer>
+                            )
+                        }
+
+                    </Nav>
 
                 </Navbar.Collapse>
             </Container>

@@ -12,6 +12,7 @@ class ProductFilters extends Filters
     protected $filters = [
         'name',
         'with',
+        'inRandomOrder',
 
     ];
 
@@ -23,6 +24,11 @@ class ProductFilters extends Filters
     protected function with($with)
     {
         return $this->builder->with($with);
+    }
+
+    protected function inRandomOrder()
+    {
+        return $this->builder->inRandomOrder();
     }
 
 }

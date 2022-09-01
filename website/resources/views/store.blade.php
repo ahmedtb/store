@@ -22,6 +22,7 @@
 
 <body>
     <div id='store' />
+    
 </body>
 
 </html>
