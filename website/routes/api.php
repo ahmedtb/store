@@ -6,6 +6,7 @@ use App\Http\Controllers\api\CartsController;
 use App\Http\Controllers\api\OrdersController;
 use App\Http\Controllers\api\ProductsController;
 use App\Http\Controllers\api\UsersLoginController;
+use App\Http\Controllers\api\NotificationsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +39,7 @@ Route::middleware('auth:user')->group(function () {
     
     Route::get('/myOrders', [OrdersController::class, 'index']);
 
+    Route::get('/notifications', [NotificationsController::class, 'index']);
+
+    
 });

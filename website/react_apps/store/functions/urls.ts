@@ -14,6 +14,7 @@ export const routes = {
     cartItems: () => routesPrefix + '/cartItems',
     productsFiltering: () => routesPrefix + '/productsFiltering',
     myOrders: () => routesPrefix + '/myOrders',
+
 }
 
 const apiPrefix = '/api'
@@ -33,4 +34,6 @@ export const api = {
 
     myOrders: (params?: object) => axios.get(apiPrefix + '/myOrders', { params: params }),
     orderShow: (id: number) => axios.get(apiPrefix + '/orderShow/' + id),
+
+    notificationsIndex: (params?: object) => axios.get(apiPrefix + '/notifications', { params: params }),
 }

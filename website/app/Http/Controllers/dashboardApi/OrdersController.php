@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\DashboardAPI;
 
-use App\Filters\ClaimFilters;
 use App\Models\Claim;
+use App\Models\Order;
+use App\Models\Service;
 use App\Rules\Base64Rule;
 use Illuminate\Http\Request;
-use App\Models\Order;
-use App\Http\Controllers\Controller;
+use App\Filters\ClaimFilters;
 use App\Filters\OrderFilters;
-use App\Models\Service;
+use App\Http\Controllers\Controller;
+use App\Notifications\OrderAccepted;
 use Illuminate\Validation\ValidationException;
 
 class OrdersController extends Controller
@@ -88,6 +89,9 @@ class OrdersController extends Controller
             throw ValidationException::withMessages(['id' => "this is not ordered order {$id}"]);
         $order->status = 'accepted';
         $order->save();
+
+        $order->user->notify(new OrderAccepted($order));
+
         return 'order ' . $id . ' is accepted';
     }
     public function reject($id)

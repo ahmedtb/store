@@ -4,7 +4,7 @@ import { Navbar, Nav, NavDropdown, Container, Button, Form } from 'react-bootstr
 import { LinkContainer } from 'react-router-bootstrap'
 import { refreshUser, refreshCart } from '../redux/stateActions';
 import { connect } from "react-redux"
-import NotificationsBell from './NotificationsBell';
+import NotificationsBell from '../notification/NotificationsBell';
 import apiCallHandler from '../functions/apiCallHandler';
 import { Dispatch } from 'redux';
 import CartBell from './CartBell';
@@ -56,7 +56,7 @@ function TopMenue(props: { refreshUser: typeof refreshUser, user: user, refreshC
                             <Link className="btn btn-outline-success" to={routes.productsFiltering() + '?q=' + q} >Search</Link>
                         </div>
                         <CartBell />
-                        {/* <NotificationsBell /> */}
+                        <NotificationsBell />
                         {
                             props.user ? (
                                 <NavDropdown title={props.user.name}>

@@ -2,7 +2,7 @@ import React from 'react'
 import { routes, api } from '../functions/urls'
 import { refreshNotification } from '../redux/stateActions'
 import { connect } from "react-redux"
-import AllowedLink from './AllowedLink';
+import AllowedLink from '../components/AllowedLink';
 import { useLocation } from 'react-router-dom'
 import BellIcon from 'react-bell-icon';
 import { Dispatch } from 'redux';

@@ -6,6 +6,7 @@ import ProductShow from '../ProductShow'
 import CartItems from '../cart/CartItems'
 import ProductsFiltering from '../ProductsFiltering';
 import MyOrders from '../order/MyOrders'
+import Notifications from '../notification/Notifications'
 
 const configs: routeConfigsType = [
     {
@@ -47,6 +48,15 @@ const configs: routeConfigsType = [
     {
         component: MyOrders,
         path: routes.myOrders(),
+        permissions: [
+            roles.customer
+            
+        ],
+    },
+    
+    {
+        component: Notifications,
+        path: routes.notifications(),
         permissions: [
             roles.customer
             

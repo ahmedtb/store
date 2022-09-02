@@ -39,7 +39,7 @@ function App() {
             <Provider store={store}>
 
                 <BrowserRouter>
-                    <Container fluid>
+                    <Container fluid className='min-vh-100 d-flex flex-column justify-content-between'>
                         <Row>
                             <TopMenue />
                         </Row>
