@@ -24,12 +24,15 @@ function CartBell(props: { cart: order, user: user, refreshCart: typeof refreshC
         }
     }, [props.user])
 
-    return <div>
-        <AllowedLink to={routes.cartItems()} className="text-decoration-none" >
-            <div className='text-warning'>
+    return <div className='me-2'>
+        <AllowedLink to={routes.cartItems()} className="text-decoration-none position-relative" >
+            <div className='text-warning position-absolute top-0 end-0 bg-danger border rounded'>
                 {props.cart?.order_items?.length}
             </div>
-            <AiOutlineShoppingCart  size={35} color={'black'} />
+            <div className='mt-1 p-2'>
+                <AiOutlineShoppingCart size={35} color={'white'} />
+            </div>
+
         </AllowedLink>
     </div>
 }

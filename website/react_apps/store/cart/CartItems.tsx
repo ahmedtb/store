@@ -23,6 +23,7 @@ function CartItems(props: { cart: order }) {
     }
 
     return <div className='bg-white'>
+        <div className='fs-3 fw-bold'>you current cart</div>
         {
             props.cart?.order_items?.map((item, index) => {
                 return <div key={index} className='d-flex border p-2 m-2 rounded'>

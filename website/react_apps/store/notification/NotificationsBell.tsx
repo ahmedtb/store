@@ -45,9 +45,9 @@ function NotificationsBell(props) {
         }
     }, [props.notification])
 
-    return <AllowedLink to={routes.notifications()} className="text-decoration-none" >
+    return <AllowedLink to={routes.notifications()} className="text-decoration-none me-2" >
         {/* <FaRegBell size={25} color={!newsign ? 'black' : 'yellow'} /> */}
-        <BellIcon width='25' active={animate ? true : false} animate={animate} color={!newsign ? 'black' : 'yellow'} />
+        <BellIcon width='25' active={animate ? true : false} animate={animate} color={!newsign ? 'white' : 'yellow'} />
 
     </AllowedLink>
 

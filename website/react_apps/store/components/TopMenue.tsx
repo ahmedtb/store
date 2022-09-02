@@ -25,12 +25,12 @@ function TopMenue(props: { refreshUser: typeof refreshUser, user: user, refreshC
     }
 
     return (
-        <Navbar bg="light" expand="md" className='py-0 px-0'>
+        <Navbar bg="primary" variant='light' expand="lg" className='py-0 px-0'>
             <Container>
                 <LinkContainer to={routes.home()}>
                     <Navbar.Brand className='d-flex align-items-center'>
-                        <img src='https://previews.123rf.com/images/distrologo/distrologo1902/distrologo190200712/117609654-phone-shop-logo-design-template-gadget-shop-logo-design.jpg' width={'10%'} />
-                        <div className='fs-2 ms-3'>
+                        <img src='https://previews.123rf.com/images/distrologo/distrologo1902/distrologo190200712/117609654-phone-shop-logo-design-template-gadget-shop-logo-design.jpg' width={75} height={75} />
+                        <div className='fs-2 ms-3 text-white'>
                             Phone Store
                         </div>
                     </Navbar.Brand>
@@ -38,14 +38,10 @@ function TopMenue(props: { refreshUser: typeof refreshUser, user: user, refreshC
 
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse className="" id="basic-navbar-nav">
-
-
-
-
-                    <Nav className="me-auto my-2 my-lg-0"
+                    <Nav className="ms-auto align-items-center text-white"
                         style={{ maxHeight: '100px' }}
                         navbarScroll>
-                        <div className="d-flex">
+                        <div className="d-flex me-2">
                             <Form.Control
                                 type="search"
                                 placeholder="Search"
@@ -53,7 +49,7 @@ function TopMenue(props: { refreshUser: typeof refreshUser, user: user, refreshC
                                 aria-label="Search"
                                 onChange={e => setq(e.target.value)}
                             />
-                            <Link className="btn btn-outline-success" to={routes.productsFiltering() + '?q=' + q} >Search</Link>
+                            <Link className="btn btn-outline-light" to={routes.productsFiltering() + '?q=' + q} >Search</Link>
                         </div>
                         <CartBell />
                         <NotificationsBell />
@@ -67,7 +63,7 @@ function TopMenue(props: { refreshUser: typeof refreshUser, user: user, refreshC
                                     <NavDropdown.Item onClick={logout} >{window.localization.logout}</NavDropdown.Item>
                                 </NavDropdown>
                             ) : (
-                                <LinkContainer to={routes.loginPage()}>
+                                <LinkContainer to={routes.loginPage()} className='text-white'>
                                     <Nav.Link >{window.localization.login}</Nav.Link>
                                 </LinkContainer>
                             )

@@ -40,14 +40,17 @@ function App() {
 
                 <BrowserRouter>
                     <Container fluid className='min-vh-100 d-flex flex-column justify-content-between'>
-                        <Row>
-                            <TopMenue />
-                        </Row>
-                        <Row>
-                            <Col xs={10} className='p-0 mx-auto'>
+                        <div>
+
+                            <Row>
+                                <TopMenue />
+                            </Row>
+                            <Row>
+                                {/* <Col xs={10} className='p-0 mx-auto'> */}
                                 <AllowedRoutes />
-                            </Col>
-                        </Row>
+                                {/* </Col> */}
+                            </Row>
+                        </div>
                         <Footer />
                     </Container>
 
