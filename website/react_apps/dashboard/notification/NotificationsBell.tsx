@@ -2,12 +2,12 @@ import React from 'react'
 import { routes, api } from '../functions/urls'
 import { refreshNotification } from '../redux/stateActions'
 import { connect } from "react-redux"
-import AllowedLink from './AllowedLink';
+import AllowedLink from '../components/AllowedLink';
 import { useLocation } from 'react-router-dom'
 import BellIcon from 'react-bell-icon';
 import { Dispatch } from 'redux';
 
-function NotificationsBell(props) {
+function NotificationsBell(props: { admin: admin, notification: notification, refreshNotification: typeof refreshNotification }) {
     const location = useLocation();
 
     const [notificationsPagintation, setnotificationsPagintation] = React.useState()
@@ -27,7 +27,7 @@ function NotificationsBell(props) {
     }, [props.admin])
 
     React.useEffect(() => {
-        if (location.pathname == '/dashboard/adminNotifications')
+        if (location.pathname == '/dashboard/notifications')
             setnewsign(false)
     }, [location.pathname, newsign])
 
@@ -45,9 +45,9 @@ function NotificationsBell(props) {
         }
     }, [props.notification])
 
-    return <AllowedLink to={routes.notifications()} className="text-decoration-none" >
+    return <AllowedLink to={routes.notifications()} className="text-decoration-none me-2" >
         {/* <FaRegBell size={25} color={!newsign ? 'black' : 'yellow'} /> */}
-        <BellIcon width='25' active={animate ? true : false} animate={animate} color={!newsign ? 'black' : 'yellow'} />
+        <BellIcon width='25' active={animate ? true : false} animate={animate} color={!newsign ? 'white' : 'yellow'} />
 
     </AllowedLink>
 
@@ -57,7 +57,7 @@ function NotificationsBell(props) {
 
 const mapStateToProps = (state: { state: dashboardState }) => {
     return {
-        user: state.state.user,
+        admin: state.state.admin,
         notification: state.state.notification,
     }
 }

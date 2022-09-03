@@ -3,13 +3,13 @@ import { Routes, Route } from 'react-router-dom'
 import NotFound from '../NotFound'
 import routesConfigs from '../functions/routesConfigs'
 import { api } from '../functions/urls'
-import { refreshUser, setAllowedRoutes } from '../redux/stateActions';
+import { refreshAdmin, setAllowedRoutes } from '../redux/stateActions';
 import { connect } from "react-redux"
 import { intersection } from 'lodash'
 import { Dispatch } from 'redux';
 
-const calculateAllowedRoutes = (user: user) => {
-    const roles = user?.roles
+const calculateAllowedRoutes = (admin: admin) => {
+    const roles = admin?.roles
     return routesConfigs.filter(
         ({ permissions }) => {
             if (!permissions) return true;
@@ -18,32 +18,32 @@ const calculateAllowedRoutes = (user: user) => {
         })
 }
 
-function AllowedRoutes(props: { user: user, allowedRoutes: allowedRoutesType, refreshUser: typeof refreshUser, setAllowedRoutes: typeof setAllowedRoutes }) {
+function AllowedRoutes(props: { admin: admin, allowedRoutes: allowedRoutesType, refreshAdmin: typeof refreshAdmin, setAllowedRoutes: typeof setAllowedRoutes }) {
 
     async function isLoggedIn() {
         try {
 
-            const response = await api.getUser()
+            const response = await api.getAdmin()
             // await delay(2000)
-            props.refreshUser(response.data)
+            props.refreshAdmin(response.data)
             console.log('isLoggedIn', response.data)
         } catch (e) { }
     }
 
     React.useEffect(() => {
-        if (props.user == null) {
+        if (props.admin == null) {
             isLoggedIn()
         }
-    }, [props.user])
+    }, [props.admin])
 
     React.useEffect(() => {
-        if (window.user)
-            props.refreshUser(window.user)
+        if (window.admin)
+            props.refreshAdmin(window.admin)
     }, [])
 
     React.useEffect(() => {
-        props.setAllowedRoutes(calculateAllowedRoutes(props.user))
-    }, [props.user])
+        props.setAllowedRoutes(calculateAllowedRoutes(props.admin))
+    }, [props.admin])
 
     // React.useEffect(() => {
     //     console.log('allowedRoutes', props.allowedRoutes)
@@ -73,7 +73,7 @@ function AllowedRoutes(props: { user: user, allowedRoutes: allowedRoutesType, re
 
 const mapStateToProps = (state: { state: dashboardState }) => {
     return {
-        user: state.state.user,
+        admin: state.state.admin,
         allowedRoutes: state.state.allowedRoutes,
 
     }
@@ -81,7 +81,7 @@ const mapStateToProps = (state: { state: dashboardState }) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        refreshUser: (user: user) => dispatch(refreshUser(user)),
+        refreshAdmin: (admin: admin) => dispatch(refreshAdmin(admin)),
         setAllowedRoutes: (allowedRoutes: allowedRoutesType) => dispatch(setAllowedRoutes(allowedRoutes)),
     }
 }

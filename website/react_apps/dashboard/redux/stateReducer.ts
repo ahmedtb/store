@@ -1,23 +1,23 @@
 import { combineReducers } from 'redux';
 
 const INITIAL_STATE: dashboardState = {
-    user: null,
+    admin: null,
     allowedRoutes: [],
     notification: null,
 };
 
-const stateReducer = (state = INITIAL_STATE, action: action) => {
+const stateReducer = (state = INITIAL_STATE, action: dashboardReduxAction) => {
     switch (action.type) {
-        case 'refresh-user':
+        case 'refresh-admin':
             return {
                 ...state,
-                user: action.user,
+                admin: action.admin,
             };
         case 'setAllowedRoutes':
             return {
                 ...state,
                 allowedRoutes: action.allowedRoutes,
-                // allowedRoutes: calculateAllowedRoutes(action.user)
+                // allowedRoutes: calculateAllowedRoutes(action.admin)
             };
         case 'refresh-notification':
             return {

@@ -4,6 +4,7 @@ declare global {
     interface Window {
         localization: any;
         user: user;
+        admin: admin;
         Echo: any;
 
     }
@@ -24,9 +25,17 @@ declare global {
 
 
     type dashboardState = {
-        user: user,
+        admin: admin,
         allowedRoutes: allowedRoutesType,
         notification: notificationType,
+    }
+
+    type dashboardReduxAction = {
+        type: string,
+        admin: admin,
+        allowedRoutes: allowedRoutesType,
+        notification: notificationType,
+
     }
 
     type action = {
@@ -101,6 +110,7 @@ declare global {
         id: number,
         name: string,
         username: string,
+        roles: Array<string>
     }
 
     type admins = Array<admin>
@@ -144,5 +154,7 @@ declare global {
 window.localization = window.localization || {};
 window.user = window.user || {};
 window.Echo = window.Echo || {};
+window.admin = window.admin || {};
+
 
 

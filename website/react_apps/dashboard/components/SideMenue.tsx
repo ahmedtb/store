@@ -4,7 +4,7 @@ import { Col } from 'react-bootstrap';
 import { connect } from "react-redux"
 import AllowedLink from './AllowedLink';
 import localization from '../../functions/localization';
-import { refreshUser } from '../redux/stateActions';
+import { refreshAdmin } from '../redux/stateActions';
 import { Dispatch } from 'redux';
 
 
@@ -19,39 +19,39 @@ function SideMenue(props) {
         <div className='p-1'>
 
             <AllowedLink className='text-white text-decoration-none' to={routes.productsIndex()}>
-                <h5 className='text-center'> {localization.products} </h5>
+                <h5 className=''> {localization.products} </h5>
             </AllowedLink>
 
             <AllowedLink className='text-white text-decoration-none' to={routes.categoriesIndex()}>
-                <h5 className='text-center'> {localization.categories} </h5>
+                <h5 className=''> {localization.categories} </h5>
             </AllowedLink>
             
             <AllowedLink className='text-white text-decoration-none' to={routes.brandsIndex()}>
-                <h5 className='text-center'> {localization.brands} </h5>
+                <h5 className=''> {localization.brands} </h5>
             </AllowedLink>
             
             <AllowedLink className='text-white text-decoration-none' to={routes.ordersIndex()}>
-                <h5 className='text-center'> {localization.orders} </h5>
+                <h5 className=''> {localization.orders} </h5>
             </AllowedLink>
                         
             <AllowedLink className='text-white text-decoration-none' to={routes.orderedOrdersIndex()}>
-                <h5 className='text-center'> oredered orders </h5>
+                <h5 className=''> oredered orders </h5>
             </AllowedLink>
                         
             <AllowedLink className='text-white text-decoration-none' to={routes.cartsIndex()}>
-                <h5 className='text-center'> carts index </h5>
+                <h5 className=''> carts index </h5>
             </AllowedLink>
 
             <AllowedLink className='text-white text-decoration-none' to={routes.orderItemsIndex()}>
-                <h5 className='text-center'> {localization.orderItems} </h5>
+                <h5 className=''> {localization.orderItems} </h5>
             </AllowedLink>
             
             <AllowedLink className='text-white text-decoration-none' to={routes.adminsIndex()}>
-                <h5 className='text-center'> {localization.admins} </h5>
+                <h5 className=''> {localization.admins} </h5>
             </AllowedLink>
             
-            <AllowedLink className='text-white text-decoration-none' to={routes.usersIndex()}>
-                <h5 className='text-center'> {localization.users} </h5>
+            <AllowedLink className='text-white text-decoration-none' to={routes.adminsIndex()}>
+                <h5 className=''> {localization.admins} </h5>
             </AllowedLink>
         </div>
 
@@ -63,7 +63,7 @@ function SideMenue(props) {
 
 const mapStateToProps = (state: { state: dashboardState }) => {
     return {
-        user: state.state.user,
+        admin: state.state.admin,
         allowedRoutes: state.state.allowedRoutes,
 
     }
@@ -71,7 +71,7 @@ const mapStateToProps = (state: { state: dashboardState }) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        refreshUser: (user: user) => dispatch(refreshUser(user)),
+        refreshAdmin: (admin: admin) => dispatch(refreshAdmin(admin)),
     }
 }
 

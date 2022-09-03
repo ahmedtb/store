@@ -2,21 +2,21 @@ import React from 'react'
 import { routes, api } from '../functions/urls'
 import { Navbar, Nav, NavDropdown, Container, Col } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
-import { refreshUser } from '../redux/stateActions';
+import { refreshAdmin } from '../redux/stateActions';
 import { connect } from "react-redux"
-import NotificationsBell from './NotificationsBell';
+import NotificationsBell from '../notification/NotificationsBell';
 import apiCallHandler from '../functions/apiCallHandler';
 import { Dispatch } from 'redux';
 
 
-function TopMenue(props: { refreshUser: typeof refreshUser, user: user }) {
+function TopMenue(props: { refreshAdmin: typeof refreshAdmin, admin: admin }) {
 
 
 
     async function logout() {
         apiCallHandler(
             api.logout,
-            (data) => props.refreshUser(null),
+            (data) => props.refreshAdmin(null),
             'TopMenue logout',
             false
         )
@@ -25,31 +25,34 @@ function TopMenue(props: { refreshUser: typeof refreshUser, user: user }) {
     return (
         <Navbar bg="secondary" expand="lg" className='py-0 px-0'>
             <Container fluid>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse className="row align-items-center" id="basic-navbar-nav">
-
-
-                    <div className="col d-flex justify-content-between align-items-center">
-
-                        <div className='me-auto'>
-                            <Nav className='fw-bold align-items-center'>
-
-                                <NotificationsBell />
-                                {
-                                    props.user ? (
-                                        <NavDropdown title={props.user.name}>
-                                            <NavDropdown.Item onClick={logout} >{window.localization.logout}</NavDropdown.Item>
-                                        </NavDropdown>
-                                    ) : (
-                                        <LinkContainer to={routes.loginPage()}>
-                                            <Nav.Link >{window.localization.login}</Nav.Link>
-                                        </LinkContainer>
-                                    )
-                                }
-
-                            </Nav>
+                <LinkContainer to={routes.home()}>
+                    <Navbar.Brand className=''>
+                        <div className='fs-2 ms-3 text-white'>
+                            Phone Store
                         </div>
-                    </div>
+                    </Navbar.Brand>
+                </LinkContainer>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse className="" id="basic-navbar-nav">
+
+
+
+                    <Nav className='fw-bold align-items-center ms-auto '>
+
+                        <NotificationsBell />
+                        {
+                            props.admin ? (
+                                <NavDropdown title={props.admin.name}>
+                                    <NavDropdown.Item onClick={logout} >{window.localization.logout}</NavDropdown.Item>
+                                </NavDropdown>
+                            ) : (
+                                <LinkContainer to={routes.loginPage()}>
+                                    <Nav.Link >{window.localization.login}</Nav.Link>
+                                </LinkContainer>
+                            )
+                        }
+
+                    </Nav>
 
                 </Navbar.Collapse>
             </Container>
@@ -60,7 +63,7 @@ function TopMenue(props: { refreshUser: typeof refreshUser, user: user }) {
 
 const mapStateToProps = (state: { state: dashboardState }) => {
     return {
-        user: state.state.user,
+        admin: state.state.admin,
         allowedRoutes: state.state.allowedRoutes,
 
     }
@@ -68,7 +71,7 @@ const mapStateToProps = (state: { state: dashboardState }) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        refreshUser: (user: user) => dispatch(refreshUser(user)),
+        refreshAdmin: (admin: admin) => dispatch(refreshAdmin(admin)),
     }
 }
 

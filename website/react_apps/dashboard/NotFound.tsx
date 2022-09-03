@@ -3,9 +3,9 @@ import { connect } from "react-redux"
 import LoginPage from './LoginPage'
 import { Dispatch } from 'redux'
 
-function NotFound(props: { user: user }) {
+function NotFound(props: { admin: admin }) {
 
-    if (!props.user) {
+    if (!props.admin) {
         return <LoginPage />
     }
 
@@ -19,7 +19,7 @@ function NotFound(props: { user: user }) {
 
 const mapStateToProps = (state: { state: dashboardState }) => {
     return {
-        user: state.state.user,
+        admin: state.state.admin,
     }
 }
 

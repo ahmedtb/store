@@ -18,10 +18,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory()->create(['phone' => '0914354173', 'password' => Hash::make('password')]);
+        Admin::factory()->create(['username' => 'ahmed', 'password' => Hash::make('password')]);
+
         \App\Models\Product::factory(150)->create();
         \App\Models\Brand::factory(5)->create();
         // \App\Models\Order::factory(100)->create();
         // OrderItem::factory(200)->create();
-        Admin::factory(5)->create();
     }
 }

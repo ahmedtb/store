@@ -34,8 +34,6 @@ function AllowedLink(props: { to: string, className?: string, target?: string, c
 const mapStateToProps = (state: { state: dashboardState }) => {
     return {
         allowedRoutes: state.state.allowedRoutes,
-        user: state.state.user,
-
     }
 }
 

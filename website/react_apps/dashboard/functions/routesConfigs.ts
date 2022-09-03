@@ -25,6 +25,7 @@ import AdminShow from '../admin/AdminShow';
 import AdminCreate from '../admin/AdminCreate';
 import OrderedOrdersIndex from '../order/OrderedOrdersIndex';
 import CartsIndex from '../order/CartsIndex';
+import Notifications from '../notification/Notifications';
 
 const configs: routeConfigsType = [
     {
@@ -37,6 +38,7 @@ const configs: routeConfigsType = [
         component: Home,
         path: routes.home(),
         permissions: [
+            roles.super
         ],
     },
 
@@ -44,18 +46,21 @@ const configs: routeConfigsType = [
         component: ProductsIndex,
         path: routes.productsIndex(),
         permissions: [
+            roles.super
         ],
     },
     {
         component: ProductShow,
         path: routes.productShow(),
         permissions: [
+            roles.super
         ],
     },
     {
         component: ProductCreate,
         path: routes.createProduct(),
         permissions: [
+            roles.super
         ],
     },
 
@@ -64,18 +69,21 @@ const configs: routeConfigsType = [
         component: BrandsIndex,
         path: routes.brandsIndex(),
         permissions: [
+            roles.super
         ],
     },
     {
         component: BrandShow,
         path: routes.brandShow(),
         permissions: [
+            roles.super
         ],
     },
     {
         component: BrandCreate,
         path: routes.brandCreate(),
         permissions: [
+            roles.super
         ],
     },
 
@@ -83,18 +91,21 @@ const configs: routeConfigsType = [
         component: UsersIndex,
         path: routes.usersIndex(),
         permissions: [
+            roles.super
         ],
     },
     {
         component: UserShow,
         path: routes.userShow(),
         permissions: [
+            roles.super
         ],
     },
     {
         component: UserCreate,
         path: routes.userCreate(),
         permissions: [
+            roles.super
         ],
     },
     
@@ -102,18 +113,21 @@ const configs: routeConfigsType = [
         component: CategoriesIndex,
         path: routes.categoriesIndex(),
         permissions: [
+            roles.super
         ],
     },
     {
         component: CategoryShow,
         path: routes.categoryShow(),
         permissions: [
+            roles.super
         ],
     },
     {
         component: CategoryCreate,
         path: routes.categoryCreate(),
         permissions: [
+            roles.super
         ],
     },
 
@@ -121,30 +135,35 @@ const configs: routeConfigsType = [
         component: OrdersIndex,
         path: routes.ordersIndex(),
         permissions: [
+            roles.super
         ],
     },
     {
         component: OrderedOrdersIndex,
         path: routes.orderedOrdersIndex(),
         permissions: [
+            roles.super
         ],
     },
     {
         component: CartsIndex,
         path: routes.cartsIndex(),
         permissions: [
+            roles.super
         ],
     },
     {
         component: OrderShow,
         path: routes.orderShow(),
         permissions: [
+            roles.super
         ],
     },
     {
         component: OrderCreate,
         path: routes.orderCreate(),
         permissions: [
+            roles.super
         ],
     },
     
@@ -152,18 +171,21 @@ const configs: routeConfigsType = [
         component: OrderItemsIndex,
         path: routes.orderItemsIndex(),
         permissions: [
+            roles.super
         ],
     },
     {
         component: OrderItemShow,
         path: routes.orderItemShow(),
         permissions: [
+            roles.super
         ],
     },
     {
         component: OrderItemCreate,
         path: routes.orderItemCreate(),
         permissions: [
+            roles.super
         ],
     },
     
@@ -171,18 +193,29 @@ const configs: routeConfigsType = [
         component: AdminsIndex,
         path: routes.adminsIndex(),
         permissions: [
+            roles.super
         ],
     },
     {
         component: AdminShow,
         path: routes.adminShow(),
         permissions: [
+            roles.super
         ],
     },
     {
         component: AdminCreate,
         path: routes.adminCreate(),
         permissions: [
+            roles.super
+        ],
+    },
+    
+    {
+        component: Notifications,
+        path: routes.notifications(),
+        permissions: [
+            roles.super
         ],
     },
 ]

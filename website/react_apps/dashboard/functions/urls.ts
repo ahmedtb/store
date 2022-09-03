@@ -13,29 +13,29 @@ export const routes = {
     productsIndex: () => routesPrefix + '/productsIndex/',
     createProduct: () => routesPrefix + '/createProduct/',
 
-    
+
     orderShow: (id?: number) => id ? (routesPrefix + '/orderShow/' + id) : routesPrefix + '/orderShow/:id',
     ordersIndex: () => routesPrefix + '/ordersIndex/',
     orderCreate: () => routesPrefix + '/orderCreate/',
     orderedOrdersIndex: () => routesPrefix + '/orderedOrdersIndex/',
     cartsIndex: () => routesPrefix + '/cartsIndex/',
-        
+
     orderItemShow: (id?: number) => id ? (routesPrefix + '/orderItemShow/' + id) : routesPrefix + '/orderItemShow/:id',
     orderItemsIndex: () => routesPrefix + '/orderItemsIndex/',
     orderItemCreate: () => routesPrefix + '/orderItemCreate/',
-            
+
     brandShow: (id?: number) => id ? (routesPrefix + '/brandShow/' + id) : routesPrefix + '/brandShow/:id',
     brandsIndex: () => routesPrefix + '/brandsIndex/',
     brandCreate: () => routesPrefix + '/brandCreate/',
-                
+
     userShow: (id?: number) => id ? (routesPrefix + '/userShow/' + id) : routesPrefix + '/userShow/:id',
     usersIndex: () => routesPrefix + '/usersIndex/',
     userCreate: () => routesPrefix + '/userCreate/',
-                   
+
     adminShow: (id?: number) => id ? (routesPrefix + '/adminShow/' + id) : routesPrefix + '/adminShow/:id',
     adminsIndex: () => routesPrefix + '/adminsIndex/',
     adminCreate: () => routesPrefix + '/adminCreate/',
-                       
+
     categoryShow: (id?: number) => id ? (routesPrefix + '/categoryShow/' + id) : routesPrefix + '/categoryShow/:id',
     categoriesIndex: () => routesPrefix + '/categoriesIndex/',
     categoryCreate: () => routesPrefix + '/categoryCreate/',
@@ -44,9 +44,9 @@ export const routes = {
 const apiPrefix = '/dashboardApi'
 export const api = {
     currentLanguage: () => axios.get('/currentLanguage'),
-    getUser: () => axios.get(apiPrefix + '/user'),
+    getAdmin: () => axios.get(apiPrefix + '/admin'),
     logout: () => axios.get(apiPrefix + '/logout'),
-    login: (username: string, password: string) => axios.get(apiPrefix + '/login', { params: { username: username, password: password } }),
+    login: (username: string, password: string) => axios.post(apiPrefix + '/login', { username: username, password: password }),
 
     productShow: (id: number) => axios.get(apiPrefix + '/productShow/' + id),
     productsIndex: (params) => axios.get(apiPrefix + '/productsIndex/', { params: params }),
@@ -63,7 +63,7 @@ export const api = {
     orderAccept: (id: number) => axios.put(apiPrefix + '/orderAccept/' + id),
     orderReject: (id: number) => axios.put(apiPrefix + '/orderReject/' + id),
 
-    
+
     orderItemShow: (id: number) => axios.get(apiPrefix + '/orderItemShow/' + id),
     orderItemsIndex: (params) => axios.get(apiPrefix + '/orderItemsIndex/', { params: params }),
     orderItemCreate: (params) => axios.post(apiPrefix + '/orderItemCreate/', params),
@@ -89,10 +89,12 @@ export const api = {
     adminEdit: (id: number, params: object) => axios.put(apiPrefix + 'adminEdit/' + id, params),
     adminDelete: (id: number) => axios.delete(apiPrefix + '/adminDelete/' + id),
 
-    
+
     categoryShow: (id: number) => axios.get(apiPrefix + '/categoryShow' + id),
     categoriesIndex: (params) => axios.get(apiPrefix + '/categoriesIndex', { params: params }),
     categoryCreate: (params) => axios.post(apiPrefix + '/categoryCreate', params),
     categoryEdit: (id: number, params: object) => axios.put(apiPrefix + '/categoryEdit/' + id, params),
     categoryDelete: (id: number) => axios.delete(apiPrefix + '/categoryDelete/' + id),
+
+    notificationsIndex: (params: object) => axios.get(apiPrefix + '/notifications/', { params: params }),
 }

@@ -27,7 +27,7 @@ function NotificationsBell(props) {
     }, [props.admin])
 
     React.useEffect(() => {
-        if (location.pathname == '/dashboard/adminNotifications')
+        if (location.pathname == '/notifications')
             setnewsign(false)
     }, [location.pathname, newsign])
 

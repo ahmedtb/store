@@ -2,24 +2,24 @@ import React from 'react'
 import { api, routes } from './functions/urls'
 import { Navigate } from 'react-router-dom'
 import apiCallHandler from './functions/apiCallHandler';
-import { refreshUser } from './redux/stateActions'
+import { refreshAdmin } from './redux/stateActions'
 import { connect } from "react-redux"
 import { Dispatch } from 'redux';
 
-function LoginPage(props: { user: user, refreshUser: typeof refreshUser }) {
+function LoginPage(props: { admin: admin, refreshAdmin: typeof refreshAdmin }) {
     const [username, setusername] = React.useState('')
     const [password, setpassword] = React.useState('')
 
     async function handleLogin(username: string, password: string) {
         apiCallHandler(
             async () => await api.login(username, password),
-            (response) => { props.refreshUser(response.data); },
+            (data) => { props.refreshAdmin(data); },
             'dashboard login page',
             true
         )
     }
 
-    if (props.user) {
+    if (props.admin) {
         return <Navigate to={routes.home()} />
     }
 
@@ -56,13 +56,13 @@ function LoginPage(props: { user: user, refreshUser: typeof refreshUser }) {
 
 const mapStateToProps = (state: { state: dashboardState }) => {
     return {
-        user: state.state.user,
+        admin: state.state.admin,
     }
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        refreshUser: (user: user) => dispatch(refreshUser(user)),
+        refreshAdmin: (admin: admin) => dispatch(refreshAdmin(admin)),
     }
 }
 

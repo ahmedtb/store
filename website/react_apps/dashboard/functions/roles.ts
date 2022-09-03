@@ -1,3 +1,3 @@
 export default {
-    customer: 'customer'
+    super: 'super'
 }
