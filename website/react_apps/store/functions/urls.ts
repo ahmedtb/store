@@ -7,6 +7,8 @@ import { identity } from 'lodash';
 const routesPrefix = ''
 export const routes = {
     loginPage: () => routesPrefix + '/loginPage',
+    signUp: () => routesPrefix + '/signUp',
+
     home: () => '/',
     productShow: (id?: number) => id ? (routesPrefix + '/productShow/' + id) : routesPrefix + '/productShow/:id',
 
@@ -23,6 +25,7 @@ export const api = {
     getUser: () => axios.get(apiPrefix + '/user'),
     logout: () => axios.delete(apiPrefix + '/logout'),
     login: (phone: string, password: string) => axios.post(apiPrefix + '/login', { phone: phone, password: password }),
+    signUp: (params: object) => axios.post(apiPrefix + '/signUp', params),
 
     productsIndex: (params?) => axios.get(apiPrefix + '/productsIndex/', { params: params }),
     productShow: (id: number) => axios.get(apiPrefix + '/productShow/' + id),
@@ -36,4 +39,5 @@ export const api = {
     orderShow: (id: number) => axios.get(apiPrefix + '/orderShow/' + id),
 
     notificationsIndex: (params?: object) => axios.get(apiPrefix + '/notifications', { params: params }),
+
 }

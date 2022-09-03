@@ -105,4 +105,15 @@ class OrdersController extends Controller
         $order->save();
         return 'order ' . $id . ' is rejected';
     }
+    public function pay($id)
+    {
+        $order = Order::where('id', $id)->first();
+        if (!$order)
+            throw ValidationException::withMessages(['id' => "there is no order with id {$id}"]);
+        if ($order->status != 'accepted')
+            throw ValidationException::withMessages(['id' => "this is not accepted order {$id}"]);
+        $order->status = 'paid';
+        $order->save();
+        return 'order ' . $id . ' is paid';
+    }
 }

@@ -5,17 +5,44 @@ import OrdersTable from './components/OrdersTable';
 import { TextFilter, getPaginationParams } from '../../components/Filters';
 import AllowedLink from '../components/AllowedLink';
 import { Card, Col, Row } from 'react-bootstrap';
+import apiCallHandler from '../functions/apiCallHandler';
 
 export default function OrdersIndex() {
 
 
     const [ordersPagination, setordersPagination] = React.useState<pagination<orders>>()
+    const [update, setupdate] = React.useState<number>()
 
 
     function fetch(params) {
         return api.ordersIndex({ ...getPaginationParams(ordersPagination), ...params });
     }
 
+    function accept(id: number) {
+        apiCallHandler(
+            () => api.orderAccept(id),
+            (data) => {alert(data); setupdate(Math.random())},
+            'accept',
+            true
+        )
+    }
+    function reject(id: number) {
+        apiCallHandler(
+            () => api.orderReject(id),
+            (data) => {alert(data); setupdate(Math.random())},
+            'reject',
+            true
+        )
+    }
+    function pay(id: number) {
+        apiCallHandler(
+            () => api.orderPay(id),
+            (data) => {alert(data); setupdate(Math.random())},
+            'reject',
+            true
+        )
+    }
+    
     return <Card className='my-2 shadow' >
         <Card.Header>
             <div className='d-flex justify-content-between'>
@@ -43,9 +70,14 @@ export default function OrdersIndex() {
             </Row>
 
             <div>
-                <OrdersTable orders={ordersPagination?.data} />
+                <OrdersTable orders={ordersPagination?.data} addColumns={[
+                    { title: 'accept', content: (order, index) => order.status == 'ordered' ? <button onClick={() => accept(order.id)}>accept</button> : null },
+                    { title: 'reject', content: (order, index) => order.status == 'ordered' ? <button onClick={() => reject(order.id)}>reject</button> : null },
+                    { title: 'reject', content: (order, index) => order.status == 'accepted' ? <button onClick={() => pay(order.id)}>pay</button> : null }
+
+                ]} />
             </div >
-            <Paginator log={'OrdersIndex'} apiCall={fetch} useState={[ordersPagination, setordersPagination]} />
+            <Paginator update={update} log={'OrdersIndex'} apiCall={fetch} useState={[ordersPagination, setordersPagination]} />
         </Card.Body>
     </Card>
 

@@ -7,11 +7,18 @@ import CartItems from '../cart/CartItems'
 import ProductsFiltering from '../ProductsFiltering';
 import MyOrders from '../order/MyOrders'
 import Notifications from '../notification/Notifications'
+import Signup from '../user/Signup';
 
 const configs: routeConfigsType = [
     {
         component: LoginPage,
         path: routes.loginPage(),
+        permissions: [
+        ],
+    },
+    {
+        component: Signup,
+        path: routes.signUp(),
         permissions: [
         ],
     },

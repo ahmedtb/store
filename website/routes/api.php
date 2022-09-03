@@ -29,6 +29,9 @@ Route::get('/productImage/{id}', [ProductsController::class, 'image']);
 
 
 Route::post('/login', [UsersLoginController::class, 'login']);
+Route::post('/signUp', [UsersLoginController::class, 'signUp']);
+
+
 
 Route::middleware('auth:user')->group(function () {
     Route::delete('/logout', [UsersLoginController::class, 'logout']);

@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\api;
 
 use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Notifications\UserSignedUp;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Hash;
 
 class UsersLoginController extends Controller
 {
@@ -42,7 +46,7 @@ class UsersLoginController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->middleware('auth:user')->except(['login']);
+        $this->middleware('auth:user')->except(['login', 'signUp']);
     }
 
     public function phone()
@@ -102,5 +106,20 @@ class UsersLoginController extends Controller
         $user = $request->user('user');
         // $user->userable;
         return $user ?? null;
+    }
+
+    public function signUp(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|string',
+            'phone' => 'required|string',
+            'password' => 'required|string',
+        ]);
+        $data['password'] = Hash::make($data['password']);
+        $user = User::create($data);
+        Notification::send(Admin::all(), new UserSignedUp($user));
+
+        return 'user is sign up';
     }
 }

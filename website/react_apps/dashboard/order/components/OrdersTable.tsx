@@ -16,6 +16,7 @@ export default function OrdersTable(props: { orders: orders, addColumns?: addCol
                 <tr>
                     <th>#</th>
                     <th>user</th>
+                    <th>status</th>
 
 
                     {
@@ -41,6 +42,9 @@ export default function OrdersTable(props: { orders: orders, addColumns?: addCol
                                 {order.user?.name}
                             </td>
 
+                            <td>
+                                {order.status}
+                            </td>
 
 
                             {

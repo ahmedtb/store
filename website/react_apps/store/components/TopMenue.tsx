@@ -26,7 +26,7 @@ function TopMenue(props: { refreshUser: typeof refreshUser, user: user, refreshC
 
     return (
         <Navbar bg="primary" variant='light' expand="lg" className='py-0 px-0'>
-            <Container>
+            <Container fluid>
                 <LinkContainer to={routes.home()}>
                     <Navbar.Brand className='d-flex align-items-center'>
                         <img src='https://previews.123rf.com/images/distrologo/distrologo1902/distrologo190200712/117609654-phone-shop-logo-design-template-gadget-shop-logo-design.jpg' width={75} height={75} />
@@ -63,9 +63,14 @@ function TopMenue(props: { refreshUser: typeof refreshUser, user: user, refreshC
                                     <NavDropdown.Item onClick={logout} >{window.localization.logout}</NavDropdown.Item>
                                 </NavDropdown>
                             ) : (
-                                <LinkContainer to={routes.loginPage()} className='text-white'>
-                                    <Nav.Link >{window.localization.login}</Nav.Link>
-                                </LinkContainer>
+                                <div className='d-flex'>
+                                    <LinkContainer to={routes.loginPage()} className='text-white'>
+                                        <Nav.Link >{window.localization.login}</Nav.Link>
+                                    </LinkContainer>
+                                    <LinkContainer to={routes.signUp()} className='text-white'>
+                                        <Nav.Link >{window.localization.signUp}</Nav.Link>
+                                    </LinkContainer>
+                                </div>
                             )
                         }
 

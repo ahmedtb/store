@@ -47,6 +47,7 @@ export default new LocalizedStrings({
         password: 'password',
         phone:'phone',
         phones:'phones',
+        signUp: 'signUp',
 
     },
     ar: {

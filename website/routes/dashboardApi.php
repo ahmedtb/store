@@ -56,7 +56,9 @@ Route::middleware('auth:admin')->group(function () {
     Route::post('/orderCreate', [OrdersController::class, 'create']);
     Route::put('/orderAccept/{id}', [OrdersController::class, 'accept']);
     Route::put('/orderReject/{id}', [OrdersController::class, 'reject']);
+    Route::put('/orderPay/{id}', [OrdersController::class, 'pay']);
 
+    
     Route::get('/orderItemsIndex', [OrderItemsController::class, 'index']);
     Route::get('/orderItemShow/{id}', [OrderItemsController::class, 'show']);
     Route::delete('/orderItemDelete/{id}', [OrderItemsController::class, 'delete']);

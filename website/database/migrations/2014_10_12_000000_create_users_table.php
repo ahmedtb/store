@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('phone_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->float('latitude', 10, 6)->nullable();
+            $table->float('longitude', 10, 6)->nullable();
             $table->timestamps();
         });
     }

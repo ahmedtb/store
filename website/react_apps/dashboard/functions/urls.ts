@@ -62,6 +62,7 @@ export const api = {
     orderDelete: (id: number) => axios.delete(apiPrefix + '/orderDelete/' + id),
     orderAccept: (id: number) => axios.put(apiPrefix + '/orderAccept/' + id),
     orderReject: (id: number) => axios.put(apiPrefix + '/orderReject/' + id),
+    orderPay: (id: number) => axios.put(apiPrefix + '/orderPay/' + id),
 
 
     orderItemShow: (id: number) => axios.get(apiPrefix + '/orderItemShow/' + id),
