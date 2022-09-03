@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Models\Admin;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Filters\OrderFilters;
 use App\Http\Controllers\Controller;
+use App\Notifications\UserOrderedCart;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Validation\ValidationException;
 
 class CartsController extends Controller
@@ -79,6 +82,7 @@ class CartsController extends Controller
         $cart = $request->user()->cart();
         $cart->status = 'ordered';
         $cart->save();
+        Notification::send(Admin::all(), new UserOrderedCart($cart));
         return 'cart ' . $cart->id . ' is ordered';
     }
 }

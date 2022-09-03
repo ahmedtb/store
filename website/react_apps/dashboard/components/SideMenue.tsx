@@ -50,9 +50,6 @@ function SideMenue(props) {
                 <h5 className=''> {localization.admins} </h5>
             </AllowedLink>
             
-            <AllowedLink className='text-white text-decoration-none' to={routes.adminsIndex()}>
-                <h5 className=''> {localization.admins} </h5>
-            </AllowedLink>
         </div>
 
 

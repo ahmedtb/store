@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\DashboardAPI\AdminsLoginController;
-use App\Http\Controllers\DashboardAPI\AdminsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardAPI\UsersController;
+use App\Http\Controllers\DashboardAPI\AdminsController;
 use App\Http\Controllers\DashboardAPI\BrandsController;
 use App\Http\Controllers\DashboardAPI\OrdersController;
 use App\Http\Controllers\DashboardAPI\ProductsController;
 use App\Http\Controllers\DashboardAPI\CategoriesController;
 use App\Http\Controllers\DashboardAPI\OrderItemsController;
-use App\Http\Controllers\DashboardAPI\UsersController;
+use App\Http\Controllers\DashboardAPI\AdminsLoginController;
+use App\Http\Controllers\DashboardAPI\NotificationsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,4 +75,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::delete('/userDelete/{id}', [UsersController::class, 'delete']);
     Route::put('/userEdit/{id}', [UsersController::class, 'update']);
     Route::post('/userCreate', [UsersController::class, 'create']);
+
+    Route::get('/notifications', [NotificationsController::class, 'index']);
+
 });

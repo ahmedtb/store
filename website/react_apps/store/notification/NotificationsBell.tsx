@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom'
 import BellIcon from 'react-bell-icon';
 import { Dispatch } from 'redux';
 
-function NotificationsBell(props) {
+function NotificationsBell(props: { user: user, notification: notification, refreshNotification: typeof refreshNotification }) {
     const location = useLocation();
 
     const [notificationsPagintation, setnotificationsPagintation] = React.useState()
@@ -16,15 +16,15 @@ function NotificationsBell(props) {
     const [animate, setanimate] = React.useState<boolean>(false)
 
     React.useEffect(() => {
-        if (props.admin) {
-            window.Echo.private('App.Models.Admin.' + props.admin.id)
+        if (props.user) {
+            window.Echo.private('App.Models.User.' + props.user.id)
                 .notification((notification: notification) => {
                     props.refreshNotification(notification)
                 });
 
         } else
             setnotificationsPagintation(null)
-    }, [props.admin])
+    }, [props.user])
 
     React.useEffect(() => {
         if (location.pathname == '/notifications')
