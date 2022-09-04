@@ -80,6 +80,9 @@ class CartsController extends Controller
 
     public function cartToOrdered(Request $request){
         $cart = $request->user()->cart();
+        foreach($cart->orderItems as $item){
+            
+        }
         $cart->status = 'ordered';
         $cart->save();
         Notification::send(Admin::all(), new UserOrderedCart($cart));

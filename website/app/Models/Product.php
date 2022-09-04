@@ -17,6 +17,8 @@ class Product extends Model
         'image'
     ];
 
+    protected $appends  = [' availableQuantity'];
+
     protected $with = ['category'];
 
     public static function defaultImage()
@@ -28,18 +30,28 @@ class Product extends Model
         return 'data:image/' . $fileExtention . ';base64,' . base64_encode(file_get_contents($path));
     }
 
-    
+
     public function scopeFilter($query, ProductFilters $filters)
     {
         return $filters->apply($query);
     }
 
-    
+
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+    public function orders()
+    {
+        $ids = $this->orderItems()->pluck('order_id')->all();
+        return Order::whereIn('id', $ids);
+    }
 
     public function image()
     {
@@ -49,6 +61,15 @@ class Product extends Model
         return response($raw_image_string)->header('Content-Type', 'image/' . $extension);
     }
 
+    public function  availableQuantity()
+    {
+        return $this->quantity - $this->orderItems()->whereHas('order', function ($query) {
+            return $query->whereIn('status', ['accepted', 'paid']);
+        })->sum('quantity');
+    }
 
-
+    public function getAvailableQuantityAttribute()
+    {
+        return $this->availableQuantity();
+    }
 }

@@ -43,18 +43,9 @@ export default function OrdersIndex() {
         )
     }
     
-    return <Card className='my-2 shadow' >
-        <Card.Header>
-            <div className='d-flex justify-content-between'>
-                <div>
-                    users
-                </div>
-                <div>
-                    <AllowedLink to={routes.orderCreate()}>تسجيل منتج</AllowedLink>
-                </div>
-            </div>
-        </Card.Header>
-        <Card.Body>
+    return <div className='my-2 shadow' >
+
+
             <Row className='align-items-center'>
                 <Col>
                     <TextFilter
@@ -78,8 +69,8 @@ export default function OrdersIndex() {
                 ]} />
             </div >
             <Paginator update={update} log={'OrdersIndex'} apiCall={fetch} useState={[ordersPagination, setordersPagination]} />
-        </Card.Body>
-    </Card>
+     
+    </div>
 
 }
 

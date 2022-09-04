@@ -45,7 +45,7 @@ const apiPrefix = '/dashboardApi'
 export const api = {
     currentLanguage: () => axios.get('/currentLanguage'),
     getAdmin: () => axios.get(apiPrefix + '/admin'),
-    logout: () => axios.get(apiPrefix + '/logout'),
+    logout: () => axios.delete(apiPrefix + '/logout'),
     login: (username: string, password: string) => axios.post(apiPrefix + '/login', { username: username, password: password }),
 
     productShow: (id: number) => axios.get(apiPrefix + '/productShow/' + id),
