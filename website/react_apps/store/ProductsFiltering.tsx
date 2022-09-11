@@ -2,26 +2,41 @@ import React from 'react'
 import { useSearchParams } from 'react-router-dom'
 import AllowedLink from './components/AllowedLink';
 import { routes, api } from './functions/urls';
-import { getPaginationParams, TextFilter } from '../components/Filters';
+import { getPaginationParams, SelectFilter, TextFilter } from '../components/Filters';
 import Paginator from '../components/Paginator';
 import VarInput from '../components/VarInput';
+import apiCallHandler from './functions/apiCallHandler';
 
 export default function ProductsFiltering(props) {
     let [searchParams, setSearchParams] = useSearchParams();
     let [q, setQuery] = React.useState(
         searchParams.get("q")
     );
+    let [category_id, setcategory_id] = React.useState(
+        searchParams.get("category_id")
+    );
 
     const [productsPagination, setproductsPagination] = React.useState<pagination<products>>()
 
 
     function fetch(params) {
-        return api.productsIndex({ q: q, ...getPaginationParams(productsPagination), ...params, with: 'category' });
+        return api.productsIndex({ q: q, category_id: category_id, ...getPaginationParams(productsPagination), ...params, with: 'category' });
     }
 
     React.useEffect(() => {
         console.log('q', q)
     }, [q])
+
+    const [categories, setcategories] = React.useState<categories>()
+
+    React.useEffect(() => {
+        apiCallHandler(
+            api.categories,
+            (data) => { setcategories(data) },
+            'TopMenue2 categories',
+            true
+        )
+    }, [])
 
     return <div className='row bg-white'>
 
@@ -60,6 +75,16 @@ export default function ProductsFiltering(props) {
                 label={'priceTo'}
                 apiCall={fetch}
                 useState={[productsPagination, setproductsPagination]}
+            />
+            <SelectFilter
+                options={categories}
+                apiCall={fetch}
+                property={'category_id'}
+                label={'category'}
+                valueKeyWord='id'
+                nameKeyWord='name'
+                useState={[productsPagination, setproductsPagination]}
+                defaultValue={category_id}
             />
 
         </div>

@@ -14,7 +14,16 @@ export function getPaginationParams(pagination: pagination<any>) {
 }
 
 
-export function SelectFilter(props) {
+export function SelectFilter(props: {
+    options: Array<any>,
+    apiCall: (params) => Promise<AxiosResponse>,
+    useState: Array<any>,
+    property: string,
+    label: string,
+    defaultValue?: any,
+    valueKeyWord: string,
+    nameKeyWord: string
+}) {
     const options = props.options
     const [selectedOption, setSelectedOption] = React.useState<string | undefined | null>()
 
@@ -41,12 +50,12 @@ export function SelectFilter(props) {
     }
 
     return <div>
-        <Form.Label className="">{label ?? property}</Form.Label>
+        {/* <Form.Label className="">{label ?? property}</Form.Label> */}
 
         <div className='d-flex'>
             <Form.Select
                 onChange={(e) => { setSelectedOption(e.target.value); }}
-                defaultValue={defaultValue ?? 'undefined'}
+                value={selectedOption ?? defaultValue ?? 'undefined'}
                 className='mx-1'
             >
                 <option value={'undefined'}>{label ?? property}</option>
@@ -62,7 +71,7 @@ export function SelectFilter(props) {
                 )
                 fetchData(params)
             }}>
-                {window.localization.filter}
+                {window.localization.search}
             </button>
         </div>
     </div>

@@ -16,6 +16,7 @@ class ProductFilters extends Filters
         'q',
         'priceFrom',
         'priceTo',
+        'category_id',
 
     ];
 
@@ -48,5 +49,9 @@ class ProductFilters extends Filters
     {
         return $this->builder->where('price', '<=', $priceTo);
     }
-
+        
+    protected function category_id($category_id)
+    {
+        return $this->builder->where('category_id', $category_id);
+    }
 }
