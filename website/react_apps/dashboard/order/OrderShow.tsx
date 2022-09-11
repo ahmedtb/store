@@ -5,6 +5,7 @@ import { api, routes } from '../functions/urls'
 import apiCallHandler from '../functions/apiCallHandler';
 import CustomModal from '../../components/CustomModal';
 import EditOrderModal from './components/EditOrderModal';
+import AllowedLink from '../components/AllowedLink';
 
 export default function OrderShow(props) {
 
@@ -44,44 +45,46 @@ export default function OrderShow(props) {
 
     return <div className='p-2'>
 
-        <Card className='my-2'>
 
-            <Card.Header>
-                <div className="d-flex justify-content-between">
-                    <div>
-                        user {order?.id}
-                    </div>
+        <div>
+            order id: {order?.id}
+        </div>
 
-                    <div>
-                        <CustomModal buttonClass="btn btn-info mx-2" label={window.localization.delete} >
-                            <div>
-                                {window.localization.formatString(window.localization.doYouWantToDelete, window.localization.order)}
+
+
+        <div>
+
+            <div className=''>{window.localization.user} <AllowedLink to={routes.orderShow(order?.user_id)}>{order?.user?.name}</AllowedLink></div>
+            <div>order items</div>
+            <div className='d-flex' style={{ height: '100px' }}>
+                {
+                    order?.order_items?.map((item, index) => {
+
+                        return <div key={index} className='d-flex h-50 d-inline-block'>
+                            <img src={api.productImage(item.product_id)} />
+                            <div >
+                                <div>product name: <AllowedLink to={routes.productShow(item.product_id)}>{item.product?.name}</AllowedLink></div>
+                                <div>quantity: {item.quantity}</div>
+                                <div>value: {item.value}</div>
                             </div>
-                            <div className='d-flex justify-content-around my-2'>
-                                <button className="btn btn-secondary" onClick={deleteOrder} data-dismiss="modal">{window.localization.yes}</button>
-                                <button className='btn btn-success' data-dismiss="modal">لا</button>
-                            </div>
 
-                        </CustomModal>
-                        {/* <EditOrderModal order={order} change={getOrderInfo} /> */}
-                    </div>
+                        </div>
+                    })
+                }
+            </div>
 
-                </div>
+        </div>
 
-            </Card.Header>
+        <CustomModal buttonClass="btn btn-danger" label={window.localization.delete} >
+            <div>
+                {window.localization.formatString(window.localization.doYouWantToDelete, window.localization.order)}
+            </div>
+            <div className='d-flex justify-content-around my-2'>
+                <button className="btn btn-secondary" onClick={deleteOrder} data-dismiss="modal">{window.localization.yes}</button>
+                <button className='btn btn-success' data-dismiss="modal">لا</button>
+            </div>
 
-            <Card.Body>
-
-                <Row>
-
-                    <Col xs={9}>
-                        <div className='fs-4'>{window.localization.user} {order?.user?.name}</div>
-
-                    </Col>
-                </Row>
-            </Card.Body>
-        </Card>
-
+        </CustomModal>
 
     </div>
 }

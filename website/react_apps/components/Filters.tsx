@@ -201,7 +201,7 @@ export function TextFilter(props: { property: string, label: string, apiCall: (p
 
     return (
         <div className="my-1">
-            <Form.Label className="">{label ?? property}</Form.Label>
+            {/* <Form.Label className="">{label ?? property}</Form.Label> */}
             <div className='d-flex justify-content-around'>
 
                 <Form.Control placeholder={label ?? property} className='mx-1' type="text" value={text ?? ''} onChange={(e) => settext(e.target.value)} />

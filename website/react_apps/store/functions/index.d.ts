@@ -118,7 +118,6 @@ declare global {
 
     type orderItem = {
         id: number,
-        name: string,
         product: product,
         product_id: number,
         order: order,
@@ -149,6 +148,14 @@ declare global {
     }
 
     type categories = Array<category>
+
+    type slide = {
+        id: number,
+        image: string,
+        to: string
+    }
+    type slides = Array<slide>
+
 
 }
 window.localization = window.localization || {};

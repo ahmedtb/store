@@ -75,8 +75,15 @@ function TopMenue(props: { refreshUser: typeof refreshUser, user: user, refreshC
                         }
 
                     </Nav>
-
+                
                 </Navbar.Collapse>
+
+                <div className='d-flex'>
+                    <div>adssa</div>
+                    <div>aaa</div>
+                    <div>ddd</div>
+
+                </div>
             </Container>
         </Navbar>
     )

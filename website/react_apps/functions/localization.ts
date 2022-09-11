@@ -48,6 +48,13 @@ export default new LocalizedStrings({
         phone:'phone',
         phones:'phones',
         signUp: 'signUp',
+        slides: 'slides',
+        slide: 'slide',
+        createSlide: 'create slide',
+        slidesList: 'slides list',
+
+        to: 'to',
+
 
     },
     ar: {

@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardAPI\UsersController;
 use App\Http\Controllers\DashboardAPI\AdminsController;
 use App\Http\Controllers\DashboardAPI\BrandsController;
 use App\Http\Controllers\DashboardAPI\OrdersController;
+use App\Http\Controllers\DashboardAPI\SlidesController;
 use App\Http\Controllers\DashboardAPI\ProductsController;
 use App\Http\Controllers\DashboardAPI\CategoriesController;
 use App\Http\Controllers\DashboardAPI\OrderItemsController;
@@ -80,4 +81,11 @@ Route::middleware('auth:admin')->group(function () {
 
     Route::get('/notifications', [NotificationsController::class, 'index']);
 
+
+    Route::get('/slidesIndex', [SlidesController::class, 'index']);
+    Route::get('/slideShow/{id}', [SlidesController::class, 'show']);
+    Route::delete('/slideDelete/{id}', [SlidesController::class, 'delete']);
+    Route::get('/slideImage/{id}', [SlidesController::class, 'image']);
+    Route::put('/slideEdit/{id}', [SlidesController::class, 'update']);
+    Route::post('/slideCreate', [SlidesController::class, 'create']);
 });

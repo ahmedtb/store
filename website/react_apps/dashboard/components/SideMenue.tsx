@@ -34,9 +34,9 @@ function SideMenue(props) {
                 <h5 className=''> {localization.orders} </h5>
             </AllowedLink>
                         
-            <AllowedLink className='text-white text-decoration-none' to={routes.orderedOrdersIndex()}>
+            {/* <AllowedLink className='text-white text-decoration-none' to={routes.orderedOrdersIndex()}>
                 <h5 className=''> oredered orders </h5>
-            </AllowedLink>
+            </AllowedLink> */}
                         
             <AllowedLink className='text-white text-decoration-none' to={routes.cartsIndex()}>
                 <h5 className=''> carts index </h5>
@@ -50,6 +50,9 @@ function SideMenue(props) {
                 <h5 className=''> {localization.admins} </h5>
             </AllowedLink>
             
+            <AllowedLink className='text-white text-decoration-none' to={routes.slidesIndex()}>
+                <h5 className=''> {localization.slides} </h5>
+            </AllowedLink>
         </div>
 
 

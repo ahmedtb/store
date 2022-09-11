@@ -43,8 +43,8 @@ export default function OrdersIndex() {
         )
     }
     
-    return <div className='my-2 shadow' >
-
+    return <div className='my-2 p-2 shadow' >
+            <div className='fs-4 fw-bold'>all orders</div>
 
             <Row className='align-items-center'>
                 <Col>
@@ -62,9 +62,9 @@ export default function OrdersIndex() {
 
             <div>
                 <OrdersTable orders={ordersPagination?.data} addColumns={[
-                    { title: 'accept', content: (order, index) => order.status == 'ordered' ? <button onClick={() => accept(order.id)}>accept</button> : null },
-                    { title: 'reject', content: (order, index) => order.status == 'ordered' ? <button onClick={() => reject(order.id)}>reject</button> : null },
-                    { title: 'reject', content: (order, index) => order.status == 'accepted' ? <button onClick={() => pay(order.id)}>pay</button> : null }
+                    { title: 'accept', content: (order, index) => order.status == 'ordered' ? <button className='btn btn-success' onClick={() => accept(order.id)}>accept</button> : null },
+                    { title: 'reject', content: (order, index) => order.status == 'ordered' ? <button className='btn btn-danger' onClick={() => reject(order.id)}>reject</button> : null },
+                    { title: 'reject', content: (order, index) => order.status == 'accepted' ? <button className='btn btn-warning' onClick={() => pay(order.id)}>pay</button> : null }
 
                 ]} />
             </div >

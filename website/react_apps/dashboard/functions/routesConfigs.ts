@@ -26,6 +26,9 @@ import AdminCreate from '../admin/AdminCreate';
 import OrderedOrdersIndex from '../order/OrderedOrdersIndex';
 import CartsIndex from '../order/CartsIndex';
 import Notifications from '../notification/Notifications';
+import SlidesIndex from '../slide/SlidesIndex';
+import SlideShow from '../slide/SlideShow';
+import SlideCreate from '../slide/SlideCreate';
 
 const configs: routeConfigsType = [
     {
@@ -214,6 +217,28 @@ const configs: routeConfigsType = [
     {
         component: Notifications,
         path: routes.notifications(),
+        permissions: [
+            roles.super
+        ],
+    },
+    
+    {
+        component: SlidesIndex,
+        path: routes.slidesIndex(),
+        permissions: [
+            roles.super
+        ],
+    },
+    {
+        component: SlideShow,
+        path: routes.slideShow(),
+        permissions: [
+            roles.super
+        ],
+    },
+    {
+        component: SlideCreate,
+        path: routes.createSlide(),
         permissions: [
             roles.super
         ],

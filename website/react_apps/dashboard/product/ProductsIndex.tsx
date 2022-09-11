@@ -33,15 +33,15 @@ export default function ProductsIndex() {
                     property={'arabic_name'}
                     label={window.localization.name}
                 />
-
-            </Col>
-            <Col>
                 <TextFilter
                     property='sellable_category_name'
                     label={window.localization.category}
                     apiCall={fetch}
                     useState={[productsPagination, setproductsPagination]}
                 />
+            </Col>
+            <Col>
+
                 <TextFilter
                     apiCall={fetch} useState={[productsPagination, setproductsPagination]}
                     property={'details'}

@@ -39,6 +39,10 @@ export const routes = {
     categoryShow: (id?: number) => id ? (routesPrefix + '/categoryShow/' + id) : routesPrefix + '/categoryShow/:id',
     categoriesIndex: () => routesPrefix + '/categoriesIndex/',
     categoryCreate: () => routesPrefix + '/categoryCreate/',
+    
+    slideShow: (id?: number) => id ? (routesPrefix + '/slideShow/' + id) : routesPrefix + '/slideShow/:id',
+    slidesIndex: () => routesPrefix + '/slidesIndex/',
+    createSlide: () => routesPrefix + '/createSlide/',
 }
 
 const apiPrefix = '/dashboardApi'
@@ -98,4 +102,11 @@ export const api = {
     categoryDelete: (id: number) => axios.delete(apiPrefix + '/categoryDelete/' + id),
 
     notificationsIndex: (params: object) => axios.get(apiPrefix + '/notifications/', { params: params }),
+
+    slideShow: (id: number) => axios.get(apiPrefix + '/slideShow/' + id),
+    slidesIndex: (params) => axios.get(apiPrefix + '/slidesIndex/', { params: params }),
+    createSlide: (params: slide) => axios.post(apiPrefix + '/slideCreate', params),
+    slideEdit: (id: number, params: object) => axios.put(apiPrefix + '/slideEdit/' + id, params),
+    slideDelete: (id: number) => axios.delete(apiPrefix + '/slideDelete/' + id),
+    slideImage: (id: number) => apiPrefix + '/slideImage/' + id,
 }

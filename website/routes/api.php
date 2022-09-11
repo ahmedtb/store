@@ -5,8 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\CartsController;
 use App\Http\Controllers\api\OrdersController;
 use App\Http\Controllers\api\ProductsController;
+use App\Http\Controllers\api\CategoriesController;
 use App\Http\Controllers\api\UsersLoginController;
 use App\Http\Controllers\api\NotificationsController;
+use App\Http\Controllers\api\SlidesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/productsIndex', [ProductsController::class, 'index']);
 Route::get('/productShow/{id}', [ProductsController::class, 'show']);
 Route::get('/productImage/{id}', [ProductsController::class, 'image']);
+Route::get('/categories', [CategoriesController::class, 'categories']);
+Route::get('/slides', [SlidesController::class, 'slides']);
 
 
 Route::post('/login', [UsersLoginController::class, 'login']);
@@ -41,8 +45,10 @@ Route::middleware('auth:user')->group(function () {
     Route::post('/cartToOrdered', [CartsController::class, 'cartToOrdered']);
     
     Route::get('/myOrders', [OrdersController::class, 'index']);
+    Route::delete('/orderDelete/{id}', [OrdersController::class, 'delete']);
 
     Route::get('/notifications', [NotificationsController::class, 'index']);
 
     
+
 });

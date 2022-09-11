@@ -19,6 +19,9 @@ class DatabaseSeeder extends Seeder
     {
         User::factory()->create(['phone' => '0914354173', 'password' => Hash::make('password')]);
         Admin::factory()->create(['username' => 'ahmed', 'password' => Hash::make('password')]);
+        \App\Models\Category::factory(10)->create();
+        \App\Models\Slide::factory(5)->create();
+
 
         \App\Models\Product::factory(150)->create();
         \App\Models\Brand::factory(5)->create();

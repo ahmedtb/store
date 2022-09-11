@@ -17,6 +17,7 @@ export default function OrdersTable(props: { orders: orders, addColumns?: addCol
                     <th>#</th>
                     <th>user</th>
                     <th>status</th>
+                    <th>items</th>
 
 
                     {
@@ -44,6 +45,18 @@ export default function OrdersTable(props: { orders: orders, addColumns?: addCol
 
                             <td>
                                 {order.status}
+                            </td>
+
+                            <td className=''>
+                                {
+                                    order?.order_items?.map((item, index) => {
+
+                                        return <div key={index} className='d-flex h-50 d-inline-block'>
+                                            {item.product?.name} quantity {item.quantity} value {item.value}
+                                        
+                                        </div>
+                                    })
+                                }
                             </td>
 
 

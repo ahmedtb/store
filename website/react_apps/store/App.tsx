@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, } from 'react-router-dom'
-import TopMenue from './components/TopMenue'
+import TopMenue2 from './components/TopMenue2'
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import AllowedRoutes from './components/AllowedRoutes'
@@ -43,7 +43,7 @@ function App() {
                         <div>
 
                             <Row>
-                                <TopMenue />
+                                <TopMenue2 />
                             </Row>
                             <Row>
                                 {/* <Col xs={10} className='p-0 mx-auto'> */}

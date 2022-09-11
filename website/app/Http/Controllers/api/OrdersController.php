@@ -14,7 +14,7 @@ use Illuminate\Validation\ValidationException;
 
 class OrdersController extends Controller
 {
-   
+
     public function index(OrderFilters $filters, Request $request)
     {
 
@@ -28,5 +28,21 @@ class OrdersController extends Controller
         return $request->user()->orders()->where('id', $id)->with($request->with ?? [])->first();
     }
 
-   
+    public function delete(Request $request, $id)
+    {
+        $order = $request->user()->orders()->where('id', $id)->first();
+
+        if (!$order)
+            throw ValidationException::withMessages(['id' => "you do not have order with id {$id}"]);
+
+        if ($order->status == 'paid')
+            throw ValidationException::withMessages(['id' => "this order {$id} is paid, you can not delete it"]);
+
+        $order->delete();
+
+        return __('CRUD.deleted', [
+            'name' => trans_choice('models.order', 1),
+            'id' => $id
+        ]);
+    }
 }

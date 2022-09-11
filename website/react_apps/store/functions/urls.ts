@@ -37,7 +37,9 @@ export const api = {
 
     myOrders: (params?: object) => axios.get(apiPrefix + '/myOrders', { params: params }),
     orderShow: (id: number) => axios.get(apiPrefix + '/orderShow/' + id),
+    orderDelete: (id: number) => axios.delete(apiPrefix + '/orderDelete/' + id),
 
     notificationsIndex: (params?: object) => axios.get(apiPrefix + '/notifications', { params: params }),
-
+    categories: () => axios.get(apiPrefix + '/categories'),
+    slides: () => axios.get(apiPrefix + '/slides'),
 }
