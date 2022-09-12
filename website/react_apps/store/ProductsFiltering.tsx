@@ -15,6 +15,7 @@ export default function ProductsFiltering(props) {
     let [category_id, setcategory_id] = React.useState(
         searchParams.get("category_id")
     );
+    let [update, setupdate] = React.useState<number>();
 
     const [productsPagination, setproductsPagination] = React.useState<pagination<products>>()
 
@@ -25,7 +26,14 @@ export default function ProductsFiltering(props) {
 
     React.useEffect(() => {
         console.log('q', q)
-    }, [q])
+        setcategory_id(
+            searchParams.get("category_id")
+        )
+        setQuery(
+            searchParams.get("q")
+        )
+        setupdate(Math.random())
+    }, [searchParams])
 
     const [categories, setcategories] = React.useState<categories>()
 
@@ -54,7 +62,7 @@ export default function ProductsFiltering(props) {
                     </AllowedLink>
                 })
             }
-            <Paginator log={'Home'} apiCall={fetch} useState={[productsPagination, setproductsPagination]} />
+            <Paginator update={update} log={'Home'} apiCall={fetch} useState={[productsPagination, setproductsPagination]} />
         </div>
         <div className='col-3'>
             <TextFilter

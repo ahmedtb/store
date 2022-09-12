@@ -36,6 +36,7 @@
         "react-bell-icon": "^1.0.1",
         "react-bootstrap": "^2.5.0",
         "react-click-away-listener": "^2.2.1",
+        "react-geolocated": "^4.0.3",
         "react-icons": "^4.4.0",
         "react-loader-spinner": "^5.2.0",
         "react-localization": "^1.0.19",

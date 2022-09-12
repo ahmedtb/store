@@ -55,7 +55,7 @@ export function SelectFilter(props: {
         <div className='d-flex'>
             <Form.Select
                 onChange={(e) => { setSelectedOption(e.target.value); }}
-                value={selectedOption ?? defaultValue ?? 'undefined'}
+                value={defaultValue ?? selectedOption  ?? 'undefined'}
                 className='mx-1'
             >
                 <option value={'undefined'}>{label ?? property}</option>

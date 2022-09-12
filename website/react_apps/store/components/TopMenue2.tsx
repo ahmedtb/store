@@ -63,9 +63,9 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
                 {
                     props.user ? (
                         <NavDropdown title={props.user.name}>
-                            <Link to={routes.myOrders()}>
-                                <NavDropdown.Item  >{window.localization.orders}</NavDropdown.Item>
-                            </Link>
+                            <LinkContainer to={routes.myOrders()}>
+                                <NavDropdown.Item>{window.localization.orders}</NavDropdown.Item>
+                            </LinkContainer>
 
                             <NavDropdown.Item onClick={logout} >{window.localization.logout}</NavDropdown.Item>
                         </NavDropdown>
