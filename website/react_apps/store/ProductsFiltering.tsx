@@ -41,7 +41,7 @@ export default function ProductsFiltering(props) {
         apiCallHandler(
             api.categories,
             (data) => { setcategories(data) },
-            'TopMenue2 categories',
+            'ProductsFiltering categories',
             true
         )
     }, [])

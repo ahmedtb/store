@@ -39,17 +39,17 @@ function App() {
             <Provider store={store}>
 
                 <BrowserRouter>
-                    <Container fluid className='min-vh-100 d-flex flex-column justify-content-between'>
+                    <Container fluid className='p-0'>
                         <div>
 
-                            <Row>
-                                <TopMenue2 />
-                            </Row>
-                            <Row>
-                                {/* <Col xs={10} className='p-0 mx-auto'> */}
-                                <AllowedRoutes />
-                                {/* </Col> */}
-                            </Row>
+                            {/* <Row> */}
+                            <TopMenue2 />
+                            {/* </Row> */}
+                            {/* <Row> */}
+                            {/* <Col xs={10} className='p-0 mx-auto'> */}
+                            <AllowedRoutes />
+                            {/* </Col> */}
+                            {/* </Row> */}
                         </div>
                         <Footer />
                     </Container>

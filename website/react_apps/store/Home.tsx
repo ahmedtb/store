@@ -58,7 +58,7 @@ export default function Home() {
                         slidesToShow: 1,
                         slidesToScroll: 1,
                         autoplay: true,
-                        autoplaySpeed: 1500
+                        autoplaySpeed: 3000
                     }}>
 
                         {
@@ -82,7 +82,7 @@ export default function Home() {
                         slidesToShow: 4,
                         slidesToScroll: 2,
                         autoplay: true,
-                        autoplaySpeed: 1500
+                        autoplaySpeed: 3000
                     }}>
                         {
                             products?.map((product, index) => {
