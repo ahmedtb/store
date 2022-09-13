@@ -33,7 +33,7 @@ export const api = {
 
     addToCart: (id: number, quantity: number) => axios.post(apiPrefix + '/addToCart', { product_id: id, quantity: quantity }),
     getCart: () => axios.get(apiPrefix + '/getCart'),
-    cartToOrdered: () => axios.post(apiPrefix + '/cartToOrdered'),
+    cartToOrdered: (lat: number, long: number) => axios.post(apiPrefix + '/cartToOrdered', { long: long, lat: lat }),
 
     myOrders: (params?: object) => axios.get(apiPrefix + '/myOrders', { params: params }),
     orderShow: (id: number) => axios.get(apiPrefix + '/orderShow/' + id),

@@ -21,7 +21,7 @@ class CartsController extends Controller
             'product_id' => 'required|exists:products,id',
             'quantity' => 'required|numeric'
         ]);
-        
+
         $newOrder = $request->user()->cart();
         // return;
         if (!$newOrder)
@@ -72,18 +72,23 @@ class CartsController extends Controller
         ]);
     }
 
-    
+
     public function getCart(Request $request)
     {
         return $request->user()->cart();
     }
 
-    public function cartToOrdered(Request $request){
+    public function cartToOrdered(Request $request)
+    {
+        $request->validate([
+            'long' => 'required|numeric',
+            'lat' => 'required|numeric',
+        ]);
         $cart = $request->user()->cart();
-        foreach($cart->orderItems as $item){
-            
+        foreach ($cart->orderItems as $item) {
         }
         $cart->status = 'ordered';
+        $cart->GPS = ['lat' => $request->lat, 'long' => $request->long];
         $cart->save();
         Notification::send(Admin::all(), new UserOrderedCart($cart));
         return 'cart ' . $cart->id . ' is ordered';

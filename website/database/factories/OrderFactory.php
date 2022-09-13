@@ -17,8 +17,8 @@ class OrderFactory extends Factory
     {
         return [
             'user_id' => rand(0, 5) == 1 || User::count() == 0 ? User::factory()->create()->id : User::inRandomOrder()->first()->id,
-            'status' => Order::$statuses[random_int(0, sizeof(Order::$statuses) - 1)]
-
+            'status' => Order::$statuses[random_int(0, sizeof(Order::$statuses) - 1)],
+            'GPS' => ['lat' => rand_float(12.78, 13.63), 'long' => rand_float(32.5, 32.9)],
         ];
     }
 }

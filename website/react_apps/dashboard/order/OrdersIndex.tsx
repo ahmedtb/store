@@ -64,7 +64,8 @@ export default function OrdersIndex() {
                 <OrdersTable orders={ordersPagination?.data} addColumns={[
                     { title: 'accept', content: (order, index) => order.status == 'ordered' ? <button className='btn btn-success' onClick={() => accept(order.id)}>accept</button> : null },
                     { title: 'reject', content: (order, index) => order.status == 'ordered' ? <button className='btn btn-danger' onClick={() => reject(order.id)}>reject</button> : null },
-                    { title: 'reject', content: (order, index) => order.status == 'accepted' ? <button className='btn btn-warning' onClick={() => pay(order.id)}>pay</button> : null }
+                    { title: 'pay', content: (order, index) => order.status == 'accepted' ? <button className='btn btn-warning' onClick={() => pay(order.id)}>pay</button> : null },
+                    { title: 'print', content: (order, index) => <AllowedLink to={routes.printOrder(order.id)} className='btn btn-warning'>print</AllowedLink> }
 
                 ]} />
             </div >

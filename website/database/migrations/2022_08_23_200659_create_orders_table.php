@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('status');
-            $table->json('GPS');
+            $table->json('GPS')->nullable();
             $table->timestamps();
         });
     }

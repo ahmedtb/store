@@ -19,6 +19,7 @@ export const routes = {
     orderCreate: () => routesPrefix + '/orderCreate/',
     orderedOrdersIndex: () => routesPrefix + '/orderedOrdersIndex/',
     cartsIndex: () => routesPrefix + '/cartsIndex/',
+    printOrder: (id?: number) => id ? (routesPrefix + '/printOrder/' + id) : routesPrefix + '/printOrder/:id',
 
     orderItemShow: (id?: number) => id ? (routesPrefix + '/orderItemShow/' + id) : routesPrefix + '/orderItemShow/:id',
     orderItemsIndex: () => routesPrefix + '/orderItemsIndex/',

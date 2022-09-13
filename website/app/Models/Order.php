@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\Json;
 use App\Filters\OrderFilters;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,6 +13,10 @@ class Order extends Model
     use HasFactory;
 
     protected $guarded = [];
+    protected $casts = [
+        'GPS' => Json::class
+    ];
+
 
     protected $with = ['user','orderItems'];
 

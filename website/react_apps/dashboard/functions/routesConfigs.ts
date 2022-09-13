@@ -29,6 +29,7 @@ import Notifications from '../notification/Notifications';
 import SlidesIndex from '../slide/SlidesIndex';
 import SlideShow from '../slide/SlideShow';
 import SlideCreate from '../slide/SlideCreate';
+import PrintOrder from '../order/PrintOrder';
 
 const configs: routeConfigsType = [
     {
@@ -165,6 +166,13 @@ const configs: routeConfigsType = [
     {
         component: OrderCreate,
         path: routes.orderCreate(),
+        permissions: [
+            roles.super
+        ],
+    },
+    {
+        component: PrintOrder,
+        path: routes.printOrder(),
         permissions: [
             roles.super
         ],

@@ -17,6 +17,7 @@ export default function OrdersTable(props: { orders: orders, addColumns?: addCol
                     <th>#</th>
                     <th>user</th>
                     <th>status</th>
+                    <th>GPS</th>
                     <th>items</th>
 
 
@@ -45,6 +46,11 @@ export default function OrdersTable(props: { orders: orders, addColumns?: addCol
 
                             <td>
                                 {order.status}
+                            </td>
+
+                            <td>
+                                long {order.GPS?.long }
+                                lat {order.GPS?.lat }
                             </td>
 
                             <td className=''>
