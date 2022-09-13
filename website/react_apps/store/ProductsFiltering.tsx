@@ -46,55 +46,56 @@ export default function ProductsFiltering(props) {
         )
     }, [])
 
-    return <div className='row bg-white'>
+    return <div className='bg-white'>
+        <div className='row'>
+            <div className='col-9 row justify-content-center'>
+                {
+                    productsPagination?.data?.map((product, index) => {
+                        return <AllowedLink key={index} to={routes.productShow(product.id)} className='col-3 d-flex text-dark text-decoration-none border rounded p-1 m-1'>
+                            <img src={api.productImage(1)} width={816 / 10} height={1200 / 10} />
+                            <div>
+                                <div>{product.name}</div>
+                                <div>{product.category?.name}</div>
+                                <div>{product.price}</div>
+                                {/* <div>{product.description}</div> */}
+                            </div>
+                        </AllowedLink>
+                    })
+                }
+                <Paginator update={update} log={'Home'} apiCall={fetch} useState={[productsPagination, setproductsPagination]} />
+            </div>
+            <div className='col-3'>
+                <TextFilter
+                    property={'q'}
+                    label={'name'}
+                    apiCall={fetch}
+                    useState={[productsPagination, setproductsPagination]}
+                    initValue={q}
+                />
+                <TextFilter
+                    property={'priceFrom'}
+                    label={'priceFrom'}
+                    apiCall={fetch}
+                    useState={[productsPagination, setproductsPagination]}
+                />
+                <TextFilter
+                    property={'priceTo'}
+                    label={'priceTo'}
+                    apiCall={fetch}
+                    useState={[productsPagination, setproductsPagination]}
+                />
+                <SelectFilter
+                    options={categories}
+                    apiCall={fetch}
+                    property={'category_id'}
+                    label={'category'}
+                    valueKeyWord='id'
+                    nameKeyWord='name'
+                    useState={[productsPagination, setproductsPagination]}
+                    defaultValue={category_id}
+                />
 
-        <div className='col-9 row justify-content-center'>
-            {
-                productsPagination?.data?.map((product, index) => {
-                    return <AllowedLink key={index} to={routes.productShow(product.id)} className='col-3 d-flex text-dark text-decoration-none border rounded p-1 m-1'>
-                        <img src={api.productImage(1)} width={816 / 10} height={1200 / 10} />
-                        <div>
-                            <div>{product.name}</div>
-                            <div>{product.category?.name}</div>
-                            <div>{product.price}</div>
-                            <div>{product.description}</div>
-                        </div>
-                    </AllowedLink>
-                })
-            }
-            <Paginator update={update} log={'Home'} apiCall={fetch} useState={[productsPagination, setproductsPagination]} />
-        </div>
-        <div className='col-3'>
-            <TextFilter
-                property={'q'}
-                label={'name'}
-                apiCall={fetch}
-                useState={[productsPagination, setproductsPagination]}
-                initValue={q}
-            />
-            <TextFilter
-                property={'priceFrom'}
-                label={'priceFrom'}
-                apiCall={fetch}
-                useState={[productsPagination, setproductsPagination]}
-            />
-            <TextFilter
-                property={'priceTo'}
-                label={'priceTo'}
-                apiCall={fetch}
-                useState={[productsPagination, setproductsPagination]}
-            />
-            <SelectFilter
-                options={categories}
-                apiCall={fetch}
-                property={'category_id'}
-                label={'category'}
-                valueKeyWord='id'
-                nameKeyWord='name'
-                useState={[productsPagination, setproductsPagination]}
-                defaultValue={category_id}
-            />
-
+            </div>
         </div>
 
     </div>

@@ -45,11 +45,11 @@ export default function Home() {
     }, [])
 
     return (
-        <div className="container bg-white p-3">
+        <div className="bg-white">
 
             {slides?.length ?
 
-                <div className='border p-2 m-2 rounded shadow'>
+                <div className='mt-1'>
                     <Slider {...{
                         fade: true,
                         dots: true,
@@ -58,7 +58,8 @@ export default function Home() {
                         slidesToShow: 1,
                         slidesToScroll: 1,
                         autoplay: true,
-                        autoplaySpeed: 3000
+                        autoplaySpeed: 3000,
+                        arrows: false,
                     }}>
 
                         {
@@ -82,7 +83,9 @@ export default function Home() {
                         slidesToShow: 4,
                         slidesToScroll: 2,
                         autoplay: true,
-                        autoplaySpeed: 3000
+                        autoplaySpeed: 3000,
+                        arrows: false,
+
                     }}>
                         {
                             products?.map((product, index) => {
@@ -92,49 +95,43 @@ export default function Home() {
                                         <div>{product.name}</div>
                                         <div>{product.category?.name}</div>
                                         <div>{product.price}</div>
-                                        <div>{product.description}</div>
+                                        {/* <div>{product.description}</div> */}
                                     </div>
                                 </AllowedLink>
                             })
                         }
                     </Slider>
                 </div>
-                <div className='fs-5 fw-bold'>
-                    choose manufacture
-                </div>
-                <div className='row'>
-                    <div className='col-2'>
-                        <img src='https://cdn-icons-png.flaticon.com/512/882/882747.png' className='w-100' />
-                    </div>
-                    <div className='col-2'>
-                        <img src='https://i.pinimg.com/originals/7b/a2/7b/7ba27b85ee51849568dd6076d0e44b15.png' className='w-100' />
-                    </div>
-                    <div className='col-2'>
-                        <img src='https://cdn-icons-png.flaticon.com/512/882/882738.png' className='w-100' />
-                    </div>
-                    <div className='col-2'>
-                        <img src='https://icons-for-free.com/iconfiles/png/512/company+mi+mobile+xiaomi+icon-1320168262452948540.png' className='w-100' />
-                    </div>
-                    <div className='col-2'>
-                        <img src='https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/lg-512.png' className='w-100' />
-                    </div>
-                </div>
-                {/* {
-                    productsPagination?.data?.map((product, index) => {
-                        return <AllowedLink key={index} to={routes.productShow(product.id)} className='d-flex text-dark text-decoration-none'>
-                            <img src={api.productImage(1)} width={816 / 10} height={1200 / 10} />
-                            <div>
-                                <div>{product.name}</div>
-                                <div>{product.category?.name}</div>
-                                <div>{product.price}</div>
-                                <div>{product.description}</div>
-                            </div>
-                        </AllowedLink>
-                    })
-                }
+                <div className='border p-2 m-2 rounded shadow'>
 
-            <Paginator log={'Home'} apiCall={fetch} useState={[productsPagination, setproductsPagination]} /> */}
-                <ProductsFiltering />
+                    <div className='fs-5 fw-bold'>
+                        choose manufacture
+                    </div>
+                    <div className='row'>
+                        <div className='col-2'>
+                            <img src='https://cdn-icons-png.flaticon.com/512/882/882747.png' className='w-100' />
+                        </div>
+                        <div className='col-2'>
+                            <img src='https://i.pinimg.com/originals/7b/a2/7b/7ba27b85ee51849568dd6076d0e44b15.png' className='w-100' />
+                        </div>
+                        <div className='col-2'>
+                            <img src='https://cdn-icons-png.flaticon.com/512/882/882738.png' className='w-100' />
+                        </div>
+                        <div className='col-2'>
+                            <img src='https://icons-for-free.com/iconfiles/png/512/company+mi+mobile+xiaomi+icon-1320168262452948540.png' className='w-100' />
+                        </div>
+                        <div className='col-2'>
+                            <img src='https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/lg-512.png' className='w-100' />
+                        </div>
+                    </div>
+                </div>
+
+                <div className='border p-2 m-2 rounded shadow'>
+
+                    <div className='fw-bold'>Search through the products</div>
+                    <ProductsFiltering />
+                </div>
+
             </div>
         </div>
     );

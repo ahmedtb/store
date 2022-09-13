@@ -10,6 +10,8 @@ import { Dispatch } from 'redux';
 import CartBell from './CartBell';
 import { Link } from 'react-router-dom'
 import useWindowDimensions from '../../functions/useWindowDimensions';
+import { BsList } from 'react-icons/bs'
+import { AiOutlineSearch } from 'react-icons/ai'
 
 function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refreshCart: typeof refreshCart }) {
     const [q, setq] = React.useState<string>()
@@ -42,66 +44,58 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
         return (
             <div>
 
-                <div className='p-1 bg-primary align-items-center'>
+                <div className='p-1 bg-dark align-items-center'>
 
-                    <div className='d-flex justify-content-between'>
+                    <div className='d-flex justify-content-between align-items-center'>
                         <LinkContainer to={routes.home()}>
-                            <div className='d-flex'>
-
-                                <img src='https://previews.123rf.com/images/distrologo/distrologo1902/distrologo190200712/117609654-phone-shop-logo-design-template-gadget-shop-logo-design.jpg' width={75} height={75} />
-                                <div className='fs-2 ms-3 text-white'>
-                                    Phone Store
-                                </div>
+                            <div className='fs-2 ms-3 text-white'>
+                                Phone Store
                             </div>
                         </LinkContainer>
-                        <CartBell />
-                        <NotificationsBell />
-                        <button onClick={() => settoggle(!toggle)}>toggle</button>
+                        <div className='d-flex align-items-center'>
+
+                            <CartBell />
+                            <NotificationsBell />
+                            {
+                                props.user ? (
+                                    <NavDropdown title={props.user.name} className='text-white'>
+                                        <LinkContainer to={routes.myOrders()}>
+                                            <NavDropdown.Item>{window.localization.orders}</NavDropdown.Item>
+                                        </LinkContainer>
+
+                                        <NavDropdown.Item onClick={logout} >{window.localization.logout}</NavDropdown.Item>
+                                    </NavDropdown>
+                                ) : (
+                                    <div className='d-flex'>
+                                        <Link to={routes.loginPage()} className='text-white mx-1'>
+                                            <div >{window.localization.login}</div>
+                                        </Link>
+                                        <Link to={routes.signUp()} className='text-white mx-1'>
+                                            <div >{window.localization.signUp}</div>
+                                        </Link>
+                                    </div>
+                                )
+                            }
+                        </div>
+
                     </div>
-                    {
-                        toggle ? <>
-                            <div className="d-flex mx-2">
-                                <Form.Control
-                                    type="search"
-                                    placeholder="Search"
-                                    className="me-2"
-                                    aria-label="Search"
-                                    onChange={e => setq(e.target.value)}
-                                />
-                                <Link className="btn btn-outline-light" to={routes.productsFiltering() + '?q=' + q} >Search</Link>
-                            </div>
-                            <div>
 
+                    <div className="d-flex m-1">
+                        <Form.Control
+                            type="search"
+                            placeholder="Search"
+                            className="me-2"
+                            aria-label="Search"
+                            onChange={e => setq(e.target.value)}
+                        />
+                        <Link className="btn btn-outline-light" to={routes.productsFiltering() + '?q=' + q} >Search</Link>
+                    </div>
 
-                                {
-                                    props.user ? (
-                                        <NavDropdown title={props.user.name}>
-                                            <LinkContainer to={routes.myOrders()}>
-                                                <NavDropdown.Item>{window.localization.orders}</NavDropdown.Item>
-                                            </LinkContainer>
-
-                                            <NavDropdown.Item onClick={logout} >{window.localization.logout}</NavDropdown.Item>
-                                        </NavDropdown>
-                                    ) : (
-                                        <div className='d-flex'>
-                                            <Link to={routes.loginPage()} className='text-white mx-1'>
-                                                <div >{window.localization.login}</div>
-                                            </Link>
-                                            <Link to={routes.signUp()} className='text-white mx-1'>
-                                                <div >{window.localization.signUp}</div>
-                                            </Link>
-                                        </div>
-                                    )
-                                }
-
-                            </div>
-                        </> : null
-                    }
 
 
 
                 </div>
-                <div className='d-flex flex-wrap bg-dark'>
+                <div className='d-flex flex-wrap bg-secondary'>
                 </div>
                 <NavDropdown title={window.localization.categories}>
                     {
@@ -119,32 +113,29 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
     return (
         <div>
 
-            <div className='d-flex p-1 bg-primary align-items-center'>
+            <div className='d-flex p-1 bg-dark align-items-center'>
                 <LinkContainer to={routes.home()}>
-                    <div className='d-flex'>
-
-                        <img src='https://previews.123rf.com/images/distrologo/distrologo1902/distrologo190200712/117609654-phone-shop-logo-design-template-gadget-shop-logo-design.jpg' width={75} height={75} />
-                        <div className='fs-2 ms-3 text-white'>
-                            Phone Store
-                        </div>
+                    <div className='fs-2 ms-3 text-white'>
+                        Phone Store
                     </div>
                 </LinkContainer>
 
-                <div className="d-flex mx-2">
-                    <Form.Control
-                        type="search"
-                        placeholder="Search"
-                        className="me-2"
+                <div className="d-flex mx-2 flex-grow-1">
+                    <input
+                        type="text"
+                        className="p-1 flex-grow-1"
                         aria-label="Search"
                         onChange={e => setq(e.target.value)}
                     />
-                    <Link className="btn btn-outline-light" to={routes.productsFiltering() + '?q=' + q} >Search</Link>
+                    <Link className="bg-warning px-2" to={routes.productsFiltering() + '?q=' + q} >
+                        <AiOutlineSearch className='my-auto' size={25} color={'black'}/>
+                    </Link>
                 </div>
                 <CartBell />
                 <NotificationsBell />
                 {
                     props.user ? (
-                        <NavDropdown title={props.user.name}>
+                        <NavDropdown title={props.user.name} className='text-white' >
                             <LinkContainer to={routes.myOrders()}>
                                 <NavDropdown.Item>{window.localization.orders}</NavDropdown.Item>
                             </LinkContainer>
@@ -166,7 +157,7 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
 
 
             </div>
-            <div className='d-flex flex-wrap bg-dark'>
+            <div className='d-flex flex-wrap bg-secondary py-1'>
                 {
                     categories?.map((category, index) => <Link to={routes.productsFiltering() + '?category_id=' + category.id} key={index} className='mx-2 text-decoration-none text-white'>
                         {category.name}
