@@ -19,7 +19,7 @@ class ProductsController extends Controller
     {
 
         return Product::filter($filters)
-            ->paginate($request->withoutPagination ? Product::count() : $request->input('page_size') ?? 10)
+            ->paginate($request->input('page_size') ?? 10)
             ->appends(request()->except('page'));
     }
 

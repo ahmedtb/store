@@ -39,7 +39,7 @@ function App() {
             <Provider store={store}>
 
                 <BrowserRouter>
-                    <Container fluid className='p-0'>
+                    <Container fluid className='p-0 m-0'>
                         <div>
 
                             {/* <Row> */}

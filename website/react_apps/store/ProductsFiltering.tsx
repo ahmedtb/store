@@ -21,7 +21,7 @@ export default function ProductsFiltering(props) {
 
 
     function fetch(params) {
-        return api.productsIndex({ q: q, category_id: category_id, ...getPaginationParams(productsPagination), ...params, with: 'category' });
+        return api.productsIndex({ q: q, category_id: category_id, ...getPaginationParams(productsPagination), ...params, page_size: 9, with: 'category' });
     }
 
     React.useEffect(() => {
@@ -48,10 +48,10 @@ export default function ProductsFiltering(props) {
 
     return <div className='row bg-white'>
 
-        <div className='col-9'>
+        <div className='col-9 row justify-content-center'>
             {
                 productsPagination?.data?.map((product, index) => {
-                    return <AllowedLink key={index} to={routes.productShow(product.id)} className='d-flex text-dark text-decoration-none'>
+                    return <AllowedLink key={index} to={routes.productShow(product.id)} className='col-3 d-flex text-dark text-decoration-none border rounded p-1 m-1'>
                         <img src={api.productImage(1)} width={816 / 10} height={1200 / 10} />
                         <div>
                             <div>{product.name}</div>

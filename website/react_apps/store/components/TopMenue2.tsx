@@ -37,26 +37,27 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
     }, [])
 
 
-    React.useEffect(() => {
-        console.log('width', width)
-    }, [width])
 
     if (width <= 800)
         return (
             <div>
 
                 <div className='p-1 bg-primary align-items-center'>
-                    <LinkContainer to={routes.home()}>
-                        <div className='d-flex'>
 
-                            <img src='https://previews.123rf.com/images/distrologo/distrologo1902/distrologo190200712/117609654-phone-shop-logo-design-template-gadget-shop-logo-design.jpg' width={75} height={75} />
-                            <div className='fs-2 ms-3 text-white'>
-                                Phone Store
+                    <div className='d-flex justify-content-between'>
+                        <LinkContainer to={routes.home()}>
+                            <div className='d-flex'>
+
+                                <img src='https://previews.123rf.com/images/distrologo/distrologo1902/distrologo190200712/117609654-phone-shop-logo-design-template-gadget-shop-logo-design.jpg' width={75} height={75} />
+                                <div className='fs-2 ms-3 text-white'>
+                                    Phone Store
+                                </div>
                             </div>
-                        </div>
-                    </LinkContainer>
-
-                    <button onClick={() => settoggle(!toggle)}>toggle</button>
+                        </LinkContainer>
+                        <CartBell />
+                        <NotificationsBell />
+                        <button onClick={() => settoggle(!toggle)}>toggle</button>
+                    </div>
                     {
                         toggle ? <>
                             <div className="d-flex mx-2">
@@ -69,29 +70,31 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
                                 />
                                 <Link className="btn btn-outline-light" to={routes.productsFiltering() + '?q=' + q} >Search</Link>
                             </div>
-                            <CartBell />
-                            <NotificationsBell />
-                            {
-                                props.user ? (
-                                    <NavDropdown title={props.user.name}>
-                                        <LinkContainer to={routes.myOrders()}>
-                                            <NavDropdown.Item>{window.localization.orders}</NavDropdown.Item>
-                                        </LinkContainer>
+                            <div>
 
-                                        <NavDropdown.Item onClick={logout} >{window.localization.logout}</NavDropdown.Item>
-                                    </NavDropdown>
-                                ) : (
-                                    <div className='d-flex'>
-                                        <Link to={routes.loginPage()} className='text-white mx-1'>
-                                            <div >{window.localization.login}</div>
-                                        </Link>
-                                        <Link to={routes.signUp()} className='text-white mx-1'>
-                                            <div >{window.localization.signUp}</div>
-                                        </Link>
-                                    </div>
-                                )
-                            }
 
+                                {
+                                    props.user ? (
+                                        <NavDropdown title={props.user.name}>
+                                            <LinkContainer to={routes.myOrders()}>
+                                                <NavDropdown.Item>{window.localization.orders}</NavDropdown.Item>
+                                            </LinkContainer>
+
+                                            <NavDropdown.Item onClick={logout} >{window.localization.logout}</NavDropdown.Item>
+                                        </NavDropdown>
+                                    ) : (
+                                        <div className='d-flex'>
+                                            <Link to={routes.loginPage()} className='text-white mx-1'>
+                                                <div >{window.localization.login}</div>
+                                            </Link>
+                                            <Link to={routes.signUp()} className='text-white mx-1'>
+                                                <div >{window.localization.signUp}</div>
+                                            </Link>
+                                        </div>
+                                    )
+                                }
+
+                            </div>
                         </> : null
                     }
 
@@ -99,12 +102,16 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
 
                 </div>
                 <div className='d-flex flex-wrap bg-dark'>
-                    {
-                        categories?.map((category, index) => <Link to={routes.productsFiltering() + '?category_id=' + category.id} key={index} className='mx-2 text-decoration-none text-white'>
-                            {category.name}
-                        </Link>)
-                    }
                 </div>
+                <NavDropdown title={window.localization.categories}>
+                    {
+                        categories?.map((category, index) => <LinkContainer to={routes.productsFiltering() + '?category_id=' + category.id} key={index} className='mx-2 text-decoration-none'>
+                            <NavDropdown.Item>{category.name}</NavDropdown.Item>
+                        </LinkContainer>)
+                    }
+                    {/* <NavDropdown.Item>{window.localization.orders}</NavDropdown.Item> */}
+                </NavDropdown>
+
             </div>
 
         )
