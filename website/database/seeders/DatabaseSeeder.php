@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         User::factory()->create(['phone' => '0914354173', 'password' => Hash::make('password')]);
         Admin::factory()->create(['username' => 'ahmed', 'password' => Hash::make('password')]);
-        \App\Models\Category::factory(10)->create();
+        \App\Models\Category::factory(4)->create();
         \App\Models\Slide::factory(5)->create();
 
 

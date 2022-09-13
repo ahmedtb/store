@@ -128,18 +128,17 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
                         onChange={e => setq(e.target.value)}
                     />
                     <Link className="bg-warning px-2" to={routes.productsFiltering() + '?q=' + q} >
-                        <AiOutlineSearch className='my-auto' size={25} color={'black'}/>
+                        <AiOutlineSearch className='my-auto' size={25} color={'black'} />
                     </Link>
                 </div>
                 <CartBell />
                 <NotificationsBell />
+                <Link to={routes.myOrders()} className='text-white mx-1 fs-5'>
+                    {window.localization.orders}
+                </Link>
                 {
                     props.user ? (
                         <NavDropdown title={props.user.name} className='text-white' >
-                            <LinkContainer to={routes.myOrders()}>
-                                <NavDropdown.Item>{window.localization.orders}</NavDropdown.Item>
-                            </LinkContainer>
-
                             <NavDropdown.Item onClick={logout} >{window.localization.logout}</NavDropdown.Item>
                         </NavDropdown>
                     ) : (

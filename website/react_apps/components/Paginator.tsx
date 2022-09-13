@@ -85,7 +85,7 @@ export default function Paginator(props) {
             </div>
 
 
-            <Pagination>
+            <Pagination className='flex-wrap'>
                 {
                     loadingIndicator != false ? <LoadingIndicator area={randStr} /> : null
                 }

@@ -26,8 +26,8 @@ function CartBell(props: { cart: order, user: user, refreshCart: typeof refreshC
 
     return <div className='me-2'>
         <AllowedLink to={routes.cartItems()} className="text-decoration-none position-relative" >
-            <div className='text-warning position-absolute top-0 end-0 bg-danger border rounded'>
-                {props.cart?.order_items?.length}
+            <div className='text-warning position-absolute top-40 end-30'>
+                {props.cart?.order_items?.length ?? 0}
             </div>
             <div className='mt-1 p-2'>
                 <AiOutlineShoppingCart size={35} color={'white'} />

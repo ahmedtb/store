@@ -39,11 +39,11 @@ function App() {
             <Provider store={store}>
 
                 <BrowserRouter>
-                    <Container fluid className='min-vh-100 d-flex flex-column justify-content-between p-0'>
-                        <div>
+                    <Container fluid >
+                        <TopMenue2 />
+                        <div className='min-vh-100 d-flex flex-column justify-content-between p-0'>
 
                             {/* <Row> */}
-                            <TopMenue2 />
                             {/* </Row> */}
                             {/* <Row> */}
                             {/* <Col xs={10} className='p-0 mx-auto'> */}
