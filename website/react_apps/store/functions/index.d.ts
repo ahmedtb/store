@@ -23,7 +23,7 @@ declare global {
         cart: order,
         GPS: GPS,
     }
-    type GPS = { lat: number, long: number }
+    type GPS = { lat: number, long: number, accuracy: number }
 
     type dashboardState = {
         admin: admin,

@@ -13,6 +13,7 @@ import useWindowDimensions from '../../functions/useWindowDimensions';
 import { BsList } from 'react-icons/bs'
 import { AiOutlineSearch } from 'react-icons/ai'
 import DeliverToIcon from './DeliverToIcon';
+import AllowedLink from './AllowedLink';
 
 function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refreshCart: typeof refreshCart }) {
     const [q, setq] = React.useState<string>()
@@ -41,7 +42,7 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
 
 
 
-    if (width <= 800)
+    if (width <= 1000)
         return (
             <div>
 
@@ -54,7 +55,9 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
                             </div>
                         </LinkContainer>
                         <div className='d-flex align-items-center'>
-
+                            <div className='mx-2 text-white'>
+                                <DeliverToIcon />
+                            </div>
                             <CartBell />
                             <NotificationsBell />
                             {
@@ -143,18 +146,18 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
                         </NavDropdown>
                     ) : (
                         <div className='d-flex'>
-                            <Link to={routes.loginPage()} className='text-white mx-2'>
+                            <AllowedLink to={routes.loginPage()} className='text-white mx-2'>
                                 <div >{window.localization.login}</div>
-                            </Link>
-                            <Link to={routes.signUp()} className='text-white mx-2'>
+                            </AllowedLink>
+                            <AllowedLink to={routes.signUp()} className='text-white mx-2'>
                                 <div >{window.localization.signUp}</div>
-                            </Link>
+                            </AllowedLink>
                         </div>
                     )
                 }
-                <Link to={routes.myOrders()} className='text-white mx-2 fs-5'>
+                <AllowedLink to={routes.myOrders()} className='text-white mx-2 fs-5'>
                     my orders
-                </Link>
+                </AllowedLink>
                 <div className='mx-2'>
 
                     <CartBell />

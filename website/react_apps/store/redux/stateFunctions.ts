@@ -24,10 +24,10 @@ export function updateGPS() {
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
-            store.dispatch(setGPS({ lat: position.coords.latitude, long: position.coords.longitude }))
+            store.dispatch(setGPS({ lat: position.coords.latitude, long: position.coords.longitude, accuracy: position.coords.accuracy }))
         });
     } else {
-        return false;
+        return null;
     }
 
 

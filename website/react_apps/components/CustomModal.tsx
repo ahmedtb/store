@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Modal } from 'react-bootstrap'
 
 
-export default function CustomModal(props: { label: string, children: childrenType, buttonClass?: string }) {
+export default function CustomModal(props: { label: React.ReactNode, useDiv?: boolean, children: childrenType, buttonClass?: string, }) {
     const label = props.label
     const children = props.children
     const buttonClass = props.buttonClass
@@ -14,9 +14,17 @@ export default function CustomModal(props: { label: string, children: childrenTy
 
     return (
         <>
-            <button className={buttonClass} onClick={handleShow}>
-                {label}
-            </button>
+            {
+                props.useDiv ?
+                    <div className='cursor-pointer' onClick={handleShow}>
+                        {label}
+                    </div>
+                    : <button className={buttonClass} onClick={handleShow}>
+                        {label}
+                    </button>
+            }
+
+
 
             <Modal show={show} onHide={handleClose} size="lg">
                 <Modal.Header closeButton>

@@ -46,25 +46,9 @@ export default function ProductsFiltering(props) {
         )
     }, [])
 
-    return <div className='bg-white'>
+    return <div className='bg-white p-2'>
         <div className='row'>
-            <div className='col-9 row justify-content-center'>
-                {
-                    productsPagination?.data?.map((product, index) => {
-                        return <AllowedLink key={index} to={routes.productShow(product.id)} className='col-3 d-flex text-dark text-decoration-none border rounded p-1 m-1'>
-                            <img src={api.productImage(1)} width={816 / 10} height={1200 / 10} />
-                            <div>
-                                <div>{product.name}</div>
-                                <div>{product.category?.name}</div>
-                                <div>{product.price}</div>
-                                {/* <div>{product.description}</div> */}
-                            </div>
-                        </AllowedLink>
-                    })
-                }
-                <Paginator update={update} log={'Home'} apiCall={fetch} useState={[productsPagination, setproductsPagination]} />
-            </div>
-            <div className='col-3'>
+            <div className='col-lg-3'>
                 <TextFilter
                     property={'q'}
                     label={'name'}
@@ -96,6 +80,23 @@ export default function ProductsFiltering(props) {
                 />
 
             </div>
+            <div className='col-lg-9 row justify-content-center'>
+                {
+                    productsPagination?.data?.map((product, index) => {
+                        return <AllowedLink key={index} to={routes.productShow(product.id)} className='col-md-3 d-flex text-dark text-decoration-none border rounded p-1 m-1'>
+                            <img src={api.productImage(1)} width={816 / 10} height={1200 / 10} />
+                            <div>
+                                <div>{product.name}</div>
+                                <div>{product.category?.name}</div>
+                                <div>{product.price}</div>
+                                {/* <div>{product.description}</div> */}
+                            </div>
+                        </AllowedLink>
+                    })
+                }
+                <Paginator update={update} log={'Home'} apiCall={fetch} useState={[productsPagination, setproductsPagination]} />
+            </div>
+
         </div>
 
     </div>
