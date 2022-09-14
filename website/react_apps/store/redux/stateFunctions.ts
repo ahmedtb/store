@@ -1,7 +1,9 @@
+import React from 'react'
 import store from './store'
-import { refreshCart } from './stateActions';
+import { refreshCart, setGPS } from './stateActions';
 import apiCallHandler from '../functions/apiCallHandler';
 import { api } from '../functions/urls';
+import { useGeolocated } from 'react-geolocated'
 
 
 
@@ -15,5 +17,18 @@ export function updateCart() {
         true
 
     )
+
+}
+
+export function updateGPS() {
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            store.dispatch(setGPS({ lat: position.coords.latitude, long: position.coords.longitude }))
+        });
+    } else {
+        return false;
+    }
+
 
 }

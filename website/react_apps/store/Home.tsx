@@ -49,7 +49,7 @@ export default function Home() {
 
             {slides?.length ?
 
-                <div className='mt-1'>
+                <div className='my-1'>
                     <Slider {...{
                         fade: true,
                         dots: true,
@@ -75,7 +75,7 @@ export default function Home() {
 
 
             <div className="">
-                <div className='border p-2 m-2 rounded shadow'>
+                <div className='border p-2 m-3 rounded shadow'>
                     <Slider {...{
                         dots: true,
                         infinite: true,

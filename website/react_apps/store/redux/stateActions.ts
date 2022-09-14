@@ -26,3 +26,10 @@ export const refreshCart = (cart: order) => {
         cart: cart
     }
 }
+
+export const setGPS = (GPS: GPS) => {
+    return {
+        type: 'setGPS',
+        GPS: GPS
+    }
+}

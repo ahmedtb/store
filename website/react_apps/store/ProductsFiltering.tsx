@@ -21,7 +21,7 @@ export default function ProductsFiltering(props) {
 
 
     function fetch(params) {
-        return api.productsIndex({ q: q, category_id: category_id, ...getPaginationParams(productsPagination), ...params, page_size: 9, with: 'category' });
+        return api.productsIndex({ ...getPaginationParams(productsPagination), q: q, category_id: category_id, ...params, page_size: 9, with: 'category' });
     }
 
     React.useEffect(() => {

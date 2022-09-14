@@ -39,9 +39,9 @@ function App() {
             <Provider store={store}>
 
                 <BrowserRouter>
-                    <Container fluid >
+                    <Container fluid className='p-0 m-0'>
                         <TopMenue2 />
-                        <div className='min-vh-100 d-flex flex-column justify-content-between p-0'>
+                        <div className='min-vh-100 d-flex flex-column justify-content-between'>
 
                             {/* <Row> */}
                             {/* </Row> */}

@@ -4,7 +4,8 @@ const INITIAL_STATE: storeState = {
     user: null,
     allowedRoutes: [],
     notification: null,
-    cart: null
+    cart: null,
+    GPS: null
 };
 
 const stateReducer = (state = INITIAL_STATE, action: action) => {
@@ -29,6 +30,11 @@ const stateReducer = (state = INITIAL_STATE, action: action) => {
             return {
                 ...state,
                 cart: action.cart,
+            };
+        case 'setGPS':
+            return {
+                ...state,
+                GPS: action.GPS,
             };
 
 

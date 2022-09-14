@@ -42,7 +42,7 @@ export default function SlideCreate() {
                 <Form.Label >slide image</Form.Label>
                 <Image className='w-25 d-block mx-auto' onClick={() => { }} src={columns?.image} />
                 <ImagePicker
-                    maxSize={200 * 1024}
+                    maxSize={1000 * 1024}
                     setImage={(base64) => {
                         dispatchColumns({ actionType: 'change property', property: 'image', value: base64 })
                     }}

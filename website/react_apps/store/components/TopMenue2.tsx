@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 import useWindowDimensions from '../../functions/useWindowDimensions';
 import { BsList } from 'react-icons/bs'
 import { AiOutlineSearch } from 'react-icons/ai'
+import DeliverToIcon from './DeliverToIcon';
 
 function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refreshCart: typeof refreshCart }) {
     const [q, setq] = React.useState<string>()
@@ -120,6 +121,9 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
                     </div>
                 </LinkContainer>
 
+                <div className='mx-2 text-white'>
+                    <DeliverToIcon />
+                </div>
                 <div className="d-flex mx-2 flex-grow-1">
                     <input
                         type="text"
@@ -131,28 +135,34 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
                         <AiOutlineSearch className='my-auto' size={25} color={'black'} />
                     </Link>
                 </div>
-                <CartBell />
-                <NotificationsBell />
-                <Link to={routes.myOrders()} className='text-white mx-1 fs-5'>
-                    {window.localization.orders}
-                </Link>
+
                 {
                     props.user ? (
-                        <NavDropdown title={props.user.name} className='text-white' >
+                        <NavDropdown title={props.user.name} className='text-white mx-2' >
                             <NavDropdown.Item onClick={logout} >{window.localization.logout}</NavDropdown.Item>
                         </NavDropdown>
                     ) : (
                         <div className='d-flex'>
-                            <Link to={routes.loginPage()} className='text-white mx-1'>
+                            <Link to={routes.loginPage()} className='text-white mx-2'>
                                 <div >{window.localization.login}</div>
                             </Link>
-                            <Link to={routes.signUp()} className='text-white mx-1'>
+                            <Link to={routes.signUp()} className='text-white mx-2'>
                                 <div >{window.localization.signUp}</div>
                             </Link>
                         </div>
                     )
                 }
+                <Link to={routes.myOrders()} className='text-white mx-2 fs-5'>
+                    my orders
+                </Link>
+                <div className='mx-2'>
 
+                    <CartBell />
+                </div>
+                <div className='mx-2'>
+                    <NotificationsBell />
+
+                </div>
 
 
             </div>

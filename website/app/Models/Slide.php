@@ -18,7 +18,7 @@ class Slide extends Model
     public static function defaultImage()
     {
 
-        $path = base_path('public/images/slide.jpg');
+        $path = base_path('public/images/slide.png');
         $fileExtention = fileExtension($path);
         // dd($fileExtention);
 

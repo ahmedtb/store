@@ -20,9 +20,10 @@ declare global {
         user: user,
         allowedRoutes: allowedRoutesType,
         notification: notificationType,
-        cart: order
+        cart: order,
+        GPS: GPS,
     }
-
+    type GPS = { lat: number, long: number }
 
     type dashboardState = {
         admin: admin,
@@ -43,8 +44,8 @@ declare global {
         user: user,
         allowedRoutes: allowedRoutesType,
         notification: notificationType,
-        cart: order
-
+        cart: order,
+        GPS: GPS
     }
     type routeConfigType = {
         component: React.ReactNode | ConnectedComponent
