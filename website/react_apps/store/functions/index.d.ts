@@ -136,7 +136,8 @@ declare global {
         user: user,
         order_items: Array<orderItem>,
         status: string,
-        GPS: { long: number, lat: number }
+        GPS: { long: number, lat: number },
+        created_at: string,
     }
     type cart = order
 

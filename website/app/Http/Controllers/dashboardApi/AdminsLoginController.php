@@ -42,7 +42,7 @@ class AdminsLoginController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->middleware('auth:user')->except(['login']);
+        $this->middleware('auth:admin')->except(['login', 'admin']);
     }
 
     public function username()

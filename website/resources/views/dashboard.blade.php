@@ -18,6 +18,11 @@
         <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
         <script src="{{ asset('js/dashboard.js') }}" defer></script>
     @endif
+    @auth('admin')
+        <script>
+            window.admin = <?php echo json_encode(auth('admin')->user()); ?>;
+        </script>
+    @endauth
 </head>
 
 <body>
