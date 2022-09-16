@@ -29,17 +29,14 @@ export default function Footer(props) {
                 <div>tripoli - libya</div>
                 <div>0913212131</div>
                 <div>email@email.com</div>
+                <a href='https://www.facebook.com/' target={'_blank'} className=''>
+                    <AiFillFacebook size={50}  />
+                </a>
+                <a className="text-danger" href='https://www.youtube.com' target={'_blank'}>
+                    <AiFillYoutube size={50} color='blue' />
+                </a>
             </div>
-        </div>
 
-        <div className="col-3 mx-auto d-flex justify-content-around bg-white my-2 p-3">
-
-            <a href='https://www.facebook.com/' target={'_blank'} className=''>
-                <AiFillFacebook size={50} color='red' />
-            </a>
-            <a className="text-danger" href='https://www.youtube.com' target={'_blank'}>
-                <AiFillYoutube size={50} color='red' />
-            </a>
         </div>
 
         <div className="text-center p-4 bg-dark text-white">

@@ -5,7 +5,7 @@ import { api, routes } from '../functions/urls';
 import apiCallHandler from '../functions/apiCallHandler';
 import AllowedLink from '../components/AllowedLink';
 import { Table } from 'react-bootstrap';
-
+import moment from 'moment';
 export default function PrintOrder(props) {
     const componentRef = React.useRef();
     return (
@@ -44,75 +44,93 @@ const OrderPaper = React.forwardRef<HTMLDivElement>((props, ref) => {
 
 
     return (
-        <div className='pb-6 bg-white' ref={ref}>
+        <div className='p-3 bg-white' ref={ref}>
 
+            <div className='d-flex justify-content-around'>
 
-            <Table striped bordered hover responsive>
+                <div className='fs-4 fw-bold'>
+                    Phone Store
+                </div>
 
-                <tbody>
+                <Table bordered responsive>
 
-                    <tr>
-                        <td>order id</td>
-                        <td>{order?.id}</td>
-                    </tr>
-                    <tr>
-                        <td>GPS</td>
-                        <td>lat: {order?.GPS.lat}, long: {order?.GPS.long} </td>
-                    </tr>
+                    <tbody>
 
-                </tbody>
-            </Table>
-            <Table striped bordered hover responsive>
+                        <tr>
+                            <td>order id</td>
+                            <td>{order?.id}</td>
+                        </tr>
+                        <tr>
+                            <td>customer</td>
+                            <td><AllowedLink to={routes.userShow(order?.user_id)}>{order?.user.name}</AllowedLink></td>
+                        </tr>
+                        <tr>
+                            <td>GPS</td>
+                            <td>lat: {order?.GPS.lat}, long: {order?.GPS.long} </td>
+                        </tr>
 
-                <tbody>
+                        <tr>
+                            <td>phone</td>
+                            <td>{order?.user.phone} </td>
+                        </tr>
 
-                    <tr>
-                        <td>phone</td>
-                        <td>{order?.user.phone} </td>
-                    </tr>
+                        <tr>
+                            <td>created at</td>
+                            <td>{moment(order?.created_at).format('yyyy-MM-DD H:mm')} </td>
+                        </tr>
 
-                    <tr>
-                        <td>created at</td>
-                        <td>{order?.created_at} </td>
-                    </tr>
-
-                </tbody>
-            </Table>
+                    </tbody>
+                </Table>
+            </div>
 
             <div>
 
-                <div className=''>{window.localization.user} <AllowedLink to={routes.orderShow(order?.user_id)}>{order?.user?.name}</AllowedLink></div>
-                <div>order items</div>
-                <div className='' style={{ height: '100px' }}>
-                    {
-                        order?.order_items?.map((item, index) => {
+                <div className='fs-4 fw-bold'>order items</div>
 
-                            return <div key={index} className='d-flex h-50 d-inline-block'>
-                                <img src={api.productImage(item.product_id)} />
-                                <div >
-                                    <div>product name: <AllowedLink to={routes.productShow(item.product_id)}>{item.product?.name}</AllowedLink></div>
-                                    <div>quantity: {item.quantity}</div>
-                                    <div>value: {item.value}</div>
-                                </div>
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>product name</th>
+                            <th>quantity</th>
+                            <th>value</th>
 
-                            </div>
-                        })
-                    }
-                </div>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            order?.order_items?.map((item, index) =>
+                                <tr key={index}>
+                                    <td>{item.id}</td>
+                                    <td> <AllowedLink to={routes.productShow(item.product_id)}>{item.product?.name}</AllowedLink></td>
+                                    <td>{item.quantity}</td>
+                                    <td>{item.value}</td>
+
+                                </tr>
+                            )
+                        }
+                    </tbody>
+                </Table>
 
             </div>
 
-            <div>location of customer</div>
+            <div className='fs-4 fw-bold'>location of customer</div>
             {
                 order?.GPS ?
                     <iframe src={"https://maps.google.com/maps?q=" + order?.GPS?.lat + ",%20" + order?.GPS?.long + "&t=&z=13&ie=UTF8&iwloc=&output=embed"}></iframe>
                     : null
             }
-            <div>
-                {'lat: ' + order?.GPS?.lat + " long: " + order?.GPS?.long}
+
+            <div className='d-flex justify-content-around'>
+
+                <div className='w-25 pb-5'>
+                    <div className='text-center fs-5'>Store Approval</div>
+                </div>
+
+                <div className='w-25 pb-5'>
+                    <div className='text-center fs-5'>Customer Reception</div>
+                </div>
             </div>
-
-
         </div >
 
     )

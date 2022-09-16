@@ -39,11 +39,9 @@ function App() {
             <Provider store={store}>
 
                 <BrowserRouter>
-                    <Container fluid>
-                        <Row>
-                            <TopMenue />
-                        </Row>
-                        <Row>
+                    <Container fluid className='p-0 m-0'>
+                        <TopMenue />
+                        <Row className='p-0 m-0'>
                             <SideMenue />
 
                             <Col xs={10} className='p-0 mx-auto'>
