@@ -12,7 +12,7 @@ export default function PrintOrder(props) {
         <div>
             <OrderPaper ref={componentRef} />
             <ReactToPrint
-                trigger={() => <button className='btn btn-primary'>إطبع</button>}
+                trigger={() => <button className='btn btn-primary d-block mx-auto'>إطبع</button>}
                 content={() => componentRef.current}
             />
         </div>
@@ -62,16 +62,16 @@ const OrderPaper = React.forwardRef<HTMLDivElement>((props, ref) => {
                         </tr>
                         <tr>
                             <td>customer</td>
-                            <td><AllowedLink to={routes.userShow(order?.user_id)}>{order?.user.name}</AllowedLink></td>
+                            <td><AllowedLink to={routes.userShow(order?.user_id)}>{order?.user?.name}</AllowedLink></td>
                         </tr>
                         <tr>
                             <td>GPS</td>
-                            <td>lat: {order?.GPS.lat}, long: {order?.GPS.long} </td>
+                            <td>lat: {order?.GPS?.lat}, long: {order?.GPS?.long} </td>
                         </tr>
 
                         <tr>
                             <td>phone</td>
-                            <td>{order?.user.phone} </td>
+                            <td>{order?.user?.phone} </td>
                         </tr>
 
                         <tr>
@@ -94,6 +94,7 @@ const OrderPaper = React.forwardRef<HTMLDivElement>((props, ref) => {
                             <th>product name</th>
                             <th>quantity</th>
                             <th>value</th>
+                            <th>image</th>
 
                         </tr>
                     </thead>
@@ -105,6 +106,7 @@ const OrderPaper = React.forwardRef<HTMLDivElement>((props, ref) => {
                                     <td> <AllowedLink to={routes.productShow(item.product_id)}>{item.product?.name}</AllowedLink></td>
                                     <td>{item.quantity}</td>
                                     <td>{item.value}</td>
+                                    <td><img src={api.productImage(item.product_id)} width='100px' /></td>
 
                                 </tr>
                             )

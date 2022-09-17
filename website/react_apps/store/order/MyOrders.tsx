@@ -6,6 +6,8 @@ import { updateCart } from '../redux/stateFunctions'
 import { api } from '../functions/urls';
 import apiCallHandler from '../functions/apiCallHandler';
 import Paginator from '../../components/Paginator';
+import { Table } from 'react-bootstrap';
+import moment from 'moment';
 
 
 function MyOrders(props: { cart: cart }) {
@@ -36,14 +38,34 @@ function MyOrders(props: { cart: cart }) {
         {
             ordersPag?.data?.map((order, index) => {
                 return <div key={index} className='border p-2 m-2 rounded'>
-                    <div>
+                    <button className='btn btn-danger d-block ms-auto me-2' onClick={() => deleteOrder(order.id)}>delete</button>
+                    <div className='d-flex'>
 
-                        <div>
-                            order status {order?.status}
-                        </div>
-                        <div>
-                            order order_items count {order?.order_items?.length}
-                        </div>
+
+                        <Table bordered responsive className='d-block'>
+
+                            <tbody>
+                                <tr>
+                                    <td>order id</td>
+                                    <td>{order?.id} </td>
+                                </tr>
+                                <tr>
+                                    <td>order status</td>
+                                    <td>{order?.status} </td>
+                                </tr>
+                                <tr>
+                                    <td>GPS</td>
+                                    <td>lat: {order?.GPS?.lat}, long: {order?.GPS?.long} </td>
+                                </tr>
+
+                                <tr>
+                                    <td>created at</td>
+                                    <td>{moment(order?.created_at).format('yyyy-MM-DD H:mm')} </td>
+                                </tr>
+
+                            </tbody>
+                        </Table>
+
                         <div className='d-flex' style={{ height: '100px' }}>
                             {
                                 order?.order_items?.map((item, index) => {
@@ -52,6 +74,7 @@ function MyOrders(props: { cart: cart }) {
                                         <img src={api.productImage(item.product_id)} />
                                         <div >
                                             <div>product name: {item.product?.name}</div>
+                                            <div>product price: {item.product?.price}</div>
                                             <div>quantity: {item.quantity}</div>
                                             <div>value: {item.value}</div>
                                         </div>
@@ -61,7 +84,6 @@ function MyOrders(props: { cart: cart }) {
                             }
                         </div>
                     </div>
-                    <button className='btn btn-danger' onClick={() => deleteOrder(order.id)}>delete</button>
 
                 </div>
             })
