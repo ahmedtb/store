@@ -49,22 +49,20 @@ export default function Home() {
 
             {slides?.length ?
 
-                <div className='my-1'>
+                <div className='my-1 bg-secondary'>
                     <Slider {...{
-                        fade: true,
-                        dots: true,
                         infinite: true,
                         speed: 3000,
                         slidesToShow: 1,
                         slidesToScroll: 1,
                         autoplay: true,
                         autoplaySpeed: 3000,
-                        arrows: false,
+                        arrows: true,
                     }}>
 
                         {
-                            slides?.map((slide, index) => <AllowedLink key={index} to={slide.to} className='mx-auto'>
-                                <img src={slide.image} className='w-75 mx-auto' />
+                            slides?.map((slide, index) => <AllowedLink key={index} to={slide.to} className=''>
+                                <img src={slide.image} className='w-100 mx-auto' />
                             </AllowedLink>)
                         }
 
@@ -75,16 +73,16 @@ export default function Home() {
 
 
             <div className="">
-                <div className='border p-2 m-3 rounded shadow'>
+                <div className='col-8 mx-auto border p-2 m-3 rounded shadow'>
                     <Slider {...{
-                        dots: true,
+                        // dots: true,
                         infinite: true,
                         speed: 3000,
                         slidesToShow: 4,
                         slidesToScroll: 2,
                         autoplay: true,
                         autoplaySpeed: 3000,
-                        arrows: false,
+                        arrows: true,
 
                     }}>
                         {
@@ -102,12 +100,12 @@ export default function Home() {
                         }
                     </Slider>
                 </div>
-                <div className='border p-2 m-2 rounded shadow'>
+                {/* <div className='border p-2 m-2 rounded shadow'>
 
                     <div className='fs-5 fw-bold'>
-                        choose manufacture
+                        اختر علامة تجارية
                     </div>
-                    <div className='row'>
+                    <div className='row justify-content-around px-2'>
                         <AllowedLink to={routes.productsFiltering() + '?q=samsung'} className='col-2'>
                             <img src='https://cdn-icons-png.flaticon.com/512/882/882747.png' className='w-100' />
                         </AllowedLink>
@@ -124,11 +122,11 @@ export default function Home() {
                             <img src='https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/lg-512.png' className='w-100' />
                         </AllowedLink>
                     </div>
-                </div>
+                </div> */}
 
                 <div className='border p-2 m-2 rounded shadow'>
 
-                    <div className='fw-bold'>Search through the products</div>
+                    <div className='fw-bold'>البحث خلال المنتجات</div>
                     <ProductsFiltering />
                 </div>
 

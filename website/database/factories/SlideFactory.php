@@ -15,7 +15,7 @@ class SlideFactory extends Factory
     public function definition()
     {
         return [
-            'image' => Slide::defaultImage(rand(0, 4)),
+            'image' => Slide::defaultImage(rand(0, 3)),
             'to' => '/'
         ];
     }

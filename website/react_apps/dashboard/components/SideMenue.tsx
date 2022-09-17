@@ -39,7 +39,7 @@ function SideMenue(props) {
             </AllowedLink> */}
                         
             <AllowedLink className='text-white text-decoration-none' to={routes.cartsIndex()}>
-                <h5 className=''> carts index </h5>
+                <h5 className=''>السلات الحالية</h5>
             </AllowedLink>
 
             <AllowedLink className='text-white text-decoration-none' to={routes.orderItemsIndex()}>

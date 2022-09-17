@@ -16,8 +16,8 @@ function DeliverToIcon(props: { GPS: GPS }) {
     // </div>
 
     return <CustomModal label={<div>
-        <div>Deliver To</div>
-        <div style={{ fontSize: 12 }}>{props.GPS ? 'your GPS location' : 'your GPS not known'}</div>
+        <div>توصيل إلى</div>
+        <div style={{ fontSize: 12 }}>{props.GPS ? 'موقعك الحالي' : 'موقعك غير معروف'}</div>
     </div>} useDiv={true}
     >
         <div>your orders will be delivered to this location, specified by the GPS</div>

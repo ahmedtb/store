@@ -44,7 +44,7 @@ export default function OrdersIndex() {
     }
     
     return <div className='my-2 p-2 shadow' >
-            <div className='fs-4 fw-bold'>all orders</div>
+            <div className='fs-4 fw-bold'>كل الطلبات</div>
 
             <Row className='align-items-center'>
                 <Col>

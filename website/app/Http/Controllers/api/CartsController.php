@@ -8,6 +8,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Filters\OrderFilters;
 use App\Http\Controllers\Controller;
+use App\Notifications\NewCartCreated;
 use App\Notifications\UserOrderedCart;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Validation\ValidationException;
@@ -24,11 +25,13 @@ class CartsController extends Controller
 
         $newOrder = $request->user()->cart();
         // return;
-        if (!$newOrder)
+        if (!$newOrder) {
             $newOrder = $request->user()->orders()->create([
                 'user_id' => $request->user()->id,
                 'status' => 'new'
             ]);
+            Notification::send(Admin::all(), new NewCartCreated($newOrder));
+        }
         $product = Product::find($request->product_id);
         $orderItem = $newOrder->addToOrder($product, $request->quantity);
 

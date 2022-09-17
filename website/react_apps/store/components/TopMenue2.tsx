@@ -120,7 +120,7 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
             <div className='d-flex p-1 bg-dark align-items-center'>
                 <LinkContainer to={routes.home()}>
                     <div className='fs-2 ms-3 text-white'>
-                        Phone Store
+                        متجر هواتف
                     </div>
                 </LinkContainer>
 
@@ -156,7 +156,7 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
                     )
                 }
                 <AllowedLink to={routes.myOrders()} className='text-white mx-2 fs-5'>
-                    my orders
+                    طلباتي
                 </AllowedLink>
                 <div className='mx-2'>
 
@@ -166,6 +166,8 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
                     <NotificationsBell />
 
                 </div>
+
+
 
 
             </div>

@@ -38,9 +38,28 @@ function MyOrders(props: { cart: cart }) {
         {
             ordersPag?.data?.map((order, index) => {
                 return <div key={index} className='border p-2 m-2 rounded'>
-                    <button className='btn btn-danger d-block ms-auto me-2' onClick={() => deleteOrder(order.id)}>delete</button>
-                    <div className='d-flex'>
+                    <button className='btn btn-danger d-block me-auto ms-2' onClick={() => deleteOrder(order.id)}>حدف</button>
+                    <div className='d-flex justify-content-between p-2'>
 
+
+
+                        <div className='d-flex' style={{ height: '100px' }}>
+                            {
+                                order?.order_items?.map((item, index) => {
+
+                                    return <div key={index} className='d-flex h-50 d-inline-block'>
+                                        <img src={api.productImage(item.product_id)} />
+                                        <div >
+                                            <div>product name: {item.product?.name}</div>
+                                            <div>product price: {item.product?.price}</div>
+                                            <div>quantity: {item.quantity}</div>
+                                            <div>value: {item.value}</div>
+                                        </div>
+
+                                    </div>
+                                })
+                            }
+                        </div>
 
                         <Table bordered responsive className='d-block'>
 
@@ -66,23 +85,7 @@ function MyOrders(props: { cart: cart }) {
                             </tbody>
                         </Table>
 
-                        <div className='d-flex' style={{ height: '100px' }}>
-                            {
-                                order?.order_items?.map((item, index) => {
 
-                                    return <div key={index} className='d-flex h-50 d-inline-block'>
-                                        <img src={api.productImage(item.product_id)} />
-                                        <div >
-                                            <div>product name: {item.product?.name}</div>
-                                            <div>product price: {item.product?.price}</div>
-                                            <div>quantity: {item.quantity}</div>
-                                            <div>value: {item.value}</div>
-                                        </div>
-
-                                    </div>
-                                })
-                            }
-                        </div>
                     </div>
 
                 </div>

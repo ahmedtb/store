@@ -28,7 +28,7 @@ function TopMenue(props: { refreshAdmin: typeof refreshAdmin, admin: admin }) {
                 <LinkContainer to={routes.home()}>
                     <Navbar.Brand className=''>
                         <div className='fs-2 ms-3 text-white'>
-                            Phone Store
+                            متجر هواتف
                         </div>
                     </Navbar.Brand>
                 </LinkContainer>
@@ -37,7 +37,7 @@ function TopMenue(props: { refreshAdmin: typeof refreshAdmin, admin: admin }) {
 
 
 
-                    <Nav className='fw-bold align-items-center ms-auto '>
+                    <Nav className='fw-bold align-items-center me-auto '>
 
                         <NotificationsBell />
                         {

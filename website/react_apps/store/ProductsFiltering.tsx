@@ -51,20 +51,20 @@ export default function ProductsFiltering(props) {
             <div className='col-lg-3'>
                 <TextFilter
                     property={'q'}
-                    label={'name'}
+                    label={'الاسم'}
                     apiCall={fetch}
                     useState={[productsPagination, setproductsPagination]}
                     initValue={q}
                 />
                 <TextFilter
                     property={'priceFrom'}
-                    label={'priceFrom'}
+                    label={'السعر من'}
                     apiCall={fetch}
                     useState={[productsPagination, setproductsPagination]}
                 />
                 <TextFilter
                     property={'priceTo'}
-                    label={'priceTo'}
+                    label={'السعر الى'}
                     apiCall={fetch}
                     useState={[productsPagination, setproductsPagination]}
                 />
@@ -72,7 +72,7 @@ export default function ProductsFiltering(props) {
                     options={categories}
                     apiCall={fetch}
                     property={'category_id'}
-                    label={'category'}
+                    label={'التصنيف'}
                     valueKeyWord='id'
                     nameKeyWord='name'
                     useState={[productsPagination, setproductsPagination]}
