@@ -171,9 +171,9 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
             </div>
             <div className='d-flex flex-wrap bg-secondary py-1'>
                 {
-                    categories?.map((category, index) => <Link to={routes.productsFiltering() + '?category_id=' + category.id} key={index} className='mx-2 text-decoration-none text-white'>
+                    categories?.map((category, index) => <AllowedLink to={routes.productsFiltering() + '?category_id=' + category.id} key={index} className='mx-2 text-decoration-none text-white'>
                         {category.name}
-                    </Link>)
+                    </AllowedLink>)
                 }
             </div>
         </div>

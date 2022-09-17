@@ -15,7 +15,7 @@ function LoginPage(props: { user: user, refreshUser: typeof refreshUser }) {
     async function handleLogin(phone: string, password: string) {
         apiCallHandler(
             async () => await api.login(phone, password),
-            (response) => { props.refreshUser(response.data); navigate(routes.home()); },
+            (response) => { props.refreshUser(response.data); navigate(-1); },
             'dashboard login page',
             true
         )

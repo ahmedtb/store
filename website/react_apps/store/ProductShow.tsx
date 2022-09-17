@@ -1,10 +1,11 @@
 import React from 'react';
-import { api } from './functions/urls';
+import { api, routes } from './functions/urls';
 import { useParams } from 'react-router'
 import apiCallHandler from './functions/apiCallHandler';
 import VarInput from '../components/VarInput';
 import { updateCart } from './redux/stateFunctions';
 import LoginPageModal from './user/LoginPageModal';
+import AllowedLink from './components/AllowedLink';
 
 function ProductShow() {
     const { id } = useParams();
@@ -47,7 +48,8 @@ function ProductShow() {
                                 <img src={api.productImage(+id)} width={816 / 5} height={1200 / 5} />
                                 <div>
                                     <div>{product?.name}</div>
-                                    <div>{product?.category?.name}</div>
+                                    <div>category <AllowedLink to={routes.productsFiltering() + '?category_id=' + product?.category_id}>{product?.category?.name}</AllowedLink></div>
+                            
                                     <div>{product?.price}</div>
                                     <div>{product?.description}</div>
 

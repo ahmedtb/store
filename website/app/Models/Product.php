@@ -21,9 +21,13 @@ class Product extends Model
 
     protected $with = ['category'];
 
-    public static function defaultImage()
+    public static function defaultImage($num = 1)
     {
-        $path = base_path('public/images/product.jpg');
+        $productsNames = [
+            'product.jpg', 'product2.jpg', 'product3.jpg', 'product4.jpg', 'product5.jpg'
+        ];
+        $path = base_path('public/images/' . $productsNames[$num]);
+        // dump($path);
         $fileExtention = fileExtension($path);
         // dd($fileExtention);
 

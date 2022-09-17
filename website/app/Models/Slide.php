@@ -14,24 +14,26 @@ class Slide extends Model
     protected $hidden = [
         // 'image'
     ];
-    
-    public static function defaultImage()
-    {
 
-        $path = base_path('public/images/slide.png');
+    public static function defaultImage($num = 1)
+    {
+        $slidesNames = [
+            'slide.png', 'slide2.jpg', 'slide3.jpg', 'slide4.jpg', 'slide5.jpg'
+        ];
+        $path = base_path('public/images/' . $slidesNames[$num]);
         $fileExtention = fileExtension($path);
         // dd($fileExtention);
 
         return 'data:image/' . $fileExtention . ';base64,' . base64_encode(file_get_contents($path));
     }
-    
+
 
     public function scopeFilter($query, SlideFilters $filters)
     {
         return $filters->apply($query);
     }
 
-    
+
     public function image()
     {
         $extension = explode('/', explode(";", $this->image ?? $this->defaultImage())[0])[1];
@@ -39,7 +41,4 @@ class Slide extends Model
         $raw_image_string = base64_decode(explode("base64,", $this->image ?? $this->defaultImage())[1]);
         return response($raw_image_string)->header('Content-Type', 'image/' . $extension);
     }
-
-
-    
 }

@@ -15,13 +15,17 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
+        $brands = [
+            'apple', 'samsung', 'huawei', 'Xiaomi', 'lg'
+        ];
+
         return [
-            'name' => $this->faker->sentence(2),
+            'name' => $brands[rand(0, sizeof($brands) - 1)] . ' ' . $this->faker->sentence(2),
             'price' => $this->faker->numberBetween(1, 100),
             'description' => $this->faker->text(100),
             'category_id' => Category::inRandomOrder()->first()->id ?? Category::factory()->create()->id,
             'quantity' => $this->faker->numberBetween(1, 500),
-            'image' => Product::defaultImage()
+            'image' => Product::defaultImage(rand(0, 4))
         ];
     }
 }
