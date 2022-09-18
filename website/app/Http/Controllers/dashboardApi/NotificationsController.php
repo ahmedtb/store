@@ -14,7 +14,7 @@ use Illuminate\Validation\ValidationException;
 
 class NotificationsController extends Controller
 {
-   
+
     public function index(NotificationFilters $filters, Request $request)
     {
 
@@ -28,5 +28,9 @@ class NotificationsController extends Controller
         return $request->user()->notifications()->where('id', $id)->with($request->with ?? [])->first();
     }
 
-   
+    public function markAsReaded(Request $request, $id)
+    {
+        $notification = $request->user()->notifications()->where('id', $id)->first();
+        $notification->markAsRead();
+    }
 }

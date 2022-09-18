@@ -14,12 +14,11 @@ declare global {
         component: React.FunctionComponent
     }
     type allowedRoutesType = Array<routeType>
-    type notificationType = object | null
 
     type storeState = {
         user: user,
         allowedRoutes: allowedRoutesType,
-        notification: notificationType,
+        notification: notification,
         cart: order,
         GPS: GPS,
     }
@@ -28,14 +27,14 @@ declare global {
     type dashboardState = {
         admin: admin,
         allowedRoutes: allowedRoutesType,
-        notification: notificationType,
+        notification: notification,
     }
 
     type dashboardReduxAction = {
         type: string,
         admin: admin,
         allowedRoutes: allowedRoutesType,
-        notification: notificationType,
+        notification: notification,
 
     }
 
@@ -43,7 +42,7 @@ declare global {
         type: string,
         user: user,
         allowedRoutes: allowedRoutesType,
-        notification: notificationType,
+        notification: notification,
         cart: order,
         GPS: GPS
     }
@@ -62,8 +61,16 @@ declare global {
         | ComponentType<never>
 
     type notification = {
-
+        read_at: string,
+        data: any,
+        notifiable_id: number,
+        notifiable_type: string,
+        type: string,
+        id: number,
+        created_at: string,
+        updated_at: string,
     }
+    type notifications = Array<notification>
 
     type pagination<T> = {
         data: T,

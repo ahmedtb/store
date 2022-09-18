@@ -6,7 +6,12 @@ import AllowedLink from './AllowedLink';
 import localization from '../../functions/localization';
 import { refreshAdmin } from '../redux/stateActions';
 import { Dispatch } from 'redux';
-
+import {
+    IoFileTrayStackedSharp
+} from 'react-icons/io5'
+import {
+    MdOutlineCategory
+} from 'react-icons/md'
 
 function SideMenue(props) {
 
@@ -18,18 +23,20 @@ function SideMenue(props) {
         </AllowedLink>
         <div className='p-1'>
 
-            <AllowedLink className='text-white text-decoration-none' to={routes.productsIndex()}>
-                <h5 className=''> {localization.products} </h5>
+            <AllowedLink className='text-white text-decoration-none d-flex align-items-center' to={routes.productsIndex()}>
+                <IoFileTrayStackedSharp size={20} />
+                <h5 className='me-1'> {localization.products} </h5>
             </AllowedLink>
 
-            <AllowedLink className='text-white text-decoration-none' to={routes.categoriesIndex()}>
-                <h5 className=''> {localization.categories} </h5>
+            <AllowedLink className='text-white text-decoration-none d-flex align-items-center' to={routes.categoriesIndex()}>
+                <MdOutlineCategory size={20} />
+                <h5 className='me-1'> {localization.categories} </h5>
             </AllowedLink>
             
-            <AllowedLink className='text-white text-decoration-none' to={routes.brandsIndex()}>
+            {/* <AllowedLink className='text-white text-decoration-none' to={routes.brandsIndex()}>
                 <h5 className=''> {localization.brands} </h5>
             </AllowedLink>
-            
+             */}
             <AllowedLink className='text-white text-decoration-none' to={routes.ordersIndex()}>
                 <h5 className=''> {localization.orders} </h5>
             </AllowedLink>

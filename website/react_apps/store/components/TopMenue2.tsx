@@ -134,7 +134,7 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
                         onChange={e => setq(e.target.value)}
                     />
                     <Link className="bg-warning px-2" to={routes.productsFiltering() + '?q=' + q} >
-                        <AiOutlineSearch className='my-auto' size={25} color={'black'} />
+                        <AiOutlineSearch className='my-auto d-block' size={25} color={'black'} />
                     </Link>
                 </div>
 

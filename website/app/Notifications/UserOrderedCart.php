@@ -46,7 +46,7 @@ class UserOrderedCart extends Notification
         return [
             'title' => 'قام الزبون ' . $this->order->user->name . ' بطلبة سلة',
             'message' => '',
-            'to' => "/order/{$this->order->id}" 
+            'to' => "/orderShow/{$this->order->id}" 
 
         ];
     }

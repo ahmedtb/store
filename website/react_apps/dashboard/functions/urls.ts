@@ -40,7 +40,7 @@ export const routes = {
     categoryShow: (id?: number) => id ? (routesPrefix + '/categoryShow/' + id) : routesPrefix + '/categoryShow/:id',
     categoriesIndex: () => routesPrefix + '/categoriesIndex/',
     categoryCreate: () => routesPrefix + '/categoryCreate/',
-    
+
     slideShow: (id?: number) => id ? (routesPrefix + '/slideShow/' + id) : routesPrefix + '/slideShow/:id',
     slidesIndex: () => routesPrefix + '/slidesIndex/',
     createSlide: () => routesPrefix + '/createSlide/',
@@ -103,6 +103,7 @@ export const api = {
     categoryDelete: (id: number) => axios.delete(apiPrefix + '/categoryDelete/' + id),
 
     notificationsIndex: (params: object) => axios.get(apiPrefix + '/notifications/', { params: params }),
+    markAsReaded: (id: number) => axios.post(apiPrefix + '/notification/' + id + '/markAsReaded'),
 
     slideShow: (id: number) => axios.get(apiPrefix + '/slideShow/' + id),
     slidesIndex: (params) => axios.get(apiPrefix + '/slidesIndex/', { params: params }),

@@ -31,7 +31,7 @@ class OrderAccepted extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', 'broadcast'];
     }
 
     /**
@@ -43,9 +43,9 @@ class OrderAccepted extends Notification
     public function toArray($notifiable)
     {
         return [
-            'title' => 'تم قبول طلبك' . $this->order->id ,
+            'title' => 'تم قبول طلبك برقم' . $this->order->id ,
             'message' => '',
-            'to' => "/order/{$this->order->id}" 
+            'to' => "/orderShow/{$this->order->id}" 
 
         ];
     }

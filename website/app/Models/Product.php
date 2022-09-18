@@ -17,7 +17,7 @@ class Product extends Model
         'image'
     ];
 
-    protected $appends  = [' availableQuantity'];
+    protected $appends  = ['availableQuantity'];
 
     protected $with = ['category'];
 
@@ -65,7 +65,7 @@ class Product extends Model
         return response($raw_image_string)->header('Content-Type', 'image/' . $extension);
     }
 
-    public function  availableQuantity()
+    public function availableQuantity()
     {
         return $this->quantity - $this->orderItems()->whereHas('order', function ($query) {
             return $query->whereIn('status', ['accepted', 'paid']);

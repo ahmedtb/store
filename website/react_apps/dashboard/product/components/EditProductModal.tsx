@@ -40,7 +40,7 @@ export default function EditProductModal(props: { product: product, change: () =
 
 
             <Form.Group className="mb-3">
-                <Form.Label >product image</Form.Label>
+                <Form.Label >صورة المنتج</Form.Label>
                 <Image className='w-25 d-block mx-auto' onClick={() => { }} src={columns?.image ?? api.productImage(columns?.id)} />
                 <ImagePicker
                     maxSize={200 * 1024}
@@ -66,13 +66,13 @@ export default function EditProductModal(props: { product: product, change: () =
             </Form.Group>
 
             <Form.Group className="mb-3">
-                <Form.Label >product quantity</Form.Label>
+                <Form.Label >الكمية</Form.Label>
                 <Form.Control type="number" value={columns?.quantity} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'quantity', value: e.target.value })} />
             </Form.Group>
 
 
             <Form.Group className="mb-3">
-                <Form.Label >category</Form.Label>
+                <Form.Label >تصنيفات</Form.Label>
                 <SelectWithApiSearch
                     paginationEndpoint={api.categoriesIndex}
                     setSelectedValue={(value) => dispatchColumns({ actionType: 'change property', property: 'category_id', value: value })}
@@ -85,7 +85,7 @@ export default function EditProductModal(props: { product: product, change: () =
 
 
             <Form.Group className="mb-3">
-                <Form.Label >product description</Form.Label>
+                <Form.Label >وصف</Form.Label>
                 <textarea className='form-control' value={columns?.description} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'description', value: e.target.value })} />
             </Form.Group>
 

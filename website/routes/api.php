@@ -48,6 +48,7 @@ Route::middleware('auth:user')->group(function () {
     Route::delete('/orderDelete/{id}', [OrdersController::class, 'delete']);
 
     Route::get('/notifications', [NotificationsController::class, 'index']);
+    Route::post('/notification/{id}/markAsReaded', [NotificationsController::class, 'markAsReaded']);
 
     
 

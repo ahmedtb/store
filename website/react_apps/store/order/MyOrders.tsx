@@ -48,7 +48,7 @@ function MyOrders(props: { cart: cart }) {
                                 order?.order_items?.map((item, index) => {
 
                                     return <div key={index} className='d-flex'>
-                                        <img src={api.productImage(item.product_id)} width={100} />
+                                        <img src={api.productImage(item.product_id)} width={100} className='m-2' />
                                         <div >
                                             <div>إسم المنتج: {item.product?.name}</div>
                                             <div>سعر المنتج: {item.product?.price}</div>

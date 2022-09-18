@@ -80,6 +80,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::post('/userCreate', [UsersController::class, 'create']);
 
     Route::get('/notifications', [NotificationsController::class, 'index']);
+    Route::post('/notification/{id}/markAsReaded', [NotificationsController::class, 'markAsReaded']);
 
 
     Route::get('/slidesIndex', [SlidesController::class, 'index']);

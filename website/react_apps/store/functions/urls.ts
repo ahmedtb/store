@@ -40,6 +40,8 @@ export const api = {
     orderDelete: (id: number) => axios.delete(apiPrefix + '/orderDelete/' + id),
 
     notificationsIndex: (params?: object) => axios.get(apiPrefix + '/notifications', { params: params }),
+    markAsReaded: (id: number) => axios.post(apiPrefix + '/notification/' + id + '/markAsReaded'),
+
     categories: () => axios.get(apiPrefix + '/categories'),
     slides: () => axios.get(apiPrefix + '/slides'),
 }
