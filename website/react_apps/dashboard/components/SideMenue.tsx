@@ -12,6 +12,9 @@ import {
 import {
     MdOutlineCategory
 } from 'react-icons/md'
+import {
+    RiOrderPlayFill
+} from 'react-icons/ri'
 
 function SideMenue(props) {
 
@@ -37,8 +40,9 @@ function SideMenue(props) {
                 <h5 className=''> {localization.brands} </h5>
             </AllowedLink>
              */}
-            <AllowedLink className='text-white text-decoration-none' to={routes.ordersIndex()}>
-                <h5 className=''> {localization.orders} </h5>
+            <AllowedLink className='text-white text-decoration-none d-flex align-items-center' to={routes.ordersIndex()}>
+                <RiOrderPlayFill size={20} />
+                <h5 className='me-1'> {localization.orders} </h5>
             </AllowedLink>
                         
             {/* <AllowedLink className='text-white text-decoration-none' to={routes.orderedOrdersIndex()}>

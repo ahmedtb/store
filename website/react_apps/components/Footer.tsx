@@ -3,30 +3,19 @@ import { AiFillFacebook, AiFillYoutube } from "react-icons/ai"
 
 export default function Footer(props) {
 
-    return <div className='' >
+    return <div className='fs-5' >
         <div className='d-flex justify-content-around bg-danger text-white'>
             <div>
-                <div className='fw-bold'>Know more</div>
-                <div>about us</div>
-                <div>join us</div>
+                <div className='fw-bold'>إعرف المزيد</div>
+                <div>حولنا</div>
+                <div>إنضم إلينا</div>
+                <div>أسعار التوصيل</div>
             </div>
 
-            <div>
-                <div className='fw-bold'>shop with us</div>
-                <div>your account</div>
-                <div>your addresses</div>
-                <div>your bourchges</div>
-
-            </div>
 
             <div>
-                <div className='fw-bold'>delivary prices</div>
-
-            </div>
-
-            <div>
-                <div className='fw-bold'>contact info</div>
-                <div>tripoli - libya</div>
+                <div className='fw-bold'>إتصل بينا</div>
+                <div>طرابلس - ليبيا</div>
                 <div>0913212131</div>
                 <div>email@email.com</div>
                 <a href='https://www.facebook.com/' target={'_blank'} className=''>

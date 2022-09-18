@@ -49,25 +49,25 @@ export default function Home() {
 
             {slides?.length ?
 
-                <div className='my-1 bg-secondary'>
-                    <Slider {...{
-                        infinite: true,
-                        speed: 3000,
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        autoplay: true,
-                        autoplaySpeed: 3000,
-                        arrows: true,
-                    }}>
+                <div className='col-10 mx-auto'>
+                <Slider {...{
+                    infinite: true,
+                    speed: 3000,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+                    // arrows: true,
+                }}>
 
-                        {
-                            slides?.map((slide, index) => <AllowedLink key={index} to={slide.to} className=''>
-                                <img src={slide.image} className='w-100 mx-auto' />
-                            </AllowedLink>)
-                        }
+                    {
+                        slides?.map((slide, index) => <AllowedLink key={index} to={slide.to} className=''>
+                            <img src={slide.image} className='w-100 mx-auto' />
+                        </AllowedLink>)
+                    }
 
 
-                    </Slider>
+                </Slider>
                 </div>
                 : null}
 

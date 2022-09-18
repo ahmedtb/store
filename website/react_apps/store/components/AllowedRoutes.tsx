@@ -50,21 +50,19 @@ function AllowedRoutes(props: { user: user, allowedRoutes: allowedRoutesType, re
     // }, [props.allowedRoutes])
 
     return (
-        <>
-            <Routes>
-                {
-                    props.allowedRoutes.map((route: routeType, index: number) => {
-                        return <Route
-                            key={index}
-                            path={route.path}
-                            element={<route.component />}
-                        />
-                    })
-                }
-                <Route path="*" element={<NotFound />} />
+        <Routes>
+            {
+                props.allowedRoutes.map((route: routeType, index: number) => {
+                    return <Route
+                        key={index}
+                        path={route.path}
+                        element={<route.component />}
+                    />
+                })
+            }
+            <Route path="*" element={<NotFound />} />
 
-            </Routes>
-        </>
+        </Routes>
 
     )
 }

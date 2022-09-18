@@ -35,22 +35,22 @@ function ProductShow() {
     }
 
     return (
-        <div className="bg-white p-5 m-2">
+        <div className="bg-white p-5">
 
             <div className='d-flex align-items-start'>
 
-                <img src={api.productImage(+id)} width={100} className='' />
-                <div>
+                <img src={api.productImage(+id)} width={100} className='m-2' />
+                <div className='p-2'>
                     <div className='fs-3 fw-bold'>{product?.name}</div>
                     <div>التصنيف <AllowedLink to={routes.productsFiltering() + '?category_id=' + product?.category_id}>{product?.category?.name}</AllowedLink></div>
 
                     <div>السعر {product?.price}</div>
                     <div>{product?.description}</div>
 
-                    <div className='d-flex align-items-start mt-auto'>
+                    <div className='d-flex align-items-start mt-3'>
                         <VarInput className='form-control m-2' variable={quantity} setvariable={setquantity} />
                         <LoginPageModal label='add to the cart'>
-                            <button onClick={addToCart} className='btn btn-success d-block'>أضف الى السلة</button>
+                            <button onClick={addToCart} className='btn btn-success mx-2'>أضف الى السلة</button>
                         </LoginPageModal>
                     </div>
                 </div>

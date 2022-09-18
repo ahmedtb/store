@@ -129,12 +129,12 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
                 <div className="d-flex mx-2 flex-grow-1">
                     <input
                         type="text"
-                        className="p-1 flex-grow-1"
+                        className="p-2 flex-grow-1 rounded-end"
                         aria-label="Search"
                         onChange={e => setq(e.target.value)}
                     />
-                    <Link className="bg-warning px-2" to={routes.productsFiltering() + '?q=' + q} >
-                        <AiOutlineSearch className='my-auto d-block' size={25} color={'black'} />
+                    <Link className="bg-warning rounded-start px-2" to={routes.productsFiltering() + '?q=' + q} >
+                        <AiOutlineSearch className='my-2' size={25} color={'black'} />
                     </Link>
                 </div>
 

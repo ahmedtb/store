@@ -35,6 +35,11 @@ function MyOrders(props: { cart: cart }) {
     }
 
     return <div className='bg-white'>
+        <div className='fs-3 mx-1 fw-bold'>الطلبات المسجلة</div>
+        {
+            !ordersPag?.data?.length ? <div className='fs-5 mt-3 mx-3 fw-bold '>لا توجد طلبيات مسجلة</div> : null
+        }
+
         {
             ordersPag?.data?.map((order, index) => {
                 return <div key={index} className='border p-2 m-2 rounded'>

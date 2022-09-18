@@ -6,7 +6,7 @@ import { updateCart, updateGPS } from '../redux/stateFunctions'
 import { api } from '../functions/urls';
 import apiCallHandler from '../functions/apiCallHandler';
 import CustomModal from '../../components/CustomModal';
-import { useGeolocated } from 'react-geolocated'
+import { FiShoppingCart } from 'react-icons/fi'
 
 function CartItems(props: { cart: order, GPS: GPS }) {
 
@@ -26,10 +26,14 @@ function CartItems(props: { cart: order, GPS: GPS }) {
     }
 
     return <div className='bg-white p-2'>
-        <div className='fs-3 fw-bold'>السلة الحالية</div>
-        {/* <div>
-            cart status {props.cart?.status}
-        </div> */}
+
+        <div className='d-flex '>
+            <FiShoppingCart size={35} color={'black'} />
+            <div className='fs-3 mx-1 fw-bold'>السلة الحالية</div>
+        </div>
+        {
+            !props.cart?.order_items?.length  ? <div className='fs-5 mt-3 mx-3 fw-bold '>السلة فارعة</div> : null
+        }
         <div className='row'>
             <div className='col-7'>
                 {
@@ -66,7 +70,7 @@ function CartItems(props: { cart: order, GPS: GPS }) {
         </div>
 
 
-        <CustomModal label='order' buttonClass='btn btn-success mx-auto d-block'>
+        <CustomModal label='إرسال الطلب' buttonClass='btn btn-success mx-auto d-block'>
 
             <div>
 
