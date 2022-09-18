@@ -44,7 +44,7 @@ class UserOrderedCart extends Notification
     public function toArray($notifiable)
     {
         return [
-            'title' => 'user ordered cart',
+            'title' => 'قام الزبون ' . $this->order->user->name . ' بطلبة سلة',
             'message' => '',
             'to' => "/order/{$this->order->id}" 
 

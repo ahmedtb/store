@@ -22,7 +22,7 @@ export default function CategoriesIndex() {
                 {window.localization.categories}
             </div>
             <div>
-                <AllowedLink to={routes.categoryCreate()}>create category</AllowedLink>
+                <AllowedLink to={routes.categoryCreate()}>تسجيل تصنيف</AllowedLink>
             </div>
         </div>
         <Row className='align-items-center'>

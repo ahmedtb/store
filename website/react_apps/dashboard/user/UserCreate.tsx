@@ -36,7 +36,7 @@ export default function UserCreate() {
     return (
         <div className="card">
             <Card.Header className='d-flex justify-content-between'>
-                <div>تسجيل منتج</div>
+                <div>تسجيل زبون</div>
                 <div>
                     {/* <UploadMultipleUsersModal  /> */}
                 </div>

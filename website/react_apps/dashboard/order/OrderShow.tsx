@@ -63,7 +63,7 @@ export default function OrderShow(props) {
                         return <div key={index} className='d-flex h-50 d-inline-block'>
                             <img src={api.productImage(item.product_id)} />
                             <div >
-                                <div>product name: <AllowedLink to={routes.productShow(item.product_id)}>{item.product?.name}</AllowedLink></div>
+                                <div>إسم المنتج: <AllowedLink to={routes.productShow(item.product_id)}>{item.product?.name}</AllowedLink></div>
                                 <div>quantity: {item.quantity}</div>
                                 <div>value: {item.value}</div>
                             </div>

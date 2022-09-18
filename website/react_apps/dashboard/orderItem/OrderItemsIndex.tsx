@@ -23,7 +23,7 @@ export default function OrderItemsIndex() {
                     order items
                 </div>
                 <div>
-                    <AllowedLink to={routes.orderItemCreate()}>create order item</AllowedLink>
+                    {/* <AllowedLink to={routes.orderItemCreate()}>create order item</AllowedLink> */}
                 </div>
             </div>
         </Card.Header>

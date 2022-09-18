@@ -39,21 +39,21 @@ function MyOrders(props: { cart: cart }) {
             ordersPag?.data?.map((order, index) => {
                 return <div key={index} className='border p-2 m-2 rounded'>
                     <button className='btn btn-danger d-block me-auto ms-2' onClick={() => deleteOrder(order.id)}>حدف</button>
-                    <div className='d-flex justify-content-between p-2'>
+                    <div className='d-flex flex-wrap justify-content-between align-items-start p-2'>
 
 
 
-                        <div className='d-flex' style={{ height: '100px' }}>
+                        <div className='d-flex flex-wrap'>
                             {
                                 order?.order_items?.map((item, index) => {
 
-                                    return <div key={index} className='d-flex h-50 d-inline-block'>
-                                        <img src={api.productImage(item.product_id)} />
+                                    return <div key={index} className='d-flex'>
+                                        <img src={api.productImage(item.product_id)} width={100} />
                                         <div >
-                                            <div>product name: {item.product?.name}</div>
-                                            <div>product price: {item.product?.price}</div>
-                                            <div>quantity: {item.quantity}</div>
-                                            <div>value: {item.value}</div>
+                                            <div>إسم المنتج: {item.product?.name}</div>
+                                            <div>سعر المنتج: {item.product?.price}</div>
+                                            <div>الكمية: {item.quantity}</div>
+                                            <div>القيمة الكلية: {item.value}</div>
                                         </div>
 
                                     </div>
@@ -61,24 +61,24 @@ function MyOrders(props: { cart: cart }) {
                             }
                         </div>
 
-                        <Table bordered responsive className='d-block'>
+                        <Table bordered responsive className=''>
 
                             <tbody>
                                 <tr>
-                                    <td>order id</td>
+                                    <td>رقم الطلبية</td>
                                     <td>{order?.id} </td>
                                 </tr>
                                 <tr>
-                                    <td>order status</td>
+                                    <td>حالة الطلبية</td>
                                     <td>{order?.status} </td>
                                 </tr>
                                 <tr>
-                                    <td>GPS</td>
+                                    <td>موقع الطلبية</td>
                                     <td>lat: {order?.GPS?.lat}, long: {order?.GPS?.long} </td>
                                 </tr>
 
                                 <tr>
-                                    <td>created at</td>
+                                    <td>وقت الانشاء</td>
                                     <td>{moment(order?.created_at).format('yyyy-MM-DD H:mm')} </td>
                                 </tr>
 

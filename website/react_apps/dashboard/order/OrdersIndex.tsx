@@ -62,10 +62,10 @@ export default function OrdersIndex() {
 
             <div>
                 <OrdersTable orders={ordersPagination?.data} addColumns={[
-                    { title: 'accept', content: (order, index) => order.status == 'ordered' ? <button className='btn btn-success' onClick={() => accept(order.id)}>accept</button> : null },
-                    { title: 'reject', content: (order, index) => order.status == 'ordered' ? <button className='btn btn-danger' onClick={() => reject(order.id)}>reject</button> : null },
-                    { title: 'pay', content: (order, index) => order.status == 'accepted' ? <button className='btn btn-warning' onClick={() => pay(order.id)}>pay</button> : null },
-                    { title: 'print', content: (order, index) => <AllowedLink to={routes.printOrder(order.id)} className='btn btn-warning'>print</AllowedLink> }
+                    { title: 'قبول', content: (order, index) => order.status == 'ordered' ? <button className='btn btn-success' onClick={() => accept(order.id)}>قبول</button> : null },
+                    { title: 'رفض', content: (order, index) => order.status == 'ordered' ? <button className='btn btn-danger' onClick={() => reject(order.id)}>رفض</button> : null },
+                    { title: 'دفع', content: (order, index) => order.status == 'accepted' ? <button className='btn btn-warning' onClick={() => pay(order.id)}>دفع</button> : null },
+                    { title: 'طباعة', content: (order, index) => <AllowedLink to={routes.printOrder(order.id)} className='btn btn-warning'>طباعة</AllowedLink> }
 
                 ]} />
             </div >

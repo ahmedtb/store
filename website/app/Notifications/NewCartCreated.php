@@ -43,7 +43,7 @@ class NewCartCreated extends Notification
     public function toArray($notifiable)
     {
         return [
-            'title' => 'new cart ' . $this->cart->id . ' is created',
+            'title' => 'سلة جديدة ' . $this->cart->id . ' إنشأت',
             'message' => '',
             'to' => "/dashboard/orderShow/{$this->cart->id}" 
 

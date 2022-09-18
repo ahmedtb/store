@@ -43,7 +43,7 @@ class UserSignedUp extends Notification
     public function toArray($notifiable)
     {
         return [
-            'title' => 'user signed up',
+            'title' => 'زبون قام بالتسجيل',
             'message' => '',
             'to' => "/user/{$this->user->id}" 
 

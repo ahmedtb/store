@@ -42,9 +42,9 @@ function SideMenue(props) {
                 <h5 className=''>السلات الحالية</h5>
             </AllowedLink>
 
-            <AllowedLink className='text-white text-decoration-none' to={routes.orderItemsIndex()}>
+            {/* <AllowedLink className='text-white text-decoration-none' to={routes.orderItemsIndex()}>
                 <h5 className=''> {localization.orderItems} </h5>
-            </AllowedLink>
+            </AllowedLink> */}
             
             <AllowedLink className='text-white text-decoration-none' to={routes.adminsIndex()}>
                 <h5 className=''> {localization.admins} </h5>

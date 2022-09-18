@@ -88,7 +88,7 @@ export default function Home() {
                         {
                             products?.map((product, index) => {
                                 return <AllowedLink key={index} to={routes.productShow(product.id)} className='d-flex text-dark text-decoration-none'>
-                                    <img src={api.productImage(product.id)} width={816 / 10} height={1200 / 10} />
+                                    <img src={api.productImage(product.id)} width={100} className='m-2' />
                                     <div>
                                         <div>{product.name}</div>
                                         <div>{product.category?.name}</div>

@@ -54,7 +54,7 @@ export default function ProductCreate() {
                 <Col xs={6}>
 
                     <Form.Group className="mb-3">
-                        <Form.Label >product name</Form.Label>
+                        <Form.Label >إسم المنتج</Form.Label>
                         <Form.Control type="text" value={columns?.name ?? ''} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'name', value: e.target.value })} />
                     </Form.Group>
 
@@ -71,7 +71,7 @@ export default function ProductCreate() {
                 </Col>
                 <Col xs={6}>
                     <Form.Group className="mb-3">
-                        <Form.Label >product price</Form.Label>
+                        <Form.Label >سعر المنتج</Form.Label>
                         <Form.Control className='w-25' type="number" value={columns?.price ?? ''} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'price', value: e.target.value })} />
                     </Form.Group>
 

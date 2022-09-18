@@ -20,7 +20,7 @@ function DeliverToIcon(props: { GPS: GPS }) {
         <div style={{ fontSize: 12 }}>{props.GPS ? 'موقعك الحالي' : 'موقعك غير معروف'}</div>
     </div>} useDiv={true}
     >
-        <div>your orders will be delivered to this location, specified by the GPS</div>
+        <div>الطلبيات ستوصل الى موقعك الحالي</div>
         <iframe className='w-75' src={"https://maps.google.com/maps?q=" + props.GPS?.lat + ",%20" + props.GPS?.long + "&t=&z=13&ie=UTF8&iwloc=&output=embed"}></iframe>
 
     </CustomModal>

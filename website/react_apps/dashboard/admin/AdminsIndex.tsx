@@ -23,7 +23,7 @@ export default function AdminsIndex() {
                     admins index
                 </div>
                 <div>
-                    <AllowedLink to={routes.adminCreate()}>تسجيل منتج</AllowedLink>
+                    <AllowedLink to={routes.adminCreate()}>تسجيل مشرف</AllowedLink>
                 </div>
             </div>
         </Card.Header>

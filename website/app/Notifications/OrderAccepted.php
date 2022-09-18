@@ -43,7 +43,7 @@ class OrderAccepted extends Notification
     public function toArray($notifiable)
     {
         return [
-            'title' => 'you order ' . $this->order->id . ' is accepted',
+            'title' => 'تم قبول طلبك' . $this->order->id ,
             'message' => '',
             'to' => "/order/{$this->order->id}" 
 

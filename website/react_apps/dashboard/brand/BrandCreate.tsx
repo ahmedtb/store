@@ -32,7 +32,7 @@ export default function BrandCreate() {
     return (
         <div className="card">
             <Card.Header className='d-flex justify-content-between'>
-                <div>تسجيل منتج</div>
+                <div>تسجيل علامة تجارية</div>
                 <div>
                     {/* <UploadMultipleBrandsModal  /> */}
                 </div>

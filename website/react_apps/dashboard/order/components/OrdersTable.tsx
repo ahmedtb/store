@@ -15,10 +15,10 @@ export default function OrdersTable(props: { orders: orders, addColumns?: addCol
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>user</th>
-                    <th>status</th>
-                    <th>GPS</th>
-                    <th>items</th>
+                    <th>الزبون</th>
+                    <th>حالة الطلبية</th>
+                    <th>موقع الزبون</th>
+                    <th>بنود الطلب</th>
 
 
                     {
@@ -58,7 +58,7 @@ export default function OrdersTable(props: { orders: orders, addColumns?: addCol
                                     order?.order_items?.map((item, index) => {
 
                                         return <div key={index} className='d-flex h-50 d-inline-block'>
-                                            {item.product?.name} quantity {item.quantity} value {item.value}
+                                            {item.product?.name} الكمية {item.quantity} القيمة الكلية {item.value}
                                         
                                         </div>
                                     })

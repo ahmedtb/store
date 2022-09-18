@@ -51,7 +51,7 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
                     <div className='d-flex justify-content-between align-items-center'>
                         <LinkContainer to={routes.home()}>
                             <div className='fs-2 ms-3 text-white'>
-                                Phone Store
+                                متجر هواتف
                             </div>
                         </LinkContainer>
                         <div className='d-flex align-items-center'>
@@ -101,14 +101,13 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
                 </div>
                 <div className='d-flex flex-wrap bg-secondary'>
                 </div>
-                <NavDropdown title={window.localization.categories}>
+                <div className='d-flex flex-wrap bg-secondary py-1'>
                     {
-                        categories?.map((category, index) => <LinkContainer to={routes.productsFiltering() + '?category_id=' + category.id} key={index} className='mx-2 text-decoration-none'>
-                            <NavDropdown.Item>{category.name}</NavDropdown.Item>
-                        </LinkContainer>)
+                        categories?.map((category, index) => <AllowedLink to={routes.productsFiltering() + '?category_id=' + category.id} key={index} className='mx-2 text-decoration-none text-white'>
+                            {category.name}
+                        </AllowedLink>)
                     }
-                    {/* <NavDropdown.Item>{window.localization.orders}</NavDropdown.Item> */}
-                </NavDropdown>
+                </div>
 
             </div>
 

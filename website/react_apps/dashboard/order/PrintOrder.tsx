@@ -44,12 +44,12 @@ const OrderPaper = React.forwardRef<HTMLDivElement>((props, ref) => {
 
 
     return (
-        <div className='p-3 bg-white' ref={ref}>
+        <div className='p-3 bg-white' dir='rtl' ref={ref}>
 
             <div className='d-flex justify-content-around'>
 
                 <div className='fs-4 fw-bold'>
-                    Phone Store
+                    متجر هواتف
                 </div>
 
                 <Table bordered responsive>
@@ -57,25 +57,25 @@ const OrderPaper = React.forwardRef<HTMLDivElement>((props, ref) => {
                     <tbody>
 
                         <tr>
-                            <td>order id</td>
+                            <td>رقم الطلبية</td>
                             <td>{order?.id}</td>
                         </tr>
                         <tr>
-                            <td>customer</td>
+                            <td>الزبون</td>
                             <td><AllowedLink to={routes.userShow(order?.user_id)}>{order?.user?.name}</AllowedLink></td>
                         </tr>
                         <tr>
-                            <td>GPS</td>
+                            <td>موقع الطلبية</td>
                             <td>lat: {order?.GPS?.lat}, long: {order?.GPS?.long} </td>
                         </tr>
 
                         <tr>
-                            <td>phone</td>
+                            <td>هاتف الزبون</td>
                             <td>{order?.user?.phone} </td>
                         </tr>
 
                         <tr>
-                            <td>created at</td>
+                            <td>تاريخ الانشاء</td>
                             <td>{moment(order?.created_at).format('yyyy-MM-DD H:mm')} </td>
                         </tr>
 
@@ -85,13 +85,13 @@ const OrderPaper = React.forwardRef<HTMLDivElement>((props, ref) => {
 
             <div>
 
-                <div className='fs-4 fw-bold'>order items</div>
+                <div className='fs-4 fw-bold'>بنود الطلبية</div>
 
                 <Table striped bordered hover>
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>product name</th>
+                            <th>إسم المنتج</th>
                             <th>quantity</th>
                             <th>value</th>
                             <th>image</th>
@@ -116,7 +116,7 @@ const OrderPaper = React.forwardRef<HTMLDivElement>((props, ref) => {
 
             </div>
 
-            <div className='fs-4 fw-bold'>location of customer</div>
+            <div className='fs-4 fw-bold'>موقع الزبون</div>
             {
                 order?.GPS ?
                     <iframe src={"https://maps.google.com/maps?q=" + order?.GPS?.lat + ",%20" + order?.GPS?.long + "&t=&z=13&ie=UTF8&iwloc=&output=embed"}></iframe>
@@ -125,11 +125,11 @@ const OrderPaper = React.forwardRef<HTMLDivElement>((props, ref) => {
 
             <div className='d-flex justify-content-around'>
 
-                <div className='w-25 pb-5'>
+                <div className='w-25' style={{ paddingBottom: 150 }}>
                     <div className='text-center fs-5'>Store Approval</div>
                 </div>
 
-                <div className='w-25 pb-5'>
+                <div className='w-25' style={{ paddingBottom: 150 }}>
                     <div className='text-center fs-5'>Customer Reception</div>
                 </div>
             </div>
