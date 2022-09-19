@@ -23,7 +23,7 @@ function TopMenue(props: { refreshAdmin: typeof refreshAdmin, admin: admin }) {
     }
 
     return (
-        <Navbar bg="secondary" expand="lg" className='py-0 px-0'>
+        <Navbar bg="danger" expand="lg" className='py-0 px-0'>
             <Container fluid>
                 <LinkContainer to={routes.home()}>
                     <Navbar.Brand className=''>
