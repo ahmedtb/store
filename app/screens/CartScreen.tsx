@@ -1,10 +1,13 @@
 import { StyleSheet } from 'react-native';
-
+import { connect } from 'react-redux';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
+import { bindActionCreators } from 'redux';
+import { setUserNotification } from '../redux/stateActions';
 
-export default function CartScreen({ navigation }: RootTabScreenProps<'Cart'>) {
+function CartScreen(props: RootTabScreenProps<'Cart'> & storeState) {
+  
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab One</Text>
@@ -13,6 +16,20 @@ export default function CartScreen({ navigation }: RootTabScreenProps<'Cart'>) {
     </View>
   );
 }
+
+
+const mapStateToProps = (states: { state: storeState }) => {
+  return {
+    user: states.state.user
+  }
+};
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    setUserNotification
+  }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartScreen);
 
 const styles = StyleSheet.create({
   container: {

@@ -7,6 +7,8 @@ import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
 import axios from 'axios';
 import _Environments from './env'
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 axios.defaults.baseURL = _Environments.BASE_URL
 
@@ -25,8 +27,10 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
+        <Provider store={store}>
+          <Navigation colorScheme={colorScheme} />
+          <StatusBar />
+        </Provider>
       </SafeAreaProvider>
     );
   }

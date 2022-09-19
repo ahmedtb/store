@@ -17,10 +17,12 @@ declare global {
 
     type storeState = {
         user: user,
-        allowedRoutes: allowedRoutesType,
         notification: notification,
         cart: order,
         GPS: GPS,
+        expoPushToken: string,
+        categories: categories,
+        token: string
     }
     type GPS = { lat: number, long: number, accuracy: number }
 

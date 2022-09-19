@@ -27,7 +27,7 @@ export default function ScrollPaginator(props: {
     function fetchData(next = false) {
 
         let allParams = { ...getPaginationParams(pagination, next), page_size: props_page_size ?? 5 }
-        console.log('all params', getPaginationParams(pagination, next))
+        // console.log('all params', getPaginationParams(pagination, next))
         trackPromise(
 
             apiCallHandler(
@@ -45,9 +45,9 @@ export default function ScrollPaginator(props: {
         fetchData()
     }, [update])
 
-    React.useEffect(() => {
-        console.log('ScrollPaginator pagination', pagination?.next_page_url)
-    }, [pagination])
+    // React.useEffect(() => {
+    //     console.log('ScrollPaginator pagination', pagination?.next_page_url)
+    // }, [pagination])
 
     return <View>
 
