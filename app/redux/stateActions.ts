@@ -1,19 +1,19 @@
 
-export const setUserNotification = (notification) => (
+export const setUserNotification = (notification: notification) => (
     {
         type: 'setUserNotification',
         notification: notification
     }
 );
 
-export const setExpoPushToken = (expoPushToken) => (
+export const setExpoPushToken = (expoPushToken: string) => (
     {
         type: 'setExpoPushToken',
         expoPushToken: expoPushToken
     }
 );
 
-export const setCategories = (categories) => (
+export const setCategories = (categories: categories) => (
     {
         type: 'setCategories',
         categories: categories

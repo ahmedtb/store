@@ -14,10 +14,14 @@ function getURLParams(url) {
 const apiPrefix = '/api'
 export const api = {
     currentLanguage: () => axios.get('/currentLanguage'),
-    getUser: () => axios.get(apiPrefix + '/user'),
-    logout: () => axios.delete(apiPrefix + '/logout'),
-    login: (phone: string, password: string) => axios.post(apiPrefix + '/login', { phone: phone, password: password }),
-    signUp: (params: object) => axios.post(apiPrefix + '/signUp', params),
+    // getUser: () => axios.get(apiPrefix + '/user'),
+    // logout: () => axios.delete(apiPrefix + '/logout'),
+    // login: (phone: string, password: string) => axios.post(apiPrefix + '/login', { phone: phone, password: password }),
+    // signUp: (params: object) => axios.post(apiPrefix + '/signUp', params),
+    appLogin: (phone: string, password: string, expoPushToken: string) => axios.post(apiPrefix + '/appLogin', { phone: phone, password: password, expoPushToken: expoPushToken }),
+    appGetUser: (token: string) => axios.get(apiPrefix + '/appGetUser/' + token),
+    appLogout: (token: string) => axios.delete(apiPrefix + '/appLogout/' + token),
+
 
     productsIndex: (params?) => axios.get(apiPrefix + '/productsIndex/', { params: params }),
     productShow: (id: number) => axios.get(apiPrefix + '/productShow/' + id),

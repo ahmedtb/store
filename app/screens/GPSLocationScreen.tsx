@@ -1,12 +1,7 @@
 import React from 'react';
-
 import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet } from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+import { Text, View, Platform, StyleSheet } from 'react-native';
 import LocationPicker from '../components/LocationPicker';
-import * as Location from 'expo-location';
 
 export default function GPSLocationScreenScreen() {
   const [location, setLocation] = React.useState< { latitude: number, longitude: number } | null>(null);

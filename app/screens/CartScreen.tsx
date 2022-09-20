@@ -1,18 +1,16 @@
 import { StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
-import { RootTabScreenProps } from '../types';
+import { RootTabScreenProps } from '../types/types';
 import { bindActionCreators } from 'redux';
 import { setUserNotification } from '../redux/stateActions';
+import { Text, View } from 'react-native'
 
 function CartScreen(props: RootTabScreenProps<'Cart'> & storeState) {
-  
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/CartScreen.tsx" />
+      <View style={styles.separator}  />
     </View>
   );
 }

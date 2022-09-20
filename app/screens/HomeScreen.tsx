@@ -1,8 +1,8 @@
 import React from 'react'
 import { StyleSheet } from 'react-native';
 import { Text, View } from '../components/Themed';
-import { api, getPaginationParams, apiCallHandler } from '../urls'
-import { Image, ScrollView } from 'react-native';
+import { api, getPaginationParams } from '../urls'
+import { Image } from 'react-native';
 import ScrollPaginator from '../components/ScrollPaginator'
 import { ListRenderItemInfo } from 'react-native'
 
@@ -21,7 +21,6 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Tab Two</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      {/* <EditScreenInfo path="/screens/HomeScreen.tsx" /> */}
       {/* <ScrollView>
 
         {
@@ -45,14 +44,14 @@ export default function HomeScreen() {
         <ScrollPaginator
           // log='fetch products'
           apiCall={fetch}
-          renderItem={(itemData: ListRenderItemInfo<product>) => <View key={itemData.index} >
+          renderItem={(itemData: ListRenderItemInfo<product>) => <View key={itemData.index}
+            style={{ flexDirection: 'row', padding: 10 }}
+          >
             <Image source={{ uri: api.productImage(itemData.item.id) }}
-              style={{ width: 200, height: 200 }}
+              style={{ width: 100, height: 100 }}
 
             />
             <View>
-              <Text>{itemData.item.id}</Text>
-
               <Text>{itemData.item.name}</Text>
               <Text>{itemData.item.category?.name}</Text>
               <Text>{itemData.item.price}</Text>

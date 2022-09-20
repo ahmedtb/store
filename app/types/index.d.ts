@@ -168,6 +168,7 @@ declare global {
     }
     type slides = Array<slide>
 
+    
 
 }
 window.localization = window.localization || {};
