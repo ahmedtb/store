@@ -25,6 +25,15 @@ function CartItems(props: { cart: order, GPS: GPS }) {
         )
     }
 
+    function removeFromCart(id: number) {
+        apiCallHandler(
+            () => api.removeFromCart(id),
+            () => updateCart(),
+            'order',
+            true
+        )
+    }
+
     return <div className='bg-white p-2'>
 
         <div className='d-flex '>
@@ -32,7 +41,7 @@ function CartItems(props: { cart: order, GPS: GPS }) {
             <div className='fs-3 mx-1 fw-bold'>السلة الحالية</div>
         </div>
         {
-            !props.cart?.order_items?.length  ? <div className='fs-5 mt-3 mx-3 fw-bold '>السلة فارعة</div> : null
+            !props.cart?.order_items?.length ? <div className='fs-5 mt-3 mx-3 fw-bold '>السلة فارعة</div> : null
         }
         <div className='row'>
             <div className='col-7'>
@@ -54,14 +63,14 @@ function CartItems(props: { cart: order, GPS: GPS }) {
                                     القيمة الكلية {item?.value}
                                 </div>
                             </div>
-                            <button className='btn btn-danger align-self-end me-auto'>حدف من السلة</button>
+                            <button className='btn btn-danger align-self-end me-auto' onClick={() => removeFromCart(item.id)}>إزالة من السلة</button>
 
                         </div>
                     })
                 }
             </div>
             <div className='col'>
-                <div>
+                <div className='fs-4 fw-bold m-1'>
                     موقعك الحالية سيستعمل لتوصيل الطلبية
                 </div>
                 <iframe className='w-75' src={"https://maps.google.com/maps?q=" + props.GPS?.lat + ",%20" + props.GPS?.long + "&t=&z=13&ie=UTF8&iwloc=&output=embed"}></iframe>

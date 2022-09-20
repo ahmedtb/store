@@ -8,6 +8,7 @@ import { Dispatch } from 'redux';
 import {
     AiOutlineBell
 } from 'react-icons/ai'
+import BellIcon from 'react-bell-icon';
 
 function NotificationsBell(props: { user: user, notification: notification, refreshNotification: typeof refreshNotification }) {
     const location = useLocation();
@@ -49,9 +50,9 @@ function NotificationsBell(props: { user: user, notification: notification, refr
 
     return <AllowedLink to={routes.notifications()} className="text-decoration-none me-2" >
         {/* <FaRegBell size={25} color={!newsign ? 'black' : 'yellow'} /> */}
-        <AiOutlineBell width='25'
-            // active={animate ? true : false} 
-            // animate={animate} 
+        <BellIcon width='25'
+            active={animate ? true : false} 
+            animate={animate} 
             color={!newsign ? 'white' : 'yellow'}
         />
 

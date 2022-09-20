@@ -43,6 +43,8 @@ Route::middleware('auth:user')->group(function () {
     Route::get('/getCart', [CartsController::class, 'getCart']);
     Route::post('/addToCart', [CartsController::class, 'addToCart']);
     Route::post('/cartToOrdered', [CartsController::class, 'cartToOrdered']);
+    Route::delete('/removeFromCart/{id}', [CartsController::class, 'removeFromCart']);
+
     
     Route::get('/myOrders', [OrdersController::class, 'index']);
     Route::delete('/orderDelete/{id}', [OrdersController::class, 'delete']);

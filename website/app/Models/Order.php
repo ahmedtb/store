@@ -20,7 +20,7 @@ class Order extends Model
     protected static $logAttributes = ['status'];
 
 
-    protected $with = ['user','orderItems'];
+    protected $with = ['user', 'orderItems'];
 
     public static $statuses = ['new', 'ordered', 'accepted', 'rejected', 'paid'];
 
@@ -55,11 +55,13 @@ class Order extends Model
         return $orderItem;
     }
 
-    public function removeFromOrder(OrderItem $orderItem)
+    public function removeFromOrder($id)
     {
-        if ($this->status != 'new') {
-            throw new ValidationException(['order' => 'you can remove from this recorded order']);
+
+        $orderItem = $this->orderItems()->where('id', $id)->first();
+        if (!$orderItem) {
+            throw new ValidationException(['order_item_id' => 'this order does not have item with id ' . $id]);
         }
-        $this->orderItems()->where('id', $orderItem->id)->delete();
+        $orderItem->delete();
     }
 }

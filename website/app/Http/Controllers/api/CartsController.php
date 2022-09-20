@@ -38,20 +38,19 @@ class CartsController extends Controller
         return 'order item ' . $orderItem->id . ' is added to the cart';
     }
 
-    public function removeFromCart(Request $request)
+    public function removeFromCart(Request $request, $id)
     {
-        $request->validate([
-            'order_item_id' => 'required|exists:order_items,id',
-        ]);
+
 
         $newOrder = $request->user()->cart();
         if (!$newOrder)
             throw ValidationException::withMessages(['id' => "you do not have new order"]);
+        if ($newOrder->status != 'new')
+            throw ValidationException::withMessages(['id' => "this is not a new order"]);
 
+        $newOrder->removeFromOrder($id);
 
-        $orderItem = $newOrder->removeFromOrder($request->order_item_id);
-
-        return 'order item ' . $orderItem->id . ' is removed from the cart';
+        return 'order item ' . $id . ' is removed from the cart';
     }
 
 

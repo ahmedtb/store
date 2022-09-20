@@ -57,7 +57,7 @@ export default function ProductShow(props) {
 
             <Col xs={9}>
                 <div className='fs-4 d-flex'>
-                    <div className='fw-bold me-1'>
+                    <div className='fw-bold ms-1'>
                         {window.localization.name}
                     </div>
                     <div>
@@ -65,7 +65,7 @@ export default function ProductShow(props) {
                     </div>
                 </div>
                 <div className='fs-4 d-flex'>
-                    <div className='fw-bold me-1'>
+                    <div className='fw-bold ms-1'>
                         {window.localization.price}
                     </div>
                     <div>
@@ -73,7 +73,7 @@ export default function ProductShow(props) {
                     </div>
                 </div>
                 <div className='fs-4 d-flex'>
-                    <div className='fw-bold me-1'>
+                    <div className='fw-bold ms-1'>
                         {window.localization.category}
                     </div>
                     <div>
@@ -81,15 +81,26 @@ export default function ProductShow(props) {
                     </div>
                 </div>
                 <div className='fs-4 d-flex'>
-                    <div className='fw-bold me-1'>
+                    <div className='fw-bold ms-1'>
                         {window.localization.quantity}
                     </div>
                     <div>
                         {product?.quantity}
                     </div>
                 </div>
+
+                
                 <div className='fs-4 d-flex'>
-                    <div className='fw-bold me-1'>
+                    <div className='fw-bold ms-1'>
+                        الكمية المتوفرة
+                    </div>
+                    <div>
+                        {product?.availableQuantity}
+                    </div>
+                </div>
+
+                <div className='fs-4 d-flex'>
+                    <div className='fw-bold ms-1'>
                         {window.localization.description}
                     </div>
                     <div>

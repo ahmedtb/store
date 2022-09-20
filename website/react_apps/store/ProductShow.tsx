@@ -47,10 +47,10 @@ function ProductShow() {
                     <div>السعر {product?.price}</div>
                     <div>{product?.description}</div>
 
-                    <div className='d-flex align-items-start mt-3'>
-                        <VarInput className='form-control m-2' variable={quantity} setvariable={setquantity} />
-                        <LoginPageModal label='add to the cart'>
-                            <button onClick={addToCart} className='btn btn-success mx-2'>أضف الى السلة</button>
+                    <div className='d-flex mt-3'>
+                        <VarInput className='form-control w-50 m-1' variable={quantity} setvariable={setquantity} />
+                        <LoginPageModal label='أضف الى السلة'>
+                            <button onClick={addToCart} className='btn btn-success mx-2 d-block'>أضف الى السلة</button>
                         </LoginPageModal>
                     </div>
                 </div>

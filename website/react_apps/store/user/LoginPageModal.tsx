@@ -28,7 +28,7 @@ function LoginPageModal(props: { user: user, refreshUser: typeof refreshUser, ch
 
                 <div className='col-5 mx-auto p-3'>
                     <div className=''>
-                        <div>please login first</div>
+                        <div>يرجى تسجيل الدخول أولاً</div>
                         <input
                             type='username'
                             className='form-control my-2'

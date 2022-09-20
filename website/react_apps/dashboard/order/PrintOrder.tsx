@@ -75,6 +75,10 @@ const OrderPaper = React.forwardRef<HTMLDivElement>((props, ref) => {
                         </tr>
 
                         <tr>
+                            <td>حالة الطلبية</td>
+                            <td>{order?.status} </td>
+                        </tr>
+                        <tr>
                             <td>تاريخ الانشاء</td>
                             <td>{moment(order?.created_at).format('yyyy-MM-DD H:mm')} </td>
                         </tr>
@@ -85,16 +89,16 @@ const OrderPaper = React.forwardRef<HTMLDivElement>((props, ref) => {
 
             <div>
 
-                <div className='fs-4 fw-bold'>بنود الطلبية</div>
+                <div className='fs-4 fw-bold'>تفاصيل الطلبية</div>
 
                 <Table striped bordered hover>
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>إسم المنتج</th>
-                            <th>quantity</th>
-                            <th>value</th>
-                            <th>image</th>
+                            <th>الكمية</th>
+                            <th>القيمة الكلية</th>
+                            <th>صورة المنتج</th>
 
                         </tr>
                     </thead>
@@ -117,20 +121,22 @@ const OrderPaper = React.forwardRef<HTMLDivElement>((props, ref) => {
             </div>
 
             <div className='fs-4 fw-bold'>موقع الزبون</div>
-            {
-                order?.GPS ?
-                    <iframe src={"https://maps.google.com/maps?q=" + order?.GPS?.lat + ",%20" + order?.GPS?.long + "&t=&z=13&ie=UTF8&iwloc=&output=embed"}></iframe>
-                    : null
-            }
+
+            <iframe
+                src={order?.GPS ? "https://maps.google.com/maps?q=" + order?.GPS?.lat + ",%20" + order?.GPS?.long + "&t=&z=13&ie=UTF8&iwloc=&output=embed" : null}
+            >
+
+            </iframe>
+
 
             <div className='d-flex justify-content-around'>
 
                 <div className='w-25' style={{ paddingBottom: 150 }}>
-                    <div className='text-center fs-5'>Store Approval</div>
+                    <div className='text-center fs-5'>إعتماد المتجر</div>
                 </div>
 
                 <div className='w-25' style={{ paddingBottom: 150 }}>
-                    <div className='text-center fs-5'>Customer Reception</div>
+                    <div className='text-center fs-5'>إستلام الزبون</div>
                 </div>
             </div>
         </div >
