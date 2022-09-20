@@ -94,6 +94,7 @@ export const api = {
     adminCreate: (params) => axios.post(apiPrefix + '/adminCreate', params),
     adminEdit: (id: number, params: object) => axios.put(apiPrefix + 'adminEdit/' + id, params),
     adminDelete: (id: number) => axios.delete(apiPrefix + '/adminDelete/' + id),
+    adminsRoles: () => axios.get(`${apiPrefix}/admins/roles`),
 
 
     categoryShow: (id: number) => axios.get(apiPrefix + '/categoryShow' + id),

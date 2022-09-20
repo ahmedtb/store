@@ -5,15 +5,28 @@ import SlidesTable from './components/SlidesTable';
 import { TextFilter, getPaginationParams } from '../../components/Filters';
 import AllowedLink from '../components/AllowedLink';
 import { Card, Col, Row } from 'react-bootstrap';
+import apiCallHandler from '../functions/apiCallHandler';
 
 export default function SlidesIndex() {
 
 
     const [slidesPagination, setslidesPagination] = React.useState<pagination<slides>>()
+    const [update, setupdate] = React.useState<number>()
 
 
-    function fetch(params) {
+    function fetch(params: object) {
         return api.slidesIndex({ ...getPaginationParams(slidesPagination), ...params, with: 'category' });
+    }
+
+    const deleteFun = (id: number) => {
+        if (confirm('هل تريد فعلا حدف الاعلان')) {
+            apiCallHandler(
+                () => api.slideDelete(id),
+                (data) => { alert(data); setupdate(Math.random()) },
+                'delete slide',
+                true
+            )
+        }
     }
 
     return <div className='p-3 bg-white'>
@@ -40,9 +53,14 @@ export default function SlidesIndex() {
         </div>
 
         <div>
-            <SlidesTable slides={slidesPagination?.data} />
+            <SlidesTable slides={slidesPagination?.data} addColumns={[
+                {
+                    title: 'إجراءات',
+                    content: (slide: slide, index) => <button className='btn btn-danger' onClick={() => deleteFun(slide.id)}>حدف</button>
+                }
+            ]} />
         </div >
-        <Paginator log={'SlidesIndex'} apiCall={fetch} useState={[slidesPagination, setslidesPagination]} />
+        <Paginator update={update} log={'slides index'} apiCall={fetch} useState={[slidesPagination, setslidesPagination]} />
     </div>
 
 }

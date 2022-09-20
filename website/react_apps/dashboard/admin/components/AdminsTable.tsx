@@ -2,6 +2,7 @@ import React from "react"
 import { Table } from "react-bootstrap"
 import AllowedLink from "../../components/AllowedLink"
 import { routes, api } from "../../functions/urls"
+import { isArray } from 'lodash';
 
 export default function AdminsTable(props: { admins: admins, addColumns?: addColumns }) {
     const admins = props.admins
@@ -9,6 +10,14 @@ export default function AdminsTable(props: { admins: admins, addColumns?: addCol
 
 
 
+    function presentRoles(roles) {
+        let p = []
+        if (isArray(roles))
+            roles?.forEach((role, index) => {
+                p.push(<div key={index}>{role}</div>)
+            });
+        return p
+    }
 
     return (
         <Table striped bordered hover responsive>
@@ -17,6 +26,7 @@ export default function AdminsTable(props: { admins: admins, addColumns?: addCol
                     <th>#</th>
                     <th>{window.localization.name}</th>
                     <th>{window.localization.username}</th>
+                    <th>الصلحيات</th>
 
 
                     {
@@ -46,7 +56,9 @@ export default function AdminsTable(props: { admins: admins, addColumns?: addCol
                             <td>
                                 {admin.username}
                             </td>
-
+                            <td>
+                                {admin?.roles?.length ? presentRoles(admin?.roles) : 'ليس له ادوار'}
+                            </td>
 
                             {
                                 addColumns?.map((column, index2) => (

@@ -72,6 +72,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::delete('/adminDelete/{id}', [AdminsController::class, 'delete']);
     Route::put('/adminEdit/{id}', [AdminsController::class, 'update']);
     Route::post('/adminCreate', [AdminsController::class, 'create']);
+    Route::get('/admins/roles', [AdminsController::class, 'getPossibleRoles']);
 
     Route::get('/usersIndex', [UsersController::class, 'index']);
     Route::get('/userShow/{id}', [UsersController::class, 'show']);

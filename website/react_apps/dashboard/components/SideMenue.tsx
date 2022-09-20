@@ -22,60 +22,69 @@ import {
     GrUserAdmin
 } from 'react-icons/gr'
 import {
-    RiAdvertisementFill
+    RiAdvertisementFill, RiAdminFill
 } from 'react-icons/ri'
+import {
+    FaRegUserCircle
+} from 'react-icons/fa'
 
 function SideMenue(props) {
 
 
-    return <Col xs={2} className='bg-dark text-white p-2 min-vh-100' >
+    return <Col xs={2} className='bg-dark text-white p-2 min-vh-100 fs-4' >
 
         <AllowedLink className='text-white text-decoration-none' to={routes.home()}>
-            <h5 className='text-center'> {localization.controlPanel} </h5>
+            <div className='text-center'> {localization.controlPanel} </div>
         </AllowedLink>
         <div className='p-1'>
 
             <AllowedLink className='text-white text-decoration-none d-flex align-items-center' to={routes.productsIndex()}>
-                <IoFileTrayStackedSharp size={20} />
-                <h5 className='me-1'> {localization.products} </h5>
+                <IoFileTrayStackedSharp size={20} className='ms-2' />
+                <div className='me-1'> {localization.products} </div>
             </AllowedLink>
 
             <AllowedLink className='text-white text-decoration-none d-flex align-items-center' to={routes.categoriesIndex()}>
-                <MdOutlineCategory size={20} />
-                <h5 className='me-1'> {localization.categories} </h5>
+                <MdOutlineCategory size={20} className='ms-2' />
+                <div className='me-1'> {localization.categories} </div>
             </AllowedLink>
             
             {/* <AllowedLink className='text-white text-decoration-none' to={routes.brandsIndex()}>
-                <h5 className=''> {localization.brands} </h5>
+                <div className=''> {localization.brands} </div>
             </AllowedLink>
              */}
             <AllowedLink className='text-white text-decoration-none d-flex align-items-center' to={routes.ordersIndex()}>
-                <RiOrderPlayFill size={20} />
-                <h5 className='me-1'> {localization.orders} </h5>
+                <RiOrderPlayFill size={20} className='ms-2' />
+                <div className='me-1'> {localization.orders} </div>
             </AllowedLink>
                         
             {/* <AllowedLink className='text-white text-decoration-none' to={routes.orderedOrdersIndex()}>
-                <h5 className=''> oredered orders </h5>
+                <div className=''> oredered orders </div>
             </AllowedLink> */}
                         
             <AllowedLink className='text-white text-decoration-none d-flex align-items-center' to={routes.cartsIndex()}>
-                <AiOutlineShoppingCart size={20} />
-                <h5 className=''>السلات الحالية</h5>
+                <AiOutlineShoppingCart size={20} className='ms-2' />
+                <div className=''>السلات الحالية</div>
             </AllowedLink>
 
             {/* <AllowedLink className='text-white text-decoration-none' to={routes.orderItemsIndex()}>
-                <h5 className=''> {localization.orderItems} </h5>
+                <div className=''> {localization.orderItems} </div>
             </AllowedLink> */}
             
             <AllowedLink className='text-white text-decoration-none d-flex align-items-center' to={routes.adminsIndex()}>
-                <GrUserAdmin  size={20} />
-                <h5 className=''> {localization.admins} </h5>
+                <RiAdminFill color='white'  size={20} className='ms-2' />
+                <div className=''> {localization.admins} </div>
+            </AllowedLink>
+                        
+            <AllowedLink className='text-white text-decoration-none d-flex align-items-center' to={routes.usersIndex()}>
+                <FaRegUserCircle size={20} className='ms-2' />
+                <div className=''> الزبائن </div>
             </AllowedLink>
             
             <AllowedLink className='text-white text-decoration-none d-flex align-items-center' to={routes.slidesIndex()}>
-                <RiAdvertisementFill size={20} />
-                <h5 className=''> {localization.slides} </h5>
+                <RiAdvertisementFill size={20} className='ms-2' />
+                <div className=''> {localization.slides} </div>
             </AllowedLink>
+
         </div>
 
 

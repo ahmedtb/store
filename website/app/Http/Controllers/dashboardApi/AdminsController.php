@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Filters\AdminFilters;
 use App\Models\Service;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Validation\Rule;
 
 class AdminsController extends Controller
 {
@@ -22,7 +23,8 @@ class AdminsController extends Controller
             'name' => 'required|string',
             'username' => 'required|string',
             'password' => 'required|string',
-          
+            'roles' => ['required', 'array'],
+            'roles.*' => Rule::in(Admin::$possibleRoles),
         ]);
 
         $admin = Admin::create($data);
@@ -44,7 +46,8 @@ class AdminsController extends Controller
             'name' => 'sometimes|string',
             'username' => 'sometimes|string',
             'password' => 'sometimes|string',
-          
+            'roles' => ['required', 'array'],
+            'roles.*' => Rule::in(Admin::$possibleRoles),
         ]);
 
         $admin->update($data);
@@ -81,6 +84,11 @@ class AdminsController extends Controller
             'admin_id' => trans_choice('models.admin', 1),
             'id' => $id
         ]);
+    }
+    public function getPossibleRoles()
+    {
+
+        return Admin::$possibleRoles;
     }
 
 }
