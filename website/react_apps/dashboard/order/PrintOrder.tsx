@@ -49,7 +49,7 @@ const OrderPaper = React.forwardRef<HTMLDivElement>((props, ref) => {
             <div className='d-flex justify-content-around'>
 
                 <div className='fs-4 fw-bold'>
-                    متجر هواتف
+                    {process.env.MIX_APP_NAME}
                 </div>
 
                 <Table bordered responsive>

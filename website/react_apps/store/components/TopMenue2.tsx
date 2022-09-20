@@ -48,18 +48,20 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
 
                 <div className='p-1 bg-dark align-items-center'>
 
-                    <div className='d-flex justify-content-between align-items-center'>
+                    <div className='justify-content-between align-items-center'>
                         <LinkContainer to={routes.home()}>
                             <div className='fs-2 ms-3 text-white'>
-                                متجر هواتف
+                                {process.env.MIX_APP_NAME}
                             </div>
                         </LinkContainer>
-                        <div className='d-flex align-items-center'>
+                        <div className='d-flex flex-wrap align-items-center'>
                             <div className='mx-2 text-white'>
                                 <DeliverToIcon />
                             </div>
+                            <AllowedLink to={routes.myOrders()} className='text-white mx-2 fs-5'>
+                                طلباتي
+                            </AllowedLink>
                             <CartBell />
-                            <NotificationsBell />
                             {
                                 props.user ? (
                                     <NavDropdown title={props.user.name} className='text-white'>
@@ -80,6 +82,8 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
                                     </div>
                                 )
                             }
+                            <NotificationsBell />
+
                         </div>
 
                     </div>
@@ -87,13 +91,17 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
                     <div className="d-flex m-1">
                         <Form.Control
                             type="search"
-                            placeholder="Search"
+                            // placeholder="Search"
                             className="me-2"
                             aria-label="Search"
                             onChange={e => setq(e.target.value)}
                         />
-                        <Link className="btn btn-outline-light" to={routes.productsFiltering() + '?q=' + q} >Search</Link>
+                        {/* <Link className="btn btn-outline-light" to={routes.productsFiltering() + '?q=' + q} >بحث</Link> */}
+                        <Link className="bg-warning rounded-start px-2" to={routes.productsFiltering() + '?q=' + q} >
+                            <AiOutlineSearch className='my-2' size={25} color={'black'} />
+                        </Link>
                     </div>
+
 
 
 
@@ -119,7 +127,7 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
             <div className='d-flex p-1 bg-dark align-items-center'>
                 <LinkContainer to={routes.home()}>
                     <div className='fs-2 ms-3 text-white'>
-                        متجر هواتف
+                        {process.env.MIX_APP_NAME}
                     </div>
                 </LinkContainer>
 

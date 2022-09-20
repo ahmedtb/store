@@ -28,7 +28,7 @@ function TopMenue(props: { refreshAdmin: typeof refreshAdmin, admin: admin }) {
                 <LinkContainer to={routes.home()}>
                     <Navbar.Brand className=''>
                         <div className='fs-2 ms-3 text-white'>
-                            متجر هواتف
+                            {process.env.MIX_APP_NAME}
                         </div>
                     </Navbar.Brand>
                 </LinkContainer>
