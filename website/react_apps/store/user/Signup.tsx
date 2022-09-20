@@ -13,7 +13,7 @@ import localization from '../../functions/localization';
 export default function Signup() {
 
 
-    const [columns, dispatchColumns] = React.useReducer(objectUseReducerFunction, { })
+    const [columns, dispatchColumns] = React.useReducer(objectUseReducerFunction, {})
 
     React.useEffect(() => {
         // console.log('columns', columns)
@@ -36,31 +36,34 @@ export default function Signup() {
     return (
         <div className='bg-white p-2 m-2'>
 
-            <Form.Group className="mb-3">
-                <Form.Label >name</Form.Label>
-                <Form.Control type="text" value={columns?.name ?? ''} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'name', value: e.target.value })} />
-            </Form.Group>
+            <div className='col-3 mx-auto'>
 
-            
-            <Form.Group className="mb-3">
-                <Form.Label >phone</Form.Label>
-                <Form.Control type="number" value={columns?.phone ?? ''} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'phone', value: e.target.value })} />
-            </Form.Group>
-
-                        
-            <Form.Group className="mb-3">
-                <Form.Label >email</Form.Label>
-                <Form.Control type="email" value={columns?.email ?? ''} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'email', value: e.target.value })} />
-            </Form.Group>
-                                    
-            <Form.Group className="mb-3">
-                <Form.Label >password</Form.Label>
-                <Form.Control type="password" value={columns?.password ?? ''} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'password', value: e.target.value })} />
-            </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label >الاسم</Form.Label>
+                    <Form.Control type="text" value={columns?.name ?? ''} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'name', value: e.target.value })} />
+                </Form.Group>
 
 
-            <div className=" p-2 m-2 d-flex justify-content-center">
-                <input onClick={submit} type="button" className='btn btn-success' value="sign up" />
+                <Form.Group className="mb-3">
+                    <Form.Label >رقم الهاتف</Form.Label>
+                    <Form.Control type="number" value={columns?.phone ?? ''} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'phone', value: e.target.value })} />
+                </Form.Group>
+
+
+                <Form.Group className="mb-3">
+                    <Form.Label >عنوان البريد</Form.Label>
+                    <Form.Control type="email" value={columns?.email ?? ''} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'email', value: e.target.value })} />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <Form.Label >كلمة السر</Form.Label>
+                    <Form.Control type="password" value={columns?.password ?? ''} onChange={(e) => dispatchColumns({ actionType: 'change property', property: 'password', value: e.target.value })} />
+                </Form.Group>
+
+
+                <div className=" p-2 m-2 d-flex justify-content-center">
+                    <input onClick={submit} type="button" className='btn btn-success' value="تسجيل" />
+                </div>
             </div>
 
         </div>

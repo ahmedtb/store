@@ -58,6 +58,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::put('/orderAccept/{id}', [OrdersController::class, 'accept']);
     Route::put('/orderReject/{id}', [OrdersController::class, 'reject']);
     Route::put('/orderPay/{id}', [OrdersController::class, 'pay']);
+    Route::get('/ordersStatistics', [OrdersController::class, 'ordersOperationsStatistics']);
 
     
     Route::get('/orderItemsIndex', [OrderItemsController::class, 'index']);
@@ -65,7 +66,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::delete('/orderItemDelete/{id}', [OrderItemsController::class, 'delete']);
     Route::put('/orderItemEdit/{id}', [OrderItemsController::class, 'update']);
     Route::post('/orderItemCreate', [OrderItemsController::class, 'create']);
-
+    Route::post('/orderItemCreate', [OrderItemsController::class, 'create']);
 
     Route::get('/adminsIndex', [AdminsController::class, 'index']);
     Route::get('/adminShow/{id}', [AdminsController::class, 'show']);

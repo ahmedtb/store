@@ -75,6 +75,7 @@ export const api = {
     orderItemCreate: (params) => axios.post(apiPrefix + '/orderItemCreate/', params),
     orderItemEdit: (id: number, params: object) => axios.put(apiPrefix + 'orderItemEdit/' + id, params),
     orderItemDelete: (id: number) => axios.delete(apiPrefix + '/orderItemDelete/' + id),
+    ordersStatistics: (params: object) => axios.get(apiPrefix + '/ordersStatistics/', { params: params }),
 
     userShow: (id: number) => axios.get(apiPrefix + '/userShow/' + id),
     usersIndex: (params) => axios.get(apiPrefix + '/usersIndex/', { params: params }),

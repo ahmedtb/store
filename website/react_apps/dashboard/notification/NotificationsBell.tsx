@@ -4,8 +4,11 @@ import { refreshNotification } from '../redux/stateActions'
 import { connect } from "react-redux"
 import AllowedLink from '../components/AllowedLink';
 import { useLocation } from 'react-router-dom'
-import BellIcon from 'react-bell-icon';
+// import BellIcon from 'react-bell-icon';
 import { Dispatch } from 'redux';
+import {
+    AiOutlineBell
+} from 'react-icons/ai'
 
 function NotificationsBell(props: { admin: admin, notification: notification, refreshNotification: typeof refreshNotification }) {
     const location = useLocation();
@@ -47,7 +50,12 @@ function NotificationsBell(props: { admin: admin, notification: notification, re
 
     return <AllowedLink to={routes.notifications()} className="text-decoration-none me-2" >
         {/* <FaRegBell size={25} color={!newsign ? 'black' : 'yellow'} /> */}
-        <BellIcon width='25' active={animate ? true : false} animate={animate} color={!newsign ? 'white' : 'yellow'} />
+        <AiOutlineBell
+            width='25'
+            // active={animate ? true : false} 
+            // animate={animate} 
+            color={!newsign ? 'white' : 'yellow'}
+        />
 
     </AllowedLink>
 

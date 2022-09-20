@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers\DashboardAPI;
 
-use App\Models\Claim;
 use App\Models\Order;
-use App\Models\Service;
-use App\Rules\Base64Rule;
 use Illuminate\Http\Request;
-use App\Filters\ClaimFilters;
 use App\Filters\OrderFilters;
 use App\Http\Controllers\Controller;
-use App\Notifications\OrderAccepted;
+use App\Notifications\Users\OrderAccepted;
 use Illuminate\Validation\ValidationException;
+use App\Filters\ActivityLogFilters;
+use App\Models\ActivityLog;
 
 class OrdersController extends Controller
 {
@@ -115,5 +113,17 @@ class OrdersController extends Controller
         $order->status = 'paid';
         $order->save();
         return 'order ' . $id . ' is paid';
+    }
+
+    public function ordersOperationsStatistics(Request $request, ActivityLogFilters $filters)
+    {
+        // return $request->all();
+        return [
+            'orderCreatedActivities' => ActivityLog::filter($filters)->orderCreatedActivities()->count(),
+            'orderOrderedActivities' => ActivityLog::filter($filters)->orderOrderedActivities()->count(),
+            'orderPaidActivities' => ActivityLog::filter($filters)->orderPaidActivities()->count(),
+            'orderAcceptedActivities' => ActivityLog::filter($filters)->orderAcceptedActivities()->count(),
+            'orderRejectedActivities' => ActivityLog::filter($filters)->orderRejectedActivities()->count(),
+        ];
     }
 }

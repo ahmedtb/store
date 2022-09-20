@@ -7,15 +7,17 @@ use App\Filters\OrderFilters;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Validation\ValidationException;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Order extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     protected $guarded = [];
     protected $casts = [
         'GPS' => Json::class
     ];
+    protected static $logAttributes = ['status'];
 
 
     protected $with = ['user','orderItems'];

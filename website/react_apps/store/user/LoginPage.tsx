@@ -22,7 +22,8 @@ function LoginPage(props: { user: user, refreshUser: typeof refreshUser }) {
     }
 
     return (
-        <div className='col-5 mx-auto p-3'>
+        <div className='bg-white col-5 mx-auto p-3'>
+            <div className='fs-3 fw-bold m-2'>مرحبا</div>
             <div className=''>
 
                     <input

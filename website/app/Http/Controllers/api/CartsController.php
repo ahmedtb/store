@@ -8,8 +8,8 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Filters\OrderFilters;
 use App\Http\Controllers\Controller;
-use App\Notifications\NewCartCreated;
-use App\Notifications\UserOrderedCart;
+use App\Notifications\Admins\NewCartCreated;
+use App\Notifications\Admins\UserOrderedCart;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Validation\ValidationException;
 

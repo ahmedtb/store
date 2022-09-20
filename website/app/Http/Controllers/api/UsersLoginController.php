@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use App\Notifications\UserSignedUp;
+use App\Notifications\Admins\UserSignedUp;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
