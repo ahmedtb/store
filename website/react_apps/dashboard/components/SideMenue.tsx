@@ -15,6 +15,15 @@ import {
 import {
     RiOrderPlayFill
 } from 'react-icons/ri'
+import {
+    AiOutlineShoppingCart
+} from 'react-icons/ai'
+import {
+    GrUserAdmin
+} from 'react-icons/gr'
+import {
+    RiAdvertisementFill
+} from 'react-icons/ri'
 
 function SideMenue(props) {
 
@@ -49,7 +58,8 @@ function SideMenue(props) {
                 <h5 className=''> oredered orders </h5>
             </AllowedLink> */}
                         
-            <AllowedLink className='text-white text-decoration-none' to={routes.cartsIndex()}>
+            <AllowedLink className='text-white text-decoration-none d-flex align-items-center' to={routes.cartsIndex()}>
+                <AiOutlineShoppingCart size={20} />
                 <h5 className=''>السلات الحالية</h5>
             </AllowedLink>
 
@@ -57,11 +67,13 @@ function SideMenue(props) {
                 <h5 className=''> {localization.orderItems} </h5>
             </AllowedLink> */}
             
-            <AllowedLink className='text-white text-decoration-none' to={routes.adminsIndex()}>
+            <AllowedLink className='text-white text-decoration-none d-flex align-items-center' to={routes.adminsIndex()}>
+                <GrUserAdmin  size={20} />
                 <h5 className=''> {localization.admins} </h5>
             </AllowedLink>
             
-            <AllowedLink className='text-white text-decoration-none' to={routes.slidesIndex()}>
+            <AllowedLink className='text-white text-decoration-none d-flex align-items-center' to={routes.slidesIndex()}>
+                <RiAdvertisementFill size={20} />
                 <h5 className=''> {localization.slides} </h5>
             </AllowedLink>
         </div>
