@@ -1,5 +1,6 @@
 import axios from 'axios';
 import _Environments from './env'
+import * as Device from 'expo-device';
 
 function getURLParams(url) {
     var regex = /[?&]([^=#]+)=([^&#]*)/g,
@@ -18,9 +19,9 @@ export const api = {
     // logout: () => axios.delete(apiPrefix + '/logout'),
     // login: (phone: string, password: string) => axios.post(apiPrefix + '/login', { phone: phone, password: password }),
     // signUp: (params: object) => axios.post(apiPrefix + '/signUp', params),
-    appLogin: (phone: string, password: string, expoPushToken: string) => axios.post(apiPrefix + '/appLogin', { phone: phone, password: password, expoPushToken: expoPushToken }),
+    appLogin: (phone: string, password: string, expoPushToken: string) => axios.post(apiPrefix + '/appLogin', { phone: phone, password: password, device_name: Device.modelName, expo_token: expoPushToken }),
     appGetUser: (token: string) => axios.get(apiPrefix + '/appGetUser/' + token),
-    appLogout: (token: string) => axios.delete(apiPrefix + '/appLogout/' + token),
+    appLogout: () => axios.delete(apiPrefix + '/appLogout'),
 
 
     productsIndex: (params?) => axios.get(apiPrefix + '/productsIndex/', { params: params }),

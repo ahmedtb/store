@@ -3,7 +3,10 @@ import * as Notifications from 'expo-notifications';
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import { Text, View, Button, Platform, Settings } from 'react-native';
 import { Subscription } from 'expo-modules-core'
-import Device from 'expo-device'
+import * as Device from 'expo-device';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import { setUserNotification, setExpoPushToken } from '../redux/stateActions';
 
 Notifications.setNotificationHandler({
     handleNotification: async () => ({
@@ -32,7 +35,7 @@ const NotificationsProvider = (props: {
         // This listener is fired whenever a notification is received while the app is foregrounded
         notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
             // if (notification.request.content.data.type == 'user')
-            props.setUserNotification(notification)
+            props.setUserNotification(notification.request.content)
 
         });
 
@@ -53,9 +56,6 @@ const NotificationsProvider = (props: {
     return null
 }
 
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux';
-import { setUserNotification, setExpoPushToken } from '../redux/StateActions';
 const mapStateToProps = ({ state }) => {
     return { state }
 }

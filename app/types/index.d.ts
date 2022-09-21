@@ -1,4 +1,7 @@
 
+
+import { NotificationContent } from "expo-notifications";
+
 export { };
 declare global {
     interface Window {
@@ -17,7 +20,7 @@ declare global {
 
     type storeState = {
         user: user,
-        notification: notification,
+        notification: expoNotification,
         cart: order,
         GPS: GPS,
         expoPushToken: string,
@@ -73,6 +76,8 @@ declare global {
         updated_at: string,
     }
     type notifications = Array<notification>
+
+    type expoNotification = NotificationContent
 
     type pagination<T> = {
         data: T,

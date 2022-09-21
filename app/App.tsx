@@ -9,6 +9,7 @@ import axios from 'axios';
 import _Environments from './env'
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import NotificationsProvider from './components/NotificationsProvider';
 
 axios.defaults.baseURL = _Environments.BASE_URL
 
@@ -28,10 +29,11 @@ export default function App() {
     return (
       <SafeAreaProvider>
         <Provider store={store}>
-          <Navigation colorScheme={colorScheme} />
-          <StatusBar />
+          <NotificationsProvider />
+            <Navigation colorScheme={colorScheme} />
+            <StatusBar />
         </Provider>
-      </SafeAreaProvider>
+      </SafeAreaProvider >
     );
   }
 }

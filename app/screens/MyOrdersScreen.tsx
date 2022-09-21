@@ -1,15 +1,17 @@
 import { StyleSheet } from 'react-native';
 
-import { Text, View } from '../components/Themed';
+import { Text, View } from 'react-native';
 import AuthWrapper from '../components/AuthWrapper';
 
+
 export default function MyOrdersScreen() {
+
   return (
     <AuthWrapper>
-      <View style={styles.container}>
+      {/* <View style={styles.container}> */}
         <Text style={styles.title}>Tab Two</Text>
-        <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      </View>
+        {/* <View style={styles.separator} /> */}
+      {/* </View> */}
     </AuthWrapper>
 
   );

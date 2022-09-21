@@ -33,12 +33,15 @@ Route::get('/slides', [SlidesController::class, 'slides']);
 
 
 Route::post('/login', [UsersLoginController::class, 'login']);
+Route::post('/appLogin', [UsersLoginController::class, 'appLogin']);
 Route::post('/signUp', [UsersLoginController::class, 'signUp']);
 
 
 
-Route::middleware('auth:user')->group(function () {
+Route::middleware('auth:user,sanctum')->group(function () {
     Route::delete('/logout', [UsersLoginController::class, 'logout']);
+    Route::delete('/appLogout', [UsersLoginController::class, 'appLogout']);
+
     Route::get('/user', [UsersLoginController::class, 'user']);
     Route::get('/getCart', [CartsController::class, 'getCart']);
     Route::post('/addToCart', [CartsController::class, 'addToCart']);

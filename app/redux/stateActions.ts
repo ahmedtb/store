@@ -1,5 +1,5 @@
 
-export const setUserNotification = (notification: notification) => (
+export const setUserNotification = (notification: expoNotification) => (
     {
         type: 'setUserNotification',
         notification: notification

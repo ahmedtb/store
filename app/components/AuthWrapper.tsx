@@ -8,7 +8,7 @@ import { useNavigation } from '@react-navigation/native'
 import RadioButton from './RadioButton';
 
 
-function AuthWrapper(props: { children: React.ReactNode, user: user }) {
+function AuthWrapper(props: { children: React.ReactNode, user: user, token: string }) {
     const navigation = useNavigation()
 
     const [hasAccount, sethasAccount] = useState<boolean>(true)
@@ -20,11 +20,11 @@ function AuthWrapper(props: { children: React.ReactNode, user: user }) {
         loginProcedure(phoneNumber, password)
     }
 
-    if (props.user)
-        return <div>
+    if (props.user) {
+        return <View>
             {props.children}
-        </div>
-    else
+        </View>
+    } else
         return (
 
             <View style={{ backgroundColor: 'white', padding: 10 }}>
@@ -48,7 +48,7 @@ function AuthWrapper(props: { children: React.ReactNode, user: user }) {
                                 fontSize: 20,
                                 fontWeight: 'bold',
                             }}>
-                                تسجيل حساب. جديد في المتجر؟
+                                تسجيل حساب في المتجر؟
                             </Text>
 
                         </View>
@@ -175,7 +175,9 @@ function AuthWrapper(props: { children: React.ReactNode, user: user }) {
 
 const mapStateToProps = (state: { state: storeState }) => {
     return {
-        user: state.state.user
+        user: state.state.user,
+        token: state.state.token
+
     }
 };
 const mapDispatchToProps = dispatch => (

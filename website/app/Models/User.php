@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use App\Traits\Notifiable;
+use Illuminate\Support\Str;
 use App\Filters\UserFilters;
 use Laravel\Sanctum\HasApiTokens;
+use Laravel\Sanctum\NewAccessToken;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -66,4 +68,30 @@ class User extends Authenticatable
         // return null;
         return $this->orders()->where('status', 'new')->first();
     }
+
+    public function createToken(string $name, string $expo_token, array $abilities = ['*'])
+    {
+        $token = $this->tokens()->forceCreate([
+            'tokenable_id' => $this->id,
+            'tokenable_type' => static::class,
+            'name' => $name,
+            'token' => hash('sha256', $plainTextToken = Str::random(40)),
+            'expo_token' => $expo_token,
+            'abilities' => $abilities,
+        ]);
+
+        return new NewAccessToken($token, $token->getKey() . '|' . $plainTextToken);
+    }
+    
+    public function routeNotificationForExpoApp()
+    {
+        return $this->expoTokens();
+    }
+
+    public function expoTokens()
+    {
+        return $this->tokens()->pluck('expo_token')->unique();
+    }
+
+    
 }

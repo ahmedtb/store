@@ -4,19 +4,6 @@ import store from './store'
 import { setUser, setToken } from "./stateActions";
 import { logError, api } from "../urls";
 
-export function setUserAndAxiosToken(data: { user: user, token: string }) {
-    if (data) {
-        axios.defaults.headers.common['Authorization'] = `Bearer ${data?.token}`;
-        store.dispatch(setUser(data.user))
-        store.dispatch(setToken(data.token))
-    } else {
-        axios.defaults.headers.common['Authorization'] = null;
-        store.dispatch(setUser(null))
-        store.dispatch(setToken(null))
-    }
-
-}
-
 
 export function loginProcedure(phoneNumber: string, password: string) {
     const storeState = store.getState();
@@ -24,9 +11,9 @@ export function loginProcedure(phoneNumber: string, password: string) {
     if (storeState.state.expoPushToken)
         api.appLogin(phoneNumber, password, storeState.state.expoPushToken)
             .then((response) => {
-                console.log('loginProcedure', response.data.token)
+                console.log('loginProcedure token', response.data.token)
                 storeTokenRecord(response.data.token)
-                setUserAndAxiosToken(response.data)
+                setUserAndAxiosToken(response.data.user, response.data.token)
             })
             .catch(error => logError(error, 'authfunction loginProcedure'))
     else {
@@ -37,10 +24,10 @@ export function loginProcedure(phoneNumber: string, password: string) {
 export function tryLoginUserFromStore() {
     getTokenFromStorage().then((token) => {
         api.appGetUser(token)
-            .then((response) => setUserAndAxiosToken({ user: response.data, token: token }))
+            .then((response) => setUserAndAxiosToken(response.data, token))
             .catch(error => {
                 logError(error, 'tryLoginUserFromStore getUser')
-                setUserAndAxiosToken(null)
+                setUserAndAxiosToken(null, null)
                 console.log('AuthenticationStack', 'user is in the store but is not validated')
             })
     }).catch(error => logError(error, 'tryLoginUserFromStore getTokenFromStorage'))
@@ -51,22 +38,22 @@ export function logoutProcedure() {
     api.appLogout(storeState.state.token).then((response) => {
         console.log('logoutProcedure', response)
         deleteTokenRecord()
-        setUserAndAxiosToken(null)
+        setUserAndAxiosToken(null, null)
         // store.dispatch(setProvider(null))
     }).catch((error) => logError(error, 'logoutProcedure'))
 }
 
 
 
-export function fetchUser(token: string) {
+// export function fetchUser(token: string) {
 
-    api.appGetUser(token).then((response) => {
-        console.log('fetchUser response', response)
-        store.dispatch(setUser(response.data))
-    }).catch((error) => {
-        logError(error, 'fetchUser')
-    })
-}
+//     api.appGetUser(token).then((response) => {
+//         console.log('fetchUser response', response)
+//         store.dispatch(setUser(response.data))
+//     }).catch((error) => {
+//         logError(error, 'fetchUser')
+//     })
+// }
 
 export async function getTokenFromStorage() {
     const storedResult = await getValueFor('token')
@@ -77,8 +64,21 @@ export async function getTokenFromStorage() {
     }
 }
 
-export async function storeTokenRecord(data: string) {
-    saveItem('token', JSON.stringify(data))
+export function setUserAndAxiosToken(user: user, token: string) {
+    if (user && token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        store.dispatch(setUser(user))
+        store.dispatch(setToken(token))
+    } else {
+        axios.defaults.headers.common['Authorization'] = null;
+        store.dispatch(setUser(null))
+        store.dispatch(setToken(null))
+    }
+
+}
+
+export async function storeTokenRecord(token: string) {
+    saveItem('token', JSON.stringify(token))
 }
 
 export async function deleteTokenRecord() {

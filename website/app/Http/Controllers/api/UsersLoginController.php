@@ -46,7 +46,7 @@ class UsersLoginController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->middleware('auth:user')->except(['login', 'signUp']);
+        $this->middleware('auth:user')->except(['login', 'appLogin', 'signUp']);
     }
 
     public function phone()
@@ -100,6 +100,44 @@ class UsersLoginController extends Controller
             $request->filled('remember')
         );
     }
+
+    public function appLogin(Request $request)
+    {
+
+        $request->validate([
+            'phone' => 'required|string',
+            'password' => 'required',
+            'device_name' => 'required|string',
+            'expo_token' => 'required|string'
+        ]);
+
+        $user = User::where('phone', $request->phone)->first();
+
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            throw ValidationException::withMessages([
+                'phone' => ['The provided credentials are incorrect.'],
+            ]);
+        }
+        $personal_access_token = $user->createToken($request->device_name, $request->expo_token);
+
+        $response = [
+            'user' => $user,
+            'token' => $personal_access_token->plainTextToken
+        ];
+
+        return response($response, 201);
+    }
+
+        
+    public function appLogout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+        // return 'tokens deleted';
+        return response()->json([
+            'success' => 'user is logged out',
+        ]);
+    }
+
 
     public function user(Request $request)
     {
