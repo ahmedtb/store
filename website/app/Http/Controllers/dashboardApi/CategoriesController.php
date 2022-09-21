@@ -19,7 +19,7 @@ class CategoriesController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string',
-            'parent_id' => 'required|exists:categories,id',
+            'parent_id' => 'sometimes|exists:categories,id',
         ]);
 
         $category = Category::create($data);
