@@ -35,8 +35,8 @@ export function tryLoginUserFromStore() {
 
 export function logoutProcedure() {
     const storeState = store.getState();
-    api.appLogout(storeState.state.token).then((response) => {
-        console.log('logoutProcedure', response)
+    api.appLogout().then((response) => {
+        // console.log('logoutProcedure', response)
         deleteTokenRecord()
         setUserAndAxiosToken(null, null)
         // store.dispatch(setProvider(null))

@@ -46,7 +46,7 @@ class UsersLoginController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->middleware('auth:user')->except(['login', 'appLogin', 'signUp']);
+        $this->middleware('auth:user,sanctum')->except(['login', 'appLogin', 'signUp']);
     }
 
     public function phone()

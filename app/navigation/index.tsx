@@ -8,7 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName, Pressable, View } from 'react-native';
+import { ColorSchemeName, Pressable, View, Text } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -20,6 +20,7 @@ import MyOrdersScreen from '../screens/MyOrdersScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types/types';
 import LinkingConfiguration from './LinkingConfiguration';
 import LogoutButton from '../components/LogoutButton';
+import LoggedIn from '../components/LoggedIn';
 
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
@@ -77,12 +78,14 @@ function BottomTabNavigator() {
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}>
-              <FontAwesome
-                name="location-arrow"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
+              <View>
+                <Text style={{ fontSize: 20 }}>
+                  توصيل إلى
+                </Text>
+                <Text>
+                  موقعك الحالي
+                </Text>
+              </View>
             </Pressable>
           ),
         })}
@@ -91,7 +94,7 @@ function BottomTabNavigator() {
         name="MyOrders"
         component={MyOrdersScreen}
         options={({ navigation }: RootTabScreenProps<'MyOrders'>) => ({
-          title: 'طلباتي',
+          title: '',
           tabBarIcon: ({ color }) => <TabBarIcon name="reorder" color={color} />,
           headerRight: () => (
             <View style={{ flexDirection: 'row' }}>
@@ -100,14 +103,18 @@ function BottomTabNavigator() {
                 style={({ pressed }) => ({
                   opacity: pressed ? 0.5 : 1,
                 })}>
-                <FontAwesome
-                  name="location-arrow"
-                  size={25}
-                  color={Colors[colorScheme].text}
-                  style={{ marginHorizontal: 15 }}
-                />
+                <View>
+                  <Text style={{ fontSize: 20 }}>
+                    توصيل إلى
+                  </Text>
+                  <Text>
+                    موقعك الحالي
+                  </Text>
+                </View>
               </Pressable>
-              <LogoutButton />
+              <LoggedIn>
+                <LogoutButton />
+              </LoggedIn>
             </View>
           ),
         })}
@@ -124,12 +131,14 @@ function BottomTabNavigator() {
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}>
-              <FontAwesome
-                name="location-arrow"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
+              <View>
+                <Text style={{ fontSize: 20 }}>
+                  توصيل إلى
+                </Text>
+                <Text>
+                  موقعك الحالي
+                </Text>
+              </View>
             </Pressable>
           ),
         })}

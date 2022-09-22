@@ -49,7 +49,7 @@ export default function ScrollPaginator(props: {
     //     console.log('ScrollPaginator pagination', pagination?.next_page_url)
     // }, [pagination])
 
-    return <View>
+    return <View style={{ marginBottom: 20}}>
 
         <FlatList
             data={data}
@@ -57,7 +57,7 @@ export default function ScrollPaginator(props: {
             keyExtractor={(item, index) => index.toString()}
             onEndReached={() => fetchData(true)}
             contentContainerStyle={{
-                marginBottom: 200
+                // marginBottom: 200
             }}
         />
         <LoadingIndicator area={randStr} />

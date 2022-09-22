@@ -9,7 +9,6 @@ import RadioButton from './RadioButton';
 
 
 function AuthWrapper(props: { children: React.ReactNode, user: user, token: string }) {
-    const navigation = useNavigation()
 
     const [hasAccount, sethasAccount] = useState<boolean>(true)
 

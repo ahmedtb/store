@@ -1,8 +1,7 @@
 import React from 'react'
 import { StyleSheet } from 'react-native';
-import { Text, View } from '../components/Themed';
 import { api, getPaginationParams } from '../urls'
-import { Image } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import ScrollPaginator from '../components/ScrollPaginator'
 import { ListRenderItemInfo } from 'react-native'
 
@@ -19,42 +18,23 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      {/* <ScrollView>
+      <Text style={styles.title}>النتائج</Text>
 
-        {
-          productsPagination?.data?.map((product, index) => {
-            return <View key={index} >
-              <Image source={{ uri: api.productImage(product.id) }}
-                style={{ width: 200, height: 200 }}
-
-              />
-              <View>
-                <Text>{product.name}</Text>
-                <Text>{product.category?.name}</Text>
-                <Text>{product.price}</Text>
-              </View>
-            </View>
-          })
-        }
-      </ScrollView> */}
       <View style={{ padding: 10 }}>
 
         <ScrollPaginator
           // log='fetch products'
           apiCall={fetch}
-          renderItem={(itemData: ListRenderItemInfo<product>) => <View key={itemData.index}
-            style={{ flexDirection: 'row', padding: 10 }}
+          renderItem={(itemData: ListRenderItemInfo<product>) => <View
+            key={itemData.index}
+            style={{ flexDirection: 'row', padding: 10, borderWidth: 0.2, margin: 5, borderRadius: 5 }}
           >
             <Image source={{ uri: api.productImage(itemData.item.id) }}
-              style={{ width: 100, height: 100 }}
-
+              style={{ width: 150, height: 150 }}
             />
-            <View>
-              <Text>{itemData.item.name}</Text>
-              <Text>{itemData.item.category?.name}</Text>
-              <Text>{itemData.item.price}</Text>
+            <View style={{ margin: 10, flexShrink: 1 }}>
+              <Text style={{ fontSize: 15, fontWeight: 'bold', }}>{itemData.item.name}</Text>
+              <Text>{itemData.item.price} دينار</Text>
             </View>
           </View>}
         />
@@ -71,9 +51,11 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     // justifyContent: 'center',
     marginBottom: 100,
+    backgroundColor: 'white',
+    padding: 5
   },
   title: {
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: 'bold',
   },
   separator: {

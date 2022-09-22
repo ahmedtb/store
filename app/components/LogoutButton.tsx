@@ -11,6 +11,6 @@ export default function LogoutButton() {
 
 
     return <Pressable onPress={logout}>
-        <Text>خروج</Text>
+        <Text>تسجيل الخروج</Text>
     </Pressable>
 }
