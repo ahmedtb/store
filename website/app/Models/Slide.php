@@ -18,7 +18,7 @@ class Slide extends Model
     public static function defaultImage($num = 1)
     {
         $slidesNames = [
-            'slide.jpg', 'slide2.jpg', 'slide3.jpg', 'slide4.jpg'
+            'banner1.jpg', 'banner2.jpg', 'banner3.jpg', 'banner4.jpg'
         ];
         $path = base_path('public/images/' . $slidesNames[$num]);
         $fileExtention = fileExtension($path);

@@ -39,20 +39,15 @@ function App() {
             <Provider store={store}>
 
                 <BrowserRouter>
-                    <Container fluid className='p-0 m-0'>
-                        <TopMenue2 />
-                        <div className='min-vh-100 d-flex flex-column justify-content-between'>
+                    <TopMenue2 />
+                    <div className='min-vh-100 d-flex flex-column justify-content-between' style={{ background: 'linear-gradient(-134deg, #FFA62E 0%, #FB962E 20%, #F8852E 40%, #F3742D 60%, #EF612D 80%, #EA4D2C 100%)' }}>
+                        <div className='p-0 mx-5'>
 
-                            {/* <Row> */}
-                            {/* </Row> */}
-                            {/* <Row> */}
-                            {/* <Col xs={10} className='p-0 mx-auto'> */}
                             <AllowedRoutes />
-                            {/* </Col> */}
-                            {/* </Row> */}
+
                         </div>
-                        <Footer />
-                    </Container>
+                    </div>
+                    <Footer />
 
                 </BrowserRouter>
             </Provider>

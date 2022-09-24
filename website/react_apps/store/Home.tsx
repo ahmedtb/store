@@ -46,7 +46,7 @@ export default function Home() {
     }, [])
 
     return (
-        <div className="bg-white">
+        <div className="" style={{background:'linear-gradient(to bottom, #E2E2E2, #C9D6FF)'}}>
 
             {slides?.length ?
 

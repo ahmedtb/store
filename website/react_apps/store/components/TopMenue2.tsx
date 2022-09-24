@@ -124,67 +124,81 @@ function TopMenue2(props: { refreshUser: typeof refreshUser, user: user, refresh
     return (
         <div>
 
-            <div className='d-flex p-1 bg-dark align-items-center'>
-                <LinkContainer to={routes.home()}>
-                    <div className='fs-2 ms-3 text-white'>
-                        {process.env.MIX_APP_NAME}
-                    </div>
-                </LinkContainer>
+            <div className='p-3' style={{ background: 'linear-gradient(to left, #190A05, #870000)' }}>
+                <div className='col-6 mx-auto'>
 
-                <div className='mx-2 text-white'>
-                    <DeliverToIcon />
+                    {
+                        props.user ? (
+                            <NavDropdown title={props.user.name} className='text-white mx-2' >
+                                <NavDropdown.Item onClick={logout} >{window.localization.logout}</NavDropdown.Item>
+                            </NavDropdown>
+                        ) : (
+                            <div className='d-flex'>
+                                <AllowedLink to={routes.loginPage()} className='text-white mx-2'>
+                                    <div >{window.localization.login}</div>
+                                </AllowedLink>
+                                <AllowedLink to={routes.signUp()} className='text-white mx-2'>
+                                    <div >{window.localization.signUp}</div>
+                                </AllowedLink>
+                            </div>
+                        )
+                    }
                 </div>
-                <div className="d-flex mx-2 flex-grow-1">
-                    <input
-                        type="text"
-                        className="p-2 flex-grow-1 rounded-end"
-                        aria-label="Search"
-                        onChange={e => setq(e.target.value)}
-                    />
-                    <Link className="bg-warning rounded-start px-2" to={routes.productsFiltering() + '?q=' + q} >
-                        <AiOutlineSearch className='my-2' size={25} color={'black'} />
-                    </Link>
-                </div>
+            </div>
 
-                {
-                    props.user ? (
-                        <NavDropdown title={props.user.name} className='text-white mx-2' >
-                            <NavDropdown.Item onClick={logout} >{window.localization.logout}</NavDropdown.Item>
-                        </NavDropdown>
-                    ) : (
-                        <div className='d-flex'>
-                            <AllowedLink to={routes.loginPage()} className='text-white mx-2'>
-                                <div >{window.localization.login}</div>
-                            </AllowedLink>
-                            <AllowedLink to={routes.signUp()} className='text-white mx-2'>
-                                <div >{window.localization.signUp}</div>
-                            </AllowedLink>
+            <div className='' style={{ background: 'linear-gradient(to left, #061161, #780206)' }}>
+                <div className='container d-flex p-4 align-items-center'>
+
+                    <LinkContainer to={routes.home()}>
+                        <div className='fs-2 ms-3 text-white'>
+                            {process.env.MIX_APP_NAME}
                         </div>
-                    )
-                }
-                <AllowedLink to={routes.myOrders()} className='text-white mx-2 fs-5'>
-                    طلباتي
-                </AllowedLink>
-                <div className='mx-2'>
+                    </LinkContainer>
 
-                    <CartBell />
+                    <div className='mx-2 text-white'>
+                        <DeliverToIcon />
+                    </div>
+                    <div className="d-flex col-md-4 mx-auto">
+                        <input
+                            type="text"
+                            className="p-2 flex-grow-1 rounded-end"
+                            aria-label="Search"
+                            onChange={e => setq(e.target.value)}
+                        />
+                        <Link className="bg-warning rounded-start text-decoration-none fw-bold p-2 text-white " style={{ background: 'linear-gradient(to bottom, #0083B0, #00B4DB)' }} to={routes.productsFiltering() + '?q=' + q} >
+                            بحث
+                            {/* <AiOutlineSearch className='my-2' size={25} color={'black'} /> */}
+                        </Link>
+                    </div>
+
+
+                    <AllowedLink to={routes.myOrders()} className='text-white mx-2 fs-5'>
+                        طلباتي
+                    </AllowedLink>
+                    <div className='mx-2'>
+
+                        <CartBell />
+                    </div>
+                    <div className='mx-2'>
+                        <NotificationsBell />
+
+                    </div>
+
+
+
                 </div>
-                <div className='mx-2'>
-                    <NotificationsBell />
-
-                </div>
-
-
-
 
             </div>
-            <div className='d-flex flex-wrap bg-secondary py-1'>
-                {
-                    categories?.map((category, index) => <AllowedLink to={routes.productsFiltering() + '?category_id=' + category.id} key={index} className='mx-2 text-decoration-none text-white'>
-                        {category.name}
-                    </AllowedLink>)
-                }
+            <div className='' style={{ background: 'linear-gradient(to right, #F9D423, #FF4E50)' }}>
+                <div className='container d-flex flex-wrap py-3'>
+                    {
+                        categories?.map((category, index) => <AllowedLink to={routes.productsFiltering() + '?category_id=' + category.id} key={index} className='mx-2 text-decoration-none text-dark'>
+                            {category.name}
+                        </AllowedLink>)
+                    }
+                </div>
             </div>
+
         </div>
 
     )
